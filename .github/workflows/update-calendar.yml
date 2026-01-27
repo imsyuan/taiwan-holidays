@@ -1,0 +1,41 @@
+name: Update Taiwan Calendar Data
+
+on:
+  schedule:
+    # 每月 1 日 UTC 00:00 (台灣時間 08:00)
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+    # 允許手動觸發
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Run update script
+        run: python scripts/update_calendar.py
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code data/ || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/
+          git commit -m "chore: update calendar data $(date +'%Y-%m-%d')"
+          git push
