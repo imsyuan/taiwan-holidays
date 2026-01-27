@@ -13,26 +13,40 @@
 - 🔄 **自動同步更新** — GitHub Actions 定期從政府開放資料同步
 - 📦 **CDN 快速存取** — jsDelivr 全球 CDN 加速
 
-## 🚀 快速開始
+## 🔗 API 端點
 
-### API 端點
+所有資料都可透過 jsDelivr CDN 存取，以 2025 年為例：
 
-| 資料類型 | 端點 |
-|----------|------|
-| 完整日曆 | `/{year}.json` |
-| 國定假日 | `/{year}/holidays.json` |
-| 補班日 | `/{year}/makeup-workdays.json` |
-| 英文日曆 | `/{year}/calendar-en.json` |
-| 英文假日 | `/{year}/holidays-en.json` |
-
-**Base URL:**
+### 完整日曆（中文）
 ```
-https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data
+https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025.json
 ```
 
-### 使用範例
+### 國定假日（中文）
+```
+https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025/holidays.json
+```
 
-**取得 2025 年國定假日（中文）**
+### 國定假日（英文）
+```
+https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025/holidays-en.json
+```
+
+### 補班日清單
+```
+https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025/makeup-workdays.json
+```
+
+### 完整日曆（英文）
+```
+https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025/calendar-en.json
+```
+
+> 💡 其他年份只需將 `2025` 替換為 `2017`~`2026`
+
+## 🚀 使用範例
+
+**JavaScript - 取得國定假日**
 ```javascript
 const holidays = await fetch(
   'https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025/holidays.json'
@@ -42,7 +56,7 @@ console.log(holidays);
 // [{ date: "20250101", week: "三", isHoliday: true, description: "開國紀念日" }, ...]
 ```
 
-**取得 2025 年英文版國定假日**
+**JavaScript - 英文版國定假日**
 ```javascript
 const holidays = await fetch(
   'https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2025/holidays-en.json'
@@ -52,7 +66,7 @@ console.log(holidays);
 // [{ date: "20250101", week: "Wed", isHoliday: true, description: "New Year's Day" }, ...]
 ```
 
-**Python 查詢補班日**
+**Python - 查詢補班日**
 ```python
 import requests
 
@@ -72,18 +86,33 @@ print(f"2025 年共有 {len(workdays)} 天需要補班")
 | `isHoliday` | `boolean` | `true` = 放假，`false` = 上班 |
 | `description` | `string` | 節日名稱或說明 |
 
-### 完整日曆 vs 國定假日
+### 回應範例
 
-| 檔案 | 說明 |
-|------|------|
-| `2025.json` | 包含該年度 365/366 天的每日資料 |
-| `2025/holidays.json` | **只有**國定假日（約 15-20 筆），不含一般週末 |
+**中文版**
+```json
+{
+  "date": "20250101",
+  "week": "三",
+  "isHoliday": true,
+  "description": "開國紀念日"
+}
+```
+
+**英文版**
+```json
+{
+  "date": "20250101",
+  "week": "Wed",
+  "isHoliday": true,
+  "description": "New Year's Day"
+}
+```
 
 ## 📁 目錄結構
 
 ```
 data/
-├── 2025.json              # 完整日曆
+├── 2025.json              # 完整日曆（中文）
 └── 2025/
     ├── holidays.json      # 國定假日（中文）
     ├── holidays-en.json   # 國定假日（英文）
@@ -93,7 +122,7 @@ data/
 
 ## 📅 可用年份
 
-目前提供 **2017 ~ 2026** 年資料，每年約於 6 月新增下一年度。
+**2017 ~ 2026**（每年約於 6 月新增下一年度資料）
 
 ## 📜 資料來源與授權
 
