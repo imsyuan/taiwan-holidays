@@ -1,0 +1,80 @@
+[
+  {
+    "date": "20220101",
+    "week": "六",
+    "isHoliday": true,
+    "description": "開國紀念日"
+  },
+  {
+    "date": "20220131",
+    "week": "一",
+    "isHoliday": true,
+    "description": "農曆除夕"
+  },
+  {
+    "date": "20220201",
+    "week": "二",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20220202",
+    "week": "三",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20220203",
+    "week": "四",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20220204",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20220228",
+    "week": "一",
+    "isHoliday": true,
+    "description": "和平紀念日"
+  },
+  {
+    "date": "20220404",
+    "week": "一",
+    "isHoliday": true,
+    "description": "兒童節"
+  },
+  {
+    "date": "20220405",
+    "week": "二",
+    "isHoliday": true,
+    "description": "民族掃墓節"
+  },
+  {
+    "date": "20220603",
+    "week": "五",
+    "isHoliday": true,
+    "description": "端午節"
+  },
+  {
+    "date": "20220909",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20220910",
+    "week": "六",
+    "isHoliday": true,
+    "description": "中秋節"
+  },
+  {
+    "date": "20221010",
+    "week": "一",
+    "isHoliday": true,
+    "description": "國慶日"
+  }
+]

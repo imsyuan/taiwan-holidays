@@ -1,0 +1,92 @@
+[
+  {
+    "date": "20180101",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20180215",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20180216",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20180217",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20180218",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20180219",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20180220",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20180228",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20180404",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Children's Day"
+  },
+  {
+    "date": "20180405",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Tomb Sweeping Day"
+  },
+  {
+    "date": "20180406",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20180618",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20180924",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20181010",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "National Day"
+  },
+  {
+    "date": "20181231",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "date": "20260101",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20260215",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve Eve"
+  },
+  {
+    "date": "20260216",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20260217",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20260218",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20260219",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20260220",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20260227",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20260228",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20260403",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20260404",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Children's Day"
+  },
+  {
+    "date": "20260405",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "清明節"
+  },
+  {
+    "date": "20260406",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20260501",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "勞動節"
+  },
+  {
+    "date": "20260619",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20260925",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20260928",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Confucius Birthday"
+  },
+  {
+    "date": "20261009",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20261010",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "National Day"
+  },
+  {
+    "date": "20261025",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Taiwan Retrocession Day"
+  },
+  {
+    "date": "20261026",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20261225",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Constitution Day"
+  }
+]

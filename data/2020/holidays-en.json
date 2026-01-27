@@ -1,0 +1,110 @@
+[
+  {
+    "date": "20200101",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20200123",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20200124",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20200125",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20200126",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20200127",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20200128",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20200129",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20200228",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20200402",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20200403",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Holiday"
+  },
+  {
+    "date": "20200404",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Children's Day & Tomb Sweeping Day"
+  },
+  {
+    "date": "20200625",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20200626",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20201001",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20201002",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20201009",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20201010",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "National Day"
+  }
+]

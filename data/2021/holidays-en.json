@@ -1,0 +1,116 @@
+[
+  {
+    "date": "20210101",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20210210",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20210211",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20210212",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20210213",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20210214",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20210215",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20210216",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20210228",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20210301",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20210402",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20210404",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Children's Day & Tomb Sweeping Day"
+  },
+  {
+    "date": "20210405",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20210614",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20210920",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20210921",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20211010",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "National Day"
+  },
+  {
+    "date": "20211011",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20211231",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  }
+]

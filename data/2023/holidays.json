@@ -1,0 +1,122 @@
+[
+  {
+    "date": "20230101",
+    "week": "日",
+    "isHoliday": true,
+    "description": "開國紀念日"
+  },
+  {
+    "date": "20230102",
+    "week": "一",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20230120",
+    "week": "五",
+    "isHoliday": true,
+    "description": "小年夜"
+  },
+  {
+    "date": "20230121",
+    "week": "六",
+    "isHoliday": true,
+    "description": "農曆除夕"
+  },
+  {
+    "date": "20230122",
+    "week": "日",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20230123",
+    "week": "一",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20230124",
+    "week": "二",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20230125",
+    "week": "三",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20230126",
+    "week": "四",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20230127",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20230227",
+    "week": "一",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20230228",
+    "week": "二",
+    "isHoliday": true,
+    "description": "和平紀念日"
+  },
+  {
+    "date": "20230403",
+    "week": "一",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20230404",
+    "week": "二",
+    "isHoliday": true,
+    "description": "兒童節"
+  },
+  {
+    "date": "20230405",
+    "week": "三",
+    "isHoliday": true,
+    "description": "民族掃墓節"
+  },
+  {
+    "date": "20230622",
+    "week": "四",
+    "isHoliday": true,
+    "description": "端午節"
+  },
+  {
+    "date": "20230623",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20230929",
+    "week": "五",
+    "isHoliday": true,
+    "description": "中秋節"
+  },
+  {
+    "date": "20231009",
+    "week": "一",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20231010",
+    "week": "二",
+    "isHoliday": true,
+    "description": "國慶日"
+  }
+]

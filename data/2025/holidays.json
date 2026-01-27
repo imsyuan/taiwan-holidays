@@ -1,0 +1,110 @@
+[
+  {
+    "date": "20250101",
+    "week": "三",
+    "isHoliday": true,
+    "description": "開國紀念日"
+  },
+  {
+    "date": "20250127",
+    "week": "一",
+    "isHoliday": true,
+    "description": "小年夜"
+  },
+  {
+    "date": "20250128",
+    "week": "二",
+    "isHoliday": true,
+    "description": "農曆除夕"
+  },
+  {
+    "date": "20250129",
+    "week": "三",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20250130",
+    "week": "四",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20250131",
+    "week": "五",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20250228",
+    "week": "五",
+    "isHoliday": true,
+    "description": "和平紀念日"
+  },
+  {
+    "date": "20250403",
+    "week": "四",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20250404",
+    "week": "五",
+    "isHoliday": true,
+    "description": "兒童節及民族掃墓節"
+  },
+  {
+    "date": "20250530",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20250531",
+    "week": "六",
+    "isHoliday": true,
+    "description": "端午節"
+  },
+  {
+    "date": "20250928",
+    "week": "日",
+    "isHoliday": true,
+    "description": "孔子誕辰紀念日"
+  },
+  {
+    "date": "20250929",
+    "week": "一",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20251006",
+    "week": "一",
+    "isHoliday": true,
+    "description": "中秋節"
+  },
+  {
+    "date": "20251010",
+    "week": "五",
+    "isHoliday": true,
+    "description": "國慶日"
+  },
+  {
+    "date": "20251024",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20251025",
+    "week": "六",
+    "isHoliday": true,
+    "description": "臺灣光復暨金門古寧頭大捷紀念日"
+  },
+  {
+    "date": "20251225",
+    "week": "四",
+    "isHoliday": true,
+    "description": "行憲紀念日"
+  }
+]

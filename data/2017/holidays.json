@@ -1,0 +1,104 @@
+[
+  {
+    "date": "20170101",
+    "week": "日",
+    "isHoliday": true,
+    "description": "開國紀念日"
+  },
+  {
+    "date": "20170102",
+    "week": "一",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20170127",
+    "week": "五",
+    "isHoliday": true,
+    "description": "農曆除夕"
+  },
+  {
+    "date": "20170128",
+    "week": "六",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20170129",
+    "week": "日",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20170130",
+    "week": "一",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20170131",
+    "week": "二",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20170201",
+    "week": "三",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20170227",
+    "week": "一",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20170228",
+    "week": "二",
+    "isHoliday": true,
+    "description": "和平紀念日"
+  },
+  {
+    "date": "20170403",
+    "week": "一",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20170404",
+    "week": "二",
+    "isHoliday": true,
+    "description": "兒童節及民族掃墓節"
+  },
+  {
+    "date": "20170529",
+    "week": "一",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20170530",
+    "week": "二",
+    "isHoliday": true,
+    "description": "端午節"
+  },
+  {
+    "date": "20171004",
+    "week": "三",
+    "isHoliday": true,
+    "description": "中秋節"
+  },
+  {
+    "date": "20171009",
+    "week": "一",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20171010",
+    "week": "二",
+    "isHoliday": true,
+    "description": "國慶日"
+  }
+]

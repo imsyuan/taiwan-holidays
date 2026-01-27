@@ -1,0 +1,86 @@
+[
+  {
+    "date": "20240101",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20240208",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve Eve"
+  },
+  {
+    "date": "20240209",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20240210",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20240211",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20240212",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20240213",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20240214",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20240228",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20240404",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Children's Day & Tomb Sweeping Day"
+  },
+  {
+    "date": "20240405",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20240610",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20240917",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20241010",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "National Day"
+  }
+]

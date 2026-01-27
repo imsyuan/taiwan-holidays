@@ -1,0 +1,86 @@
+[
+  {
+    "date": "20190101",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20190204",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20190205",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20190206",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20190207",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20190208",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20190228",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20190301",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20190404",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Children's Day"
+  },
+  {
+    "date": "20190405",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Tomb Sweeping Day"
+  },
+  {
+    "date": "20190607",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20190913",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20191010",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "National Day"
+  },
+  {
+    "date": "20191011",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  }
+]

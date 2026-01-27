@@ -1,0 +1,2192 @@
+[
+  {
+    "date": "20230101",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20230102",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20230103",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230104",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230105",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230106",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230107",
+    "week": "Sat",
+    "isHoliday": false,
+    "description": "Make-up Workday"
+  },
+  {
+    "date": "20230108",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230109",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230110",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230111",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230112",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230113",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230114",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230115",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230116",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230117",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230118",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230119",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230120",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve Eve"
+  },
+  {
+    "date": "20230121",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20230122",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20230123",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20230124",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20230125",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20230126",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20230127",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230128",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230129",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230130",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230131",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230201",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230202",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230203",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230204",
+    "week": "Sat",
+    "isHoliday": false,
+    "description": "Make-up Workday"
+  },
+  {
+    "date": "20230205",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230206",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230207",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230208",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230209",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230210",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230211",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230212",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230213",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230214",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230215",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230216",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230217",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230218",
+    "week": "Sat",
+    "isHoliday": false,
+    "description": "Make-up Workday"
+  },
+  {
+    "date": "20230219",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230220",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230221",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230222",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230223",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230224",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230225",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230226",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230227",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230228",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20230301",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230302",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230303",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230304",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230305",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230306",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230307",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230308",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230309",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230310",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230311",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230312",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230313",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230314",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230315",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230316",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230317",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230318",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230319",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230320",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230321",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230322",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230323",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230324",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230325",
+    "week": "Sat",
+    "isHoliday": false,
+    "description": "Make-up Workday"
+  },
+  {
+    "date": "20230326",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230327",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230328",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230329",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230330",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230331",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230401",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230402",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230403",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230404",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Children's Day"
+  },
+  {
+    "date": "20230405",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Tomb Sweeping Day"
+  },
+  {
+    "date": "20230406",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230407",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230408",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230409",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230410",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230411",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230412",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230413",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230414",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230415",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230416",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230417",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230418",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230419",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230420",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230421",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230422",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230423",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230424",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230425",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230426",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230427",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230428",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230429",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230430",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230501",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230502",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230503",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230504",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230505",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230506",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230507",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230508",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230509",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230510",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230511",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230512",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230513",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230514",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230515",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230516",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230517",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230518",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230519",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230520",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230521",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230522",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230523",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230524",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230525",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230526",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230527",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230528",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230529",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230530",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230531",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230601",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230602",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230603",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230604",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230605",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230606",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230607",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230608",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230609",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230610",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230611",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230612",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230613",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230614",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230615",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230616",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230617",
+    "week": "Sat",
+    "isHoliday": false,
+    "description": "Make-up Workday"
+  },
+  {
+    "date": "20230618",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230619",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230620",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230621",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230622",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20230623",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230624",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230625",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230626",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230627",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230628",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230629",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230630",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230701",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230702",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230703",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230704",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230705",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230706",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230707",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230708",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230709",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230710",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230711",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230712",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230713",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230714",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230715",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230716",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230717",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230718",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230719",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230720",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230721",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230722",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230723",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230724",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230725",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230726",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230727",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230728",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230729",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230730",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230731",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230801",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230802",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230803",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230804",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230805",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230806",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230807",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230808",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230809",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230810",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230811",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230812",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230813",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230814",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230815",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230816",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230817",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230818",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230819",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230820",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230821",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230822",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230823",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230824",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230825",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230826",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230827",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230828",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230829",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230830",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230831",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230901",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230902",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230903",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230904",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230905",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230906",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230907",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230908",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230909",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230910",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230911",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230912",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230913",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230914",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230915",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230916",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230917",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230918",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230919",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230920",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230921",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230922",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230923",
+    "week": "Sat",
+    "isHoliday": false,
+    "description": "Make-up Workday"
+  },
+  {
+    "date": "20230924",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20230925",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230926",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230927",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230928",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20230929",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20230930",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231001",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231002",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231003",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231004",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231005",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231006",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231007",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231008",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231009",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20231010",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "National Day"
+  },
+  {
+    "date": "20231011",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231012",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231013",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231014",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231015",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231016",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231017",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231018",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231019",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231020",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231021",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231022",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231023",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231024",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231025",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231026",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231027",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231028",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231029",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231030",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231031",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231101",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231102",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231103",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231104",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231105",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231106",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231107",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231108",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231109",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231110",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231111",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231112",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231113",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231114",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231115",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231116",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231117",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231118",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231119",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231120",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231121",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231122",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231123",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231124",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231125",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231126",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231127",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231128",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231129",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231130",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231201",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231202",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231203",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231204",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231205",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231206",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231207",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231208",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231209",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231210",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231211",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231212",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231213",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231214",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231215",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231216",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231217",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231218",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231219",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231220",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231221",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231222",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231223",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231224",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231225",
+    "week": "Mon",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231226",
+    "week": "Tue",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231227",
+    "week": "Wed",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231228",
+    "week": "Thu",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231229",
+    "week": "Fri",
+    "isHoliday": false,
+    "description": ""
+  },
+  {
+    "date": "20231230",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": ""
+  },
+  {
+    "date": "20231231",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": ""
+  }
+]

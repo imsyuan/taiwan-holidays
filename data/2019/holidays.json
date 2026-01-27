@@ -1,0 +1,86 @@
+[
+  {
+    "date": "20190101",
+    "week": "二",
+    "isHoliday": true,
+    "description": "開國紀念日"
+  },
+  {
+    "date": "20190204",
+    "week": "一",
+    "isHoliday": true,
+    "description": "農曆除夕"
+  },
+  {
+    "date": "20190205",
+    "week": "二",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20190206",
+    "week": "三",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20190207",
+    "week": "四",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20190208",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20190228",
+    "week": "四",
+    "isHoliday": true,
+    "description": "和平紀念日"
+  },
+  {
+    "date": "20190301",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20190404",
+    "week": "四",
+    "isHoliday": true,
+    "description": "兒童節"
+  },
+  {
+    "date": "20190405",
+    "week": "五",
+    "isHoliday": true,
+    "description": "民族掃墓節"
+  },
+  {
+    "date": "20190607",
+    "week": "五",
+    "isHoliday": true,
+    "description": "端午節"
+  },
+  {
+    "date": "20190913",
+    "week": "五",
+    "isHoliday": true,
+    "description": "中秋節"
+  },
+  {
+    "date": "20191010",
+    "week": "四",
+    "isHoliday": true,
+    "description": "國慶日"
+  },
+  {
+    "date": "20191011",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "date": "20200101",
+    "week": "三",
+    "isHoliday": true,
+    "description": "開國紀念日"
+  },
+  {
+    "date": "20200123",
+    "week": "四",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20200124",
+    "week": "五",
+    "isHoliday": true,
+    "description": "農曆除夕"
+  },
+  {
+    "date": "20200125",
+    "week": "六",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20200126",
+    "week": "日",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20200127",
+    "week": "一",
+    "isHoliday": true,
+    "description": "春節"
+  },
+  {
+    "date": "20200128",
+    "week": "二",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20200129",
+    "week": "三",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20200228",
+    "week": "五",
+    "isHoliday": true,
+    "description": "和平紀念日"
+  },
+  {
+    "date": "20200402",
+    "week": "四",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20200403",
+    "week": "五",
+    "isHoliday": true,
+    "description": "放假"
+  },
+  {
+    "date": "20200404",
+    "week": "六",
+    "isHoliday": true,
+    "description": "兒童節及民族掃墓節"
+  },
+  {
+    "date": "20200625",
+    "week": "四",
+    "isHoliday": true,
+    "description": "端午節"
+  },
+  {
+    "date": "20200626",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20201001",
+    "week": "四",
+    "isHoliday": true,
+    "description": "中秋節"
+  },
+  {
+    "date": "20201002",
+    "week": "五",
+    "isHoliday": true,
+    "description": "調整放假"
+  },
+  {
+    "date": "20201009",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假"
+  },
+  {
+    "date": "20201010",
+    "week": "六",
+    "isHoliday": true,
+    "description": "國慶日"
+  }
+]

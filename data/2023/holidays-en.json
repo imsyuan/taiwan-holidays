@@ -1,0 +1,122 @@
+[
+  {
+    "date": "20230101",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "New Year's Day"
+  },
+  {
+    "date": "20230102",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20230120",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve Eve"
+  },
+  {
+    "date": "20230121",
+    "week": "Sat",
+    "isHoliday": true,
+    "description": "Lunar New Year's Eve"
+  },
+  {
+    "date": "20230122",
+    "week": "Sun",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20230123",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20230124",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Lunar New Year"
+  },
+  {
+    "date": "20230125",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20230126",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Compensatory Leave"
+  },
+  {
+    "date": "20230127",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230227",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230228",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Peace Memorial Day"
+  },
+  {
+    "date": "20230403",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230404",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "Children's Day"
+  },
+  {
+    "date": "20230405",
+    "week": "Wed",
+    "isHoliday": true,
+    "description": "Tomb Sweeping Day"
+  },
+  {
+    "date": "20230622",
+    "week": "Thu",
+    "isHoliday": true,
+    "description": "Dragon Boat Festival"
+  },
+  {
+    "date": "20230623",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20230929",
+    "week": "Fri",
+    "isHoliday": true,
+    "description": "Mid-Autumn Festival"
+  },
+  {
+    "date": "20231009",
+    "week": "Mon",
+    "isHoliday": true,
+    "description": "Adjusted Holiday"
+  },
+  {
+    "date": "20231010",
+    "week": "Tue",
+    "isHoliday": true,
+    "description": "National Day"
+  }
+]
