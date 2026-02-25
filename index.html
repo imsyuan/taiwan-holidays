@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taiwan Holidays Visual Calendar</title>
-    <meta name="description" content="A visual calendar for Taiwan holidays, showcasing non-working days in a beautiful interface.">
+    <meta name="description"
+        content="A visual calendar for Taiwan holidays, showcasing non-working days in a beautiful interface.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- Header -->
@@ -18,7 +23,20 @@
             <div class="header-content max-w-7xl">
                 <div class="brand">
                     <div class="logo-icon bg-gradient">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-days">
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M3 10h18" />
+                            <path d="M8 14h.01" />
+                            <path d="M12 14h.01" />
+                            <path d="M16 14h.01" />
+                            <path d="M8 18h.01" />
+                            <path d="M12 18h.01" />
+                            <path d="M16 18h.01" />
+                        </svg>
                     </div>
                     <div>
                         <h1 class="font-outfit text-slate-900">Taiwan Holidays</h1>
@@ -29,11 +47,19 @@
                 <div class="controls">
                     <div class="year-selector glass-panel">
                         <button id="prevYear" class="icon-btn text-slate-600 hover-primary" aria-label="上一年">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-chevron-left">
+                                <path d="m15 18-6-6 6-6" />
+                            </svg>
                         </button>
                         <span id="currentYearDisplay" class="font-outfit text-xl font-bold text-slate-900">2024</span>
                         <button id="nextYear" class="icon-btn text-slate-600 hover-primary" aria-label="下一年">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-chevron-right">
+                                <path d="m9 18 6-6-6-6" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -46,7 +72,19 @@
             <section class="stats-section">
                 <div class="stat-card glass-panel">
                     <div class="stat-icon text-primary bg-primary-light">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-medium"><circle cx="12" cy="12" r="4"/><path d="M12 3v1"/><path d="M12 20v1"/><path d="M3 12h1"/><path d="M20 12h1"/><path d="m18.364 5.636-.707.707"/><path d="m6.343 17.657-.707.707"/><path d="m5.636 5.636.707.707"/><path d="m17.657 17.657.707.707"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-sun-medium">
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 3v1" />
+                            <path d="M12 20v1" />
+                            <path d="M3 12h1" />
+                            <path d="M20 12h1" />
+                            <path d="m18.364 5.636-.707.707" />
+                            <path d="m6.343 17.657-.707.707" />
+                            <path d="m5.636 5.636.707.707" />
+                            <path d="m17.657 17.657.707.707" />
+                        </svg>
                     </div>
                     <div class="stat-info">
                         <p class="stat-label text-slate-500 font-noto">休假日總數</p>
@@ -55,7 +93,7 @@
                 </div>
                 <!-- Continuous Holidays will be dynamically added here -->
                 <div id="continuousHolidaysContainer" class="continuous-holidays-scroll hidden">
-                     <!-- Populated by JS -->
+                    <!-- Populated by JS -->
                 </div>
             </section>
 
@@ -74,14 +112,15 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="max-w-7xl text-slate-500 font-noto text-sm">
-                <p>資料來源：行政院人事行政總處。介面由 AI 輔助設計。</p>
+                <p>資料來源：行政院人事行政總處。Gooliya © 2026. All rights reserved. Made with ❤️ in Taiwan</p>
             </div>
         </footer>
     </div>
-    
+
     <!-- Tooltip -->
     <div id="tooltip" class="tooltip hidden cursor-pointer font-noto"></div>
 
     <script src="app.js"></script>
 </body>
+
 </html>
