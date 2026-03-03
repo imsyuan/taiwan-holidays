@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingState: document.getElementById('loadingState'),
         totalHolidays: document.getElementById('totalHolidays'),
         continuousHolidaysContainer: document.getElementById('continuousHolidaysContainer'),
+        leaveStrategiesSection: document.getElementById('leaveStrategiesSection'),
+        strategyToggleBtn: document.getElementById('strategyToggleBtn'),
+        strategyToggleIcon: document.getElementById('strategyToggleIcon'),
+        leaveStrategiesWrapper: document.getElementById('leaveStrategiesWrapper'),
+        leaveStrategiesContainer: document.getElementById('leaveStrategiesContainer'),
         tooltip: document.getElementById('tooltip')
     };
 
@@ -69,6 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideTooltip();
             }
         });
+
+        // Toggle leave strategies collapse
+        elements.strategyToggleBtn.addEventListener('click', () => {
+            const wrapper = elements.leaveStrategiesWrapper;
+            const icon = elements.strategyToggleIcon;
+
+            if (wrapper.classList.contains('hidden')) {
+                // Open
+                wrapper.classList.remove('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close
+                wrapper.classList.add('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
     }
 
     function updateYearButtons() {
@@ -110,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elements.totalHolidays.textContent = '--';
             elements.continuousHolidaysContainer.innerHTML = '';
             elements.continuousHolidaysContainer.classList.add('hidden');
+            elements.leaveStrategiesContainer.innerHTML = '';
         } else {
             elements.loadingState.classList.add('hidden');
             elements.calendarGrid.classList.remove('hidden');
@@ -265,6 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Find continuous holidays (>= 3 days)
         const continuousHolidays = findContinuousHolidays(data);
         renderContinuousHolidays(continuousHolidays);
+
+        // Find leave strategies 
+        const strategies = findLeaveStrategies(data);
+        renderLeaveStrategies(strategies);
     }
 
     function findContinuousHolidays(data) {
@@ -319,6 +345,141 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         elements.continuousHolidaysContainer.classList.remove('hidden');
+    }
+
+    function findLeaveStrategies(data) {
+        // Find blocks of continuous workdays (max 4 days) surrounded by continuous holidays.
+        const blocks = [];
+        let currentBlock = [];
+        let isCurrentBlockHoliday = data[0] && data[0].isHoliday;
+
+        // 1. Group days into blocks of holiday / workdays
+        data.forEach(day => {
+            if (day.isHoliday === isCurrentBlockHoliday) {
+                currentBlock.push(day);
+            } else {
+                blocks.push({
+                    isHoliday: isCurrentBlockHoliday,
+                    days: currentBlock
+                });
+                currentBlock = [day];
+                isCurrentBlockHoliday = day.isHoliday;
+            }
+        });
+        if (currentBlock.length > 0) {
+            blocks.push({
+                isHoliday: isCurrentBlockHoliday,
+                days: currentBlock
+            });
+        }
+
+        // 2. Identify strategies (Holiday string -> Workday string (1-4) -> Holiday string)
+        const strategies = [];
+        for (let i = 1; i < blocks.length - 1; i++) {
+            const prevBlock = blocks[i - 1];
+            const currBlock = blocks[i];
+            const nextBlock = blocks[i + 1];
+
+            // Condition: curr is Workday (1~4 days), prev and next are Holidays
+            if (!currBlock.isHoliday && currBlock.days.length >= 1 && currBlock.days.length <= 4) {
+                if (prevBlock.isHoliday && nextBlock.isHoliday) {
+                    const totalConsecutive = prevBlock.days.length + currBlock.days.length + nextBlock.days.length;
+
+                    // We only care if taking leave creates >= 4 continuous holidays
+                    if (totalConsecutive >= 4) {
+                        // Find the reason of the holiday from prev or next block
+                        let holidayName = '連假';
+                        const findName = (block) => {
+                            const validDay = block.days.find(d => d.description && d.description.length > 0);
+                            return validDay ? validDay.description : null;
+                        };
+                        const nameFromPrev = findName(prevBlock);
+                        const nameFromNext = findName(nextBlock);
+                        holidayName = nameFromPrev || nameFromNext || '週末連假';
+
+                        // Gather the entire timeline of days (prev Holiday + curr Workday + next Holiday)
+                        const allDays = [...prevBlock.days, ...currBlock.days, ...nextBlock.days];
+
+                        strategies.push({
+                            name: holidayName,
+                            leaveDays: currBlock.days.length,
+                            totalDays: totalConsecutive,
+                            timeline: allDays
+                        });
+                    }
+                }
+            }
+        }
+
+        return strategies;
+    }
+
+    function renderLeaveStrategies(strategies) {
+        elements.leaveStrategiesContainer.innerHTML = '';
+
+        if (strategies.length === 0) {
+            elements.strategyToggleBtn.classList.add('hidden');
+            elements.leaveStrategiesWrapper.classList.add('hidden');
+            return;
+        }
+
+        strategies.forEach(strategy => {
+            const card = document.createElement('div');
+            card.className = 'strategy-new-card';
+
+            // Generate Calendar columns
+            let columnsHTML = '';
+            strategy.timeline.forEach(dayInfo => {
+                const dateParts = parseDateString(dayInfo.date);
+                const isWorkdayBlock = !dayInfo.isHoliday;
+                const colModifier = isWorkdayBlock ? 'workday' : 'holiday';
+                // Show festival label if it is holiday block and has description
+                const festivalLabel = (!isWorkdayBlock && dayInfo.description) ? `<div class="cal-festival-tag font-noto">${dayInfo.description}</div>` : '';
+
+                columnsHTML += `
+                    <div class="cal-day-col ${colModifier}">
+                        <div class="cal-head font-noto">${dayInfo.week}</div>
+                        <div class="cal-body font-outfit">${dateParts.day}</div>
+                        ${festivalLabel}
+                    </div>
+                `;
+            });
+
+            // Extract month from the start of the holiday block
+            const startDateParts = parseDateString(strategy.timeline[0].date);
+            const displayMonth = `${startDateParts.month}月`;
+
+            card.innerHTML = `
+                <div class="strategy-left-label font-noto">
+                    <div class="month">${displayMonth}</div>
+                    <div class="festival">${strategy.name}</div>
+                </div>
+                
+                <div class="strategy-calendar-row">
+                    ${columnsHTML}
+                </div>
+                
+                <div class="strategy-right-badge">
+                    <div class="badge-text font-noto">請${strategy.leaveDays}休${strategy.totalDays}</div>
+                </div>
+            `;
+            elements.leaveStrategiesContainer.appendChild(card);
+        });
+
+        // Add Legend at the end of the container
+        const legend = document.createElement('div');
+        legend.className = 'strategy-legend font-noto';
+        legend.innerHTML = `
+            <div class="legend-item"><div class="legend-dot holiday"></div>放假日</div>
+            <div class="legend-item"><div class="legend-dot workday"></div>需請假/補假</div>
+        `;
+        elements.leaveStrategiesContainer.appendChild(legend);
+
+        // Ensure toggle button is visible, wrapper starts open
+        elements.strategyToggleBtn.classList.remove('hidden');
+        elements.leaveStrategiesWrapper.classList.remove('hidden');
+        elements.strategyToggleIcon.style.transform = 'rotate(0deg)';
+
     }
 
     // Start App

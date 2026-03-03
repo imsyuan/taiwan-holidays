@@ -4,37 +4,54 @@
   --color-primary: #3B82F6;
   --color-primary-light: #EFF6FF;
   --color-secondary: #60A5FA;
-  --color-accent: #F97316; /* For holidays */
+  --color-accent: #F97316;
+  /* For holidays */
   --color-accent-light: #FFF7ED;
-  --color-weekend: #10B981; /* For weekends */
+  --color-weekend: #10B981;
+  /* For weekends */
   --color-weekend-light: #ECFDF5;
-  
+
+  /* New playful colors for strategy row */
+  --color-brown-600: #8D6E63;
+  --color-brown-100: #EFEBE9;
+  --color-holiday-text: #EF4444;
+  /* Red for holiday text */
+  --color-workday-text: #3B82F6;
+  /* Blue for work text */
+
   --color-bg: #F8FAFC;
-  --color-surface: rgba(255, 255, 255, 0.85); /* Glassmorphism base */
-  
-  --color-slate-900: #1E293B; /* Headings */
-  --color-slate-600: #475569; /* Body text */
-  --color-slate-500: #64748B; /* Muted text */
-  --color-slate-200: #E2E8F0; /* Borders */
-  
+  --color-sand-50: #FFFDF8;
+  /* Softer sandy background */
+  --color-surface: rgba(255, 255, 255, 0.85);
+  /* Glassmorphism base */
+
+  --color-slate-900: #1E293B;
+  /* Headings */
+  --color-slate-600: #475569;
+  /* Body text */
+  --color-slate-500: #64748B;
+  /* Muted text */
+  --color-slate-200: #E2E8F0;
+  /* Borders */
+
   /* Typography */
   --font-sans-tc: 'Noto Sans TC', sans-serif;
   --font-outfit: 'Outfit', sans-serif;
-  
+
   /* Layout */
   --max-w: 1280px;
-  
+
   /* Shadow */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-  
+
   /* Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
-  
+
   /* Animation */
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -49,7 +66,7 @@
 body {
   font-family: var(--font-sans-tc);
   background-color: var(--color-bg);
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, hsla(217, 100%, 96%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 0%, hsla(28, 100%, 95%, 1) 0px, transparent 50%);
   background-attachment: fixed;
@@ -60,26 +77,146 @@ body {
 }
 
 /* Utilities */
+.bg-sand-50 {
+  background-color: var(--color-sand-50) !important;
+  background-image: none !important;
+  /* Overriding previous gradients for a cleaner look */
+}
+
 .max-w-7xl {
   max-width: var(--max-w);
   margin-left: auto;
   margin-right: auto;
 }
 
-.text-slate-900 { color: var(--color-slate-900); }
-.text-slate-600 { color: var(--color-slate-600); }
-.text-slate-500 { color: var(--color-slate-500); }
-.text-primary { color: var(--color-primary); }
-.bg-primary-light { background-color: var(--color-primary-light); }
-.bg-gradient { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); }
+.text-slate-900 {
+  color: var(--color-slate-900);
+}
 
-.font-noto { font-family: var(--font-sans-tc); }
-.font-outfit { font-family: var(--font-outfit); }
-.text-xl { font-size: 1.25rem; }
-.font-bold { font-weight: 700; }
-.text-sm { font-size: 0.875rem; }
-.hidden { display: none !important; }
-.cursor-pointer { cursor: pointer; }
+.text-slate-600 {
+  color: var(--color-slate-600);
+}
+
+.text-slate-500 {
+  color: var(--color-slate-500);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary-light {
+  background-color: var(--color-primary-light);
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.font-noto {
+  font-family: var(--font-sans-tc);
+}
+
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-\[900px\] {
+  max-width: 900px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.hover\:bg-slate-50:hover {
+  background-color: #F8FAFC;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.border-none {
+  border: none;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
 
 /* Glassmorphism Panel */
 .glass-panel {
@@ -218,8 +355,9 @@ body {
   padding-bottom: 0.5rem;
   flex: 1;
   /* Hide scrollbar for cleaner look */
-  scrollbar-width: none; 
+  scrollbar-width: none;
 }
+
 .continuous-holidays-scroll::-webkit-scrollbar {
   display: none;
 }
@@ -253,6 +391,255 @@ body {
   margin-top: 0.25rem;
 }
 
+/* Strategy Section Header */
+.strategy-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px dashed var(--color-slate-200);
+}
+
+/* Strategy Section Header */
+.strategy-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px dashed var(--color-slate-200);
+  /* Constrain width so it looks neat */
+}
+
+.strategy-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Add playful background pattern to container */
+  background-color: #FDF3E7;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 4px solid #F3E0CC;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cute row card */
+.strategy-new-card {
+  display: flex;
+  align-items: stretch;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: visible;
+  /* To allow badges to overflow if needed */
+  border: 2px solid var(--color-brown-100);
+}
+
+.strategy-new-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+/* Left Label (Brown Box) */
+.strategy-left-label {
+  background-color: var(--color-brown-600);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.strategy-left-label .month {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.strategy-left-label .festival {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+  line-height: 1.2;
+  word-break: break-all;
+}
+
+/* Middle Calendar Row */
+.strategy-calendar-row {
+  display: flex;
+  flex: 1;
+  padding: 0.75rem 0.75rem 2.5rem 0.75rem;
+  /* Increased bottom padding to 2.5rem to fit tags */
+  gap: 2px;
+  overflow-x: auto;
+  align-items: center;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+}
+
+.strategy-calendar-row::-webkit-scrollbar {
+  display: none;
+}
+
+.cal-day-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 36px;
+  text-align: center;
+  position: relative;
+}
+
+/* Common Header/Body for cols */
+.cal-head,
+.cal-body {
+  padding: 0.25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.cal-head {
+  color: white;
+  font-size: 0.8rem;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.cal-body {
+  background-color: white;
+  border: 1px solid var(--color-slate-200);
+  border-top: none;
+  font-size: 1.1rem;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  height: 40px;
+}
+
+/* Modifiers for Holiday vs Workday */
+.cal-day-col.holiday .cal-head {
+  background-color: rgba(239, 68, 68, 0.8);
+  /* Red header */
+}
+
+.cal-day-col.holiday .cal-body {
+  color: var(--color-holiday-text);
+}
+
+.cal-day-col.workday .cal-head {
+  background-color: rgba(59, 130, 246, 0.8);
+  /* Blue header */
+}
+
+.cal-day-col.workday .cal-body {
+  color: var(--color-workday-text);
+}
+
+/* Festival Tag below column */
+.cal-festival-tag {
+  font-size: 0.65rem;
+  color: var(--color-brown-600);
+  margin-top: 4px;
+  white-space: nowrap;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+}
+
+/* Right Badge (請X休Y) */
+.strategy-right-badge {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px dashed var(--color-slate-200);
+  background-color: white;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.strategy-right-badge .badge-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-brown-600);
+  letter-spacing: 1px;
+}
+
+/* Legend */
+.strategy-legend {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-brown-600);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-dot.holiday {
+  background-color: var(--color-holiday-text);
+}
+
+.legend-dot.workday {
+  background-color: var(--color-workday-text);
+}
+
+@media (max-width: 768px) {
+  .strategy-new-card {
+    flex-wrap: wrap;
+  }
+
+  .strategy-left-label {
+    min-width: 100px;
+    padding: 0.75rem;
+  }
+
+  .strategy-right-badge {
+    border-left: none;
+    border-top: 2px dashed var(--color-slate-200);
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 14px;
+  }
+
+  .strategy-calendar-row {
+    padding-bottom: 2.5rem;
+    /* Consistently make room for festival tags */
+  }
+
+  .cal-day-col {
+    min-width: 32px;
+  }
+}
+
 /* Loading */
 .loading-container {
   display: flex;
@@ -273,7 +660,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Calendar Grid */
@@ -425,21 +814,21 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .brand .logo-icon {
     width: 40px;
     height: 40px;
   }
-  
+
   .brand h1 {
     font-size: 1.25rem;
   }
-  
+
   .year-selector {
     width: 100%;
     justify-content: center;
   }
-  
+
   .calendar-grid {
     grid-template-columns: 1fr;
   }
