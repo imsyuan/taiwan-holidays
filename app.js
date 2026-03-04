@@ -385,9 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 '廿六': '廿六', '廿七': '廿七', '廿八': '廿八', '廿九': '廿九', '三十': '三十',
                                 '劳动节': '勞動節', '国庆节': '國慶節', '妇女节': '婦女節', '青年节': '青年節',
                                 '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節', '记者节': '記者節',
-                                '父亲节': '父親節', '母亲节': '母親節', '万圣节': '萬聖節', '圣诞节': '聖誕節'
+                                '父亲节': '父親節', '母亲节': '母親節', '万圣节': '萬聖節', '圣诞节': '聖誕節',
+                                '龙': '龍', '头': '頭', '节': '節'
                             };
-                            return text.split('').map(char => map[char] || char).join('').replace(/节/g, '節').replace(/惊/g, '驚').replace(/蛰/g, '蟄').replace(/谷/g, '穀').replace(/满/g, '滿').replace(/种/g, '種').replace(/处/g, '處').replace(/岁/g, '歲').replace(/龙/g, '龍').replace(/腊/g, '臘');
+                            return text.split('').map(char => map[char] || char).join('').replace(/节/g, '節').replace(/惊/g, '驚').replace(/蛰/g, '蟄').replace(/谷/g, '穀').replace(/满/g, '滿').replace(/种/g, '種').replace(/处/g, '處').replace(/岁/g, '歲').replace(/龙/g, '龍').replace(/腊/g, '臘').replace(/头/g, '頭');
                         };
 
                         // Helper for full word replacement first
@@ -398,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 '重阳节': '重陽節', '七夕节': '七夕', '腊八节': '臘八節', '惊蛰': '驚蟄', '谷雨': '穀雨',
                                 '小满': '小滿', '芒种': '芒種', '处暑': '處暑', '劳动节': '勞動節', '国庆节': '國慶節',
                                 '妇女节': '婦女節', '青年节': '青年節', '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節',
-                                '记者节': '記者節'
+                                '记者节': '記者節', '龙头节': '龍頭節'
                             };
                             let newText = text;
                             for (const [s, t] of Object.entries(words)) {
@@ -524,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節', '记者节': '記者節',
                         '父亲节': '父親節', '母亲节': '母親節', '万圣节': '萬聖節', '圣诞节': '聖誕節'
                     };
-                    return text.split('').map(char => map[char] || char).join('').replace(/节/g, '節').replace(/惊/g, '驚').replace(/蛰/g, '蟄').replace(/谷/g, '穀').replace(/满/g, '滿').replace(/种/g, '種').replace(/处/g, '處').replace(/岁/g, '歲').replace(/龙/g, '龍').replace(/腊/g, '臘');
+                    return text.split('').map(char => map[char] || char).join('').replace(/节/g, '節').replace(/惊/g, '驚').replace(/蛰/g, '蟄').replace(/谷/g, '穀').replace(/满/g, '滿').replace(/种/g, '種').replace(/处/g, '處').replace(/岁/g, '歲').replace(/龙/g, '龍').replace(/腊/g, '臘').replace(/头/g, '頭');
                 };
 
                 // Helper for full word replacement first
@@ -535,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         '重阳节': '重陽節', '七夕节': '七夕', '腊八节': '臘八節', '惊蛰': '驚蟄', '谷雨': '穀雨',
                         '小满': '小滿', '芒种': '芒種', '处暑': '處暑', '劳动节': '勞動節', '国庆节': '國慶節',
                         '妇女节': '婦女節', '青年节': '青年節', '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節',
-                        '记者节': '記者節'
+                        '记者节': '記者節', '龙头节': '龍頭節'
                     };
                     let newText = text;
                     for (const [s, t] of Object.entries(words)) {
