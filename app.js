@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         strategyToggleIcon: document.getElementById('strategyToggleIcon'),
         leaveStrategiesWrapper: document.getElementById('leaveStrategiesWrapper'),
         leaveStrategiesContainer: document.getElementById('leaveStrategiesContainer'),
+        languageToggle: document.getElementById('languageToggle'),
         tooltip: document.getElementById('tooltip')
     };
 
@@ -23,9 +24,93 @@ document.addEventListener('DOMContentLoaded', () => {
         availableYears: []
     };
 
-    // Constants
-    const monthsNames = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
-    const dayNames = ["日", "一", "二", "三", "四", "五", "六"];
+    // Constants and Translations
+    const translations = {
+        zh: {
+            subtitle: "台灣國定假日與行事曆",
+            apiLink: "API 說明",
+            lunarToggleText: "農民曆",
+            totalHolidaysLabel: "休假日總數",
+            strategyToggleBtnText: "聰明請假攻略",
+            loading: "載入資料中...",
+            footerSource: "資料來源：中華民國行政院人事行政總處。",
+            monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            dayNames: ["日", "一", "二", "三", "四", "五", "六"],
+            holidayTag: "休假日",
+            workdayTag: "補班日",
+            holidays: "國定假日",
+            noHolidays: "無國定假日",
+            continuous: "連假 ${days} 天",
+            take: "請假 ${take} 天",
+            off: "放假 ${off} 天",
+            errorHolidays: "找不到 ${year} 年的假期資料",
+            refresh: "重新整理",
+            dayWord: "天",
+            continuousTag: "連假",
+            weekendHoliday: "週末連假",
+            strategyBadge: "請${leave}休${total}",
+            legendHoliday: "放假日",
+            legendMakeup: "需請假/補假",
+            langHover: "切換語言",
+            lunarHover: "切換農民曆",
+            githubHover: "專案原始碼"
+        },
+        en: {
+            subtitle: "Public Holidays & Calendar",
+            apiLink: "API Docs",
+            lunarToggleText: "Lunar",
+            totalHolidaysLabel: "Total Holidays",
+            strategyToggleBtnText: "Leave Strategies",
+            loading: "Loading data...",
+            footerSource: "Data Source: DGPA, Taiwan.",
+            monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+            holidayTag: "Holiday",
+            workdayTag: "Makeup Work",
+            holidays: "Holidays",
+            noHolidays: "No Holidays",
+            continuous: "${days}-day Holiday",
+            take: "Take ${take} day(s)",
+            off: "Off ${off} day(s)",
+            errorHolidays: "Data not found for ${year}",
+            refresh: "Refresh",
+            dayWord: "days",
+            continuousTag: "Holiday",
+            weekendHoliday: "Weekend Holiday",
+            strategyBadge: "Take ${leave} Off ${total}",
+            legendHoliday: "Holiday",
+            legendMakeup: "Take Leave / Makeup",
+            langHover: "Change Language",
+            lunarHover: "Toggle Lunar Calendar",
+            githubHover: "Project Source Code"
+        }
+    };
+
+    function t(key, params = {}) {
+        const lang = elements.languageToggle ? (elements.languageToggle.value || 'zh') : 'zh';
+        let str = translations[lang][key];
+        if (str === undefined) return key;
+
+        // Handle array returns
+        if (Array.isArray(str)) return str;
+
+        for (const [k, v] of Object.entries(params)) {
+            str = str.replace(`\${${k}}`, v);
+        }
+        return str;
+    }
+
+    function updateStaticTexts() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            el.textContent = t(key);
+        });
+
+        const lunarTextEl = document.getElementById('lunarToggleText');
+        if (lunarTextEl) {
+            lunarTextEl.textContent = t('lunarToggleText');
+        }
+    }
 
     // Initialize App
     async function init() {
@@ -42,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.currentYear = latestYear;
         elements.currentYearDisplay.textContent = state.currentYear;
 
+        updateStaticTexts();
         await fetchAndRenderYear(state.currentYear);
         setupEventListeners();
         updateYearButtons();
@@ -75,20 +161,83 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Settings Toggles - Lunar
+        const lunarToggleBtn = document.getElementById('lunarToggleBtn');
+        const lunarIcon = document.getElementById('lunarIcon');
+        let lunarVisible = true;
+
+        const bookOpenPath = '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>';
+        const bookPath = '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>';
+
+        if (lunarToggleBtn && lunarIcon) {
+            lunarToggleBtn.addEventListener('click', () => {
+                lunarVisible = !lunarVisible;
+                if (lunarVisible) {
+                    elements.calendarGrid.classList.remove('hide-lunar');
+                    lunarIcon.innerHTML = bookOpenPath;
+                    lunarToggleBtn.classList.replace('text-slate-400', 'text-slate-600');
+                } else {
+                    elements.calendarGrid.classList.add('hide-lunar');
+                    lunarIcon.innerHTML = bookPath;
+                    lunarToggleBtn.classList.replace('text-slate-600', 'text-slate-400');
+                }
+            });
+        }
+
         // Toggle leave strategies collapse
         elements.strategyToggleBtn.addEventListener('click', () => {
             const wrapper = elements.leaveStrategiesWrapper;
             const icon = elements.strategyToggleIcon;
 
-            if (wrapper.classList.contains('hidden')) {
-                // Open
-                wrapper.classList.remove('hidden');
+            if (wrapper.style.height && wrapper.style.height !== '0px') {
+                // Currently open, so collapse it
+                wrapper.style.height = '0px';
                 icon.style.transform = 'rotate(0deg)';
             } else {
-                // Close
-                wrapper.classList.add('hidden');
+                // Currently closed (or empty on initial load), so expand it
+                wrapper.style.height = wrapper.scrollHeight + 'px';
                 icon.style.transform = 'rotate(180deg)';
             }
+        });
+
+        // Language Toggle Listener (Flags)
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langIcon = document.getElementById('langIcon');
+
+        // Custom simple SVG paths for flags to fit the lucide icon box
+        const twFlagPath = '<rect width="20" height="14" x="2" y="5" fill="#de2910" rx="2"/><rect width="10" height="7" x="2" y="5" fill="#000095" rx="2" stroke="none"/><path d="M7 6.5l.5 1.5h1.5l-1 1 .5 1.5-1.5-1-1.5 1 .5-1.5-1-1h1.5z" fill="#fff" stroke="none"/>';
+
+        const usFlagPath = '<rect width="20" height="14" x="2" y="5" fill="#fff" stroke="currentColor" stroke-width="2" rx="2"/><rect width="10" height="7" x="2" y="5" fill="#0a3161" rx="2" stroke="none"/><path d="M2 7h20M2 11h20M2 15h20M2 19h20" stroke="#b31942" stroke-width="1.5" stroke-linecap="butt"/><rect width="10" height="7" x="2" y="5" fill="#0a3161" rx="2" stroke="none"/><path d="M4.5 6.5h1M6.5 6.5h1M8.5 6.5h1M4.5 8.5h1M6.5 8.5h1M8.5 8.5h1M4.5 10.5h1M6.5 10.5h1M8.5 10.5h1" stroke="#fff" stroke-width="1" stroke-linecap="round"/>';
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const currentVal = elements.languageToggle.value;
+                const newVal = currentVal === 'zh' ? 'en' : 'zh';
+                elements.languageToggle.value = newVal;
+
+                if (langIcon) {
+                    langIcon.innerHTML = newVal === 'zh' ? twFlagPath : usFlagPath;
+                }
+
+                elements.languageToggle.dispatchEvent(new Event('change'));
+            });
+
+            // Set initial state
+            if (langIcon) {
+                langIcon.innerHTML = elements.languageToggle.value === 'zh' ? twFlagPath : usFlagPath;
+                langIcon.classList.remove('lucide', 'lucide-globe');
+            }
+
+            // Remove the default stroke and fill settings as the flags provide their own
+            langIcon.removeAttribute('stroke');
+            langIcon.removeAttribute('stroke-width');
+            langIcon.removeAttribute('stroke-linecap');
+            langIcon.removeAttribute('stroke-linejoin');
+        }
+
+        elements.languageToggle.addEventListener('change', (e) => {
+            updateStaticTexts();
+            fetchAndRenderYear(state.currentYear);
         });
     }
 
@@ -104,7 +253,10 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchAndRenderYear(year) {
         setLoading(true);
         try {
-            const response = await fetch(`data/${year}.json`);
+            const lang = elements.languageToggle.value; // 'zh' or 'en'
+            const filename = lang === 'en' ? `data/${year}/calendar-en.json` : `data/${year}.json`;
+
+            const response = await fetch(filename);
             if (!response.ok) throw new Error('Data not found for year ' + year);
             const data = await response.json();
             state.holidaysData = data;
@@ -114,8 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching data:', error);
             elements.calendarGrid.innerHTML = `
                 <div class="error-state text-center grid-col-span-full py-12">
-                    <p class="text-slate-500 mb-4">找不到 ${year} 年的假期資料</p>
-                    <button class="btn border px-4 py-2 rounded-md hover:bg-slate-50 text-slate-700 font-noto cursor-pointer" onclick="location.reload()">重新整理</button>
+                    <p class="text-slate-500 mb-4">${t('errorHolidays', { year })}</p>
+                    <button class="btn border px-4 py-2 rounded-md hover:bg-slate-50 text-slate-700 font-noto cursor-pointer" onclick="location.reload()">${t('refresh')}</button>
                 </div>
             `;
             elements.calendarGrid.classList.remove('hidden');
@@ -158,16 +310,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const weekendHolidaysInMonth = monthData.filter(d => d.isHoliday).length - holidaysInMonth;
 
             header.innerHTML = `
-                <span class="month-title font-outfit">${monthsNames[monthIndex]}</span>
+                <span class="month-title font-outfit">${t('monthNames')[monthIndex]}</span>
                 <span class="month-stats font-noto">
-                    ${holidaysInMonth > 0 ? `<span class="text-primary font-bold">${holidaysInMonth}</span> 國定假日` : '無國定假日'}
+                    ${holidaysInMonth > 0 ? `<span class="text-primary font-bold">${holidaysInMonth}</span> ${t('holidays')}` : t('noHolidays')}
                 </span>
             `;
 
             // Days Header (S, M, T, W, T, F, S)
             const daysHeader = document.createElement('div');
             daysHeader.className = 'days-header';
-            dayNames.forEach((day, index) => {
+            const currentDayNames = t('dayNames');
+            currentDayNames.forEach((day, index) => {
                 const dayEl = document.createElement('div');
                 dayEl.className = `day-label font-noto ${index === 0 || index === 6 ? 'weekend' : ''}`;
                 dayEl.textContent = day;
@@ -404,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         elements.tooltip.innerHTML = `
-            <div class="font-bold mb-1">${dayDetails.description || '休假日'}</div>
+            <div class="font-bold mb-1">${dayDetails.description || t('holidayTag')}</div>
             <div class="text-slate-300 text-xs">${formattedDate}</div>
             ${lunarText}
         `;
@@ -465,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Process periods for UI
         return periods.map(period => {
             const descriptions = [...new Set(period.map(p => p.description).filter(Boolean))];
-            const name = descriptions.length > 0 ? descriptions[0] : '連假';
+            const name = descriptions.length > 0 ? descriptions[0] : t('continuousTag');
 
             const start = parseDateString(period[0].date);
             const end = parseDateString(period[period.length - 1].date);
@@ -488,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'period-card cursor-pointer hover:border-accent transition-colors';
             card.innerHTML = `
                 <span class="period-name font-noto">${period.name}</span>
-                <span class="period-days font-outfit">${period.days} <span class="text-sm font-normal text-slate-500 font-noto">天</span></span>
+                <span class="period-days font-outfit">${period.days} <span class="text-sm font-normal text-slate-500 font-noto">${t('dayWord')}</span></span>
                 <span class="period-date font-outfit">${period.dateRange}</span>
             `;
             elements.continuousHolidaysContainer.appendChild(card);
@@ -545,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         };
                         const nameFromPrev = findName(prevBlock);
                         const nameFromNext = findName(nextBlock);
-                        holidayName = nameFromPrev || nameFromNext || '週末連假';
+                        holidayName = nameFromPrev || nameFromNext || t('weekendHoliday');
 
                         // Gather the entire timeline of days (prev Holiday + curr Workday + next Holiday)
                         const allDays = [...prevBlock.days, ...currBlock.days, ...nextBlock.days];
@@ -573,6 +726,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Initialize wrapper style.height so toggle works correctly on first click
+        elements.leaveStrategiesWrapper.classList.remove('hidden');
+        elements.strategyToggleBtn.classList.remove('hidden');
+        elements.strategyToggleIcon.style.transform = 'rotate(180deg)';
+
         strategies.forEach(strategy => {
             const card = document.createElement('div');
             card.className = 'strategy-new-card';
@@ -597,7 +755,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Extract month from the start of the holiday block
             const startDateParts = parseDateString(strategy.timeline[0].date);
-            const displayMonth = `${startDateParts.month}月`;
+            const displayMonth = t('monthNames')[startDateParts.month - 1];
 
             card.innerHTML = `
                 <div class="strategy-left-label font-noto">
@@ -610,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 
                 <div class="strategy-right-badge">
-                    <div class="badge-text font-noto">請${strategy.leaveDays}休${strategy.totalDays}</div>
+                    <div class="badge-text font-noto">${t('strategyBadge', { leave: strategy.leaveDays, total: strategy.totalDays })}</div>
                 </div>
             `;
             elements.leaveStrategiesContainer.appendChild(card);
@@ -620,10 +778,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const legend = document.createElement('div');
         legend.className = 'strategy-legend font-noto';
         legend.innerHTML = `
-            <div class="legend-item"><div class="legend-dot holiday"></div>放假日</div>
-            <div class="legend-item"><div class="legend-dot workday"></div>需請假/補假</div>
+            <div class="legend-item"><div class="legend-dot holiday"></div>${t('legendHoliday')}</div>
+            <div class="legend-item"><div class="legend-dot makeup"></div>${t('legendMakeup')}</div>
         `;
         elements.leaveStrategiesContainer.appendChild(legend);
+
+        // After populating, set layout height explicitly
+        elements.leaveStrategiesWrapper.style.height = elements.leaveStrategiesWrapper.scrollHeight + 'px';
 
         // Ensure toggle button is visible, wrapper starts open
         elements.strategyToggleBtn.classList.remove('hidden');

@@ -613,33 +613,7 @@ body {
   background-color: var(--color-workday-text);
 }
 
-@media (max-width: 768px) {
-  .strategy-new-card {
-    flex-wrap: wrap;
-  }
 
-  .strategy-left-label {
-    min-width: 100px;
-    padding: 0.75rem;
-  }
-
-  .strategy-right-badge {
-    border-left: none;
-    border-top: 2px dashed var(--color-slate-200);
-    width: 100%;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 14px;
-  }
-
-  .strategy-calendar-row {
-    padding-bottom: 2.5rem;
-    /* Consistently make room for festival tags */
-  }
-
-  .cal-day-col {
-    min-width: 32px;
-  }
-}
 
 /* Loading */
 .loading-container {
@@ -765,6 +739,12 @@ body {
   color: var(--color-accent);
 }
 
+/* Hide Lunar Elements */
+.hide-lunar .lunar-date,
+.hide-lunar .lunar-festival {
+  display: none !important;
+}
+
 .day-cell.empty {
   visibility: hidden;
 }
@@ -821,6 +801,13 @@ body {
   bottom: 4px;
 }
 
+
+
+/* Fix leave strategies layout break */
+#leaveStrategiesWrapper {
+  overflow: hidden;
+}
+
 /* Tooltip */
 .tooltip {
   position: fixed;
@@ -850,29 +837,140 @@ body {
   border-top: 1px solid var(--color-slate-200);
 }
 
+/* Header Links Overlay */
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 1.5rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+  .header {
+    padding: 1rem 1rem;
+  }
+
   .header-content {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .brand {
+    justify-content: center;
   }
 
   .brand .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
   }
 
   .brand h1 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .header-links {
+    width: 100%;
+    justify-content: center;
+    margin: 0 !important;
+  }
+
+  .controls {
+    width: 100%;
   }
 
   .year-selector {
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
   }
 
   .calendar-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .strategy-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .strategy-new-card {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .strategy-left-label {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .strategy-calendar-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .strategy-calendar-row::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+  }
+
+  .strategy-right-badge {
+    border-left: none;
+    border-top: 2px dashed var(--color-slate-200);
+    width: 100%;
+    padding-top: 0.5rem;
+    justify-content: center;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 14px;
+  }
+
+  .cal-day-col {
+    min-width: 32px;
+  }
+
+  .cal-head {
+    font-size: 0.7rem;
+  }
+
+  .cal-body {
+    font-size: 0.85rem;
+  }
+
+  .cal-festival-tag {
+    font-size: 0.6rem;
+    writing-mode: horizontal-tb;
+    transform: none;
+    line-height: 1.1;
+    margin-top: 2px;
+    height: auto;
+  }
+
+  .continuous-holidays-scroll {
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .continuous-card {
+    min-width: 200px;
+    padding: 1rem;
   }
 }
 
@@ -921,4 +1019,66 @@ body {
   background-color: transparent !important;
   color: inherit !important;
   padding: 0 !important;
+}
+
+/* Header Icon Tooltips */
+.icon-btn-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background-color: var(--color-slate-900);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  margin-top: 6px;
+}
+
+.icon-tooltip.tooltip-right {
+  left: auto;
+  right: 0;
+  transform: translateX(0) translateY(8px);
+}
+
+.icon-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--color-slate-900) transparent;
+}
+
+.icon-tooltip.tooltip-right::before {
+  left: auto;
+  right: 12px;
+  transform: none;
+}
+
+.icon-btn-wrapper:hover .icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.icon-btn-wrapper:hover .icon-tooltip.tooltip-right {
+  transform: translateX(0) translateY(0);
 }
