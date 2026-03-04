@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API 說明 - Taiwan Holidays</title>
     <meta name="description" content="Taiwan Holidays API 使用說明與文件">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tw-holidays.gooliya.com/api.html">
+    <meta property="og:title" content="API 說明 - Taiwan Holidays">
+    <meta property="og:description" content="Taiwan Holidays API 使用說明與文件">
+    <meta property="og:image" content="https://tw-holidays.gooliya.com/img/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tw-holidays.gooliya.com/api.html">
+    <meta property="twitter:title" content="API 說明 - Taiwan Holidays">
+    <meta property="twitter:description" content="Taiwan Holidays API 使用說明與文件">
+    <meta property="twitter:image" content="https://tw-holidays.gooliya.com/img/og-image.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +31,9 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css">
 </head>
 
 <body class="bg-amber-50">
@@ -63,85 +84,16 @@
         <main class="main-content max-w-3xl" style="margin: 0 auto;">
             <section class="glass-panel p-8"
                 style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: 2.5rem;">
-                <h2 class="font-noto text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                        stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-code-xml">
-                        <path d="m18 16 4-4-4-4" />
-                        <path d="m6 8-4 4 4 4" />
-                        <path d="m14.5 4-5 16" />
-                    </svg>
-                    開放資料 API
-                </h2>
 
-                <p class="font-noto text-slate-600 mb-6 leading-relaxed text-lg">
-                    Taiwan Holidays 提供純靜態的 JSON API，您可以直接透過 HTTP GET 請求這些檔案，將最新的台灣假期資料整合進您的系統或應用程式中。不需要申請 API
-                    Key，完全免費開放。
-                </p>
-
-                <div class="api-endpoint mb-8"
-                    style="background: var(--color-bg); padding: 1.5rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
-                    <h3 class="font-outfit font-bold text-slate-900 mb-2">Endpoint URL</h3>
-                    <code class="block font-mono bg-white p-3 rounded-md border text-primary"
-                        style="font-size: 1.1rem; border-color: var(--color-slate-200);">
-                        GET /data/{year}.json
-                    </code>
-                    <p class="font-noto text-slate-500 mt-2 text-sm">支援的年份 (year): 2017 ~ 2026</p>
+                <!-- Loading State -->
+                <div id="readmeLoadingState" class="loading-container">
+                    <div class="spinner border-primary"></div>
+                    <p class="text-slate-500 font-noto">載入文件中...</p>
                 </div>
 
-                <div class="mb-8">
-                    <h3 class="font-noto font-bold text-slate-900 mb-3 text-lg">💡 使用範例 (JavaScript)</h3>
-                    <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed"
-                        style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
-<code>fetch('https://你的網域/data/2026.json')
-  .then(response => response.json())
-  .then(data => {
-    // 找出所有放假日
-    const holidays = data.filter(day => day.isHoliday);
-    console.log(`2026年總共有 ${holidays.length} 天放假！`);
-    
-    // 印出詳細資料
-    console.log(holidays[0]);
-  })
-  .catch(error => console.error('Error fetching data:', error));</code></pre>
-                </div>
+                <!-- Markdown Content Container -->
+                <div id="readmeContent" class="markdown-body hidden" style="background: transparent;"></div>
 
-                <div class="mb-8">
-                    <h3 class="font-noto font-bold text-slate-900 mb-3 text-lg">📦 回傳格式 (JSON)</h3>
-                    <p class="font-noto text-slate-600 mb-3">API 會回傳一個陣列 (Array)，包含該年度每一天的詳細資料：</p>
-                    <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed"
-                        style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
-<code>[
-  {
-    "date": "20260101",     // 日期 (YYYYMMDD)
-    "week": "四",             // 星期幾 (中文單字)
-    "isHoliday": true,      // 是否為放假日 (週末或國定假日)
-    "description": "開國紀念日" // 節日名稱 (一般週末則為空字串)
-  },
-  {
-    "date": "20260102",
-    "week": "五",
-    "isHoliday": false,
-    "description": ""
-  }
-]</code></pre>
-                </div>
-
-                <div class="bg-amber-100 text-amber-900 p-4 rounded-lg font-noto flex items-start gap-3 border border-amber-200"
-                    style="margin-top: 2rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-info mt-1 flex-shrink-0">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M12 16v-4" />
-                        <path d="M12 8h.01" />
-                    </svg>
-                    <div>
-                        <strong class="block mb-1">資料來源備註</strong>
-                        <p class="text-sm opacity-90 m-0">
-                            所有資料皆整理自中華民國「行政院人事行政總處」公布之政府行政機關辦公日曆表。我們盡力確保資料正確性，但實際放假規定仍應依官方最新公告為準。</p>
-                    </div>
-                </div>
             </section>
         </main>
 
@@ -166,6 +118,35 @@
             </div>
         </footer>
     </div>
+    <!-- Marked.js for parsing Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const readmeContent = document.getElementById('readmeContent');
+            const loadingState = document.getElementById('readmeLoadingState');
+
+            try {
+                // Fetch the README.md from GitHub repository directly
+                const response = await fetch('https://raw.githubusercontent.com/imsyuan/taiwan-holidays/main/README.md');
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const markdown = await response.text();
+
+                // Parse markdown to HTML
+                readmeContent.innerHTML = marked.parse(markdown);
+
+                // Apply soft latte style to markdown by wrapping some elements if needed, 
+                // but github-markdown-css paired with our style.css overrides should handle it gracefully.
+
+                // Show content, hide loading
+                loadingState.classList.add('hidden');
+                readmeContent.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error fetching README:', error);
+                loadingState.innerHTML = '<p class="text-red-500 font-noto" style="color: #ef4444; text-align: center;">無法載入文件，請稍後再試或直接前往 <a href="https://github.com/imsyuan/taiwan-holidays" target="_blank" class="text-primary hover:underline" style="text-decoration: underline;">GitHub</a> 查看。</p>';
+            }
+        });
+    </script>
 </body>
 
 </html>
