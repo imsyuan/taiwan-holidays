@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Constants and Translations
     const translations = {
         zh: {
-            subtitle: "台灣國定假日與行事曆",
+            subtitle: "專為軟體工程師與人資量身打造的台灣國定假日視覺化日曆與 JSON API",
             apiLink: "API 說明",
             lunarToggleText: "農民曆",
             totalHolidaysLabel: "休假日總數",
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             githubHover: "專案原始碼"
         },
         en: {
-            subtitle: "Public Holidays & Calendar",
+            subtitle: "Visual holidays calendar and JSON API built for software engineers and HRs in Taiwan.",
             apiLink: "API Docs",
             lunarToggleText: "Lunar",
             totalHolidaysLabel: "Total Holidays",

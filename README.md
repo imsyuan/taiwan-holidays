@@ -1,6 +1,6 @@
 # Taiwan Holidays API
 
-> 提供台灣國定假日與行政機關辦公日曆的 JSON API 服務
+> 專為台灣軟體工程師與人資 (HR) 量身打造的國定假日視覺化日曆與 JSON API 服務！提供包含農民曆、補班日與請假攻略的完整行事曆。
 
 [![Update Calendar](https://github.com/imsyuan/taiwan-holidays/actions/workflows/update-calendar.yml/badge.svg)](https://github.com/imsyuan/taiwan-holidays/actions/workflows/update-calendar.yml)
 [![](https://data.jsdelivr.com/v1/package/gh/imsyuan/taiwan-holidays/badge?style=rounded)](https://www.jsdelivr.com/package/gh/imsyuan/taiwan-holidays)
@@ -140,9 +140,9 @@ data/
 
 **2017 ~ 2026**（每年約於 6 月新增下一年度資料）
 
-## 📜 資料來源與授權
+## 📜 授權聲明 (License)
 
-資料來自[政府資料開放平臺](https://data.gov.tw/)「中華民國政府行政機關辦公日曆表」，依[政府資料開放授權條款](https://data.gov.tw/license)使用，本專案以 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 釋出。
+本專案採用 **[MIT License](LICENSE)** 授權。
 
 ## 🙏 參考
 

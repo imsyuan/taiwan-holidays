@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taiwan Holidays Visual Calendar</title>
     <meta name="description"
-        content="A visual calendar for Taiwan holidays, showcasing non-working days in a beautiful interface.">
+        content="Taiwan Public Holidays Visual Calendar and JSON API. Providing the latest calendar and leave strategies, a practical tool built specifically for Taiwan software engineers and HR professionals!">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://tw-holidays.gooliya.com/">
     <meta property="og:title" content="Taiwan Holidays Visual Calendar">
     <meta property="og:description"
-        content="A visual calendar for Taiwan holidays, showcasing non-working days in a beautiful interface.">
+        content="Taiwan Public Holidays Visual Calendar and JSON API. Providing the latest calendar and leave strategies, a practical tool built specifically for Taiwan software engineers and HR professionals!">
     <meta property="og:image" content="https://tw-holidays.gooliya.com/img/og-image.png">
 
     <!-- Twitter -->
@@ -24,7 +24,7 @@
     <meta property="twitter:url" content="https://tw-holidays.gooliya.com/">
     <meta property="twitter:title" content="Taiwan Holidays Visual Calendar">
     <meta property="twitter:description"
-        content="A visual calendar for Taiwan holidays, showcasing non-working days in a beautiful interface.">
+        content="Taiwan Public Holidays Visual Calendar and JSON API. Providing the latest calendar and leave strategies, a practical tool built specifically for Taiwan software engineers and HR professionals!">
     <meta property="twitter:image" content="https://tw-holidays.gooliya.com/img/og-image.png">
 
     <!-- Google Fonts -->
@@ -225,6 +225,69 @@
 
     <!-- Tooltip -->
     <div id="tooltip" class="tooltip hidden cursor-pointer font-noto"></div>
+
+    <!-- Floating Social Share Bar -->
+    <div class="floating-social-bar">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftw-holidays.gooliya.com%2F" target="_blank"
+            rel="noopener noreferrer" class="social-btn facebook" aria-label="Share on Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+            <span class="social-tooltip font-noto">Facebook</span>
+        </a>
+
+        <!-- Twitter (X) -->
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftw-holidays.gooliya.com%2F&text=Taiwan%20Holidays%20Calendar"
+            target="_blank" rel="noopener noreferrer" class="social-btn twitter" aria-label="Share on Twitter">
+            <!-- X logo instead of bird since standard lucide-twitter is bird -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-twitter">
+                <path
+                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+            </svg>
+            <span class="social-tooltip font-noto">Twitter (X)</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftw-holidays.gooliya.com%2F"
+            target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="Share on LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-linkedin">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+            </svg>
+            <span class="social-tooltip font-noto">LinkedIn</span>
+        </a>
+
+        <!-- Threads -->
+        <!-- Since lucide doesn't have a standard threads icon yet, simulating it using an AT symbol or custom svg path -->
+        <a href="https://www.threads.net/intent/post?text=Taiwan%20Holidays%20Calendar%20https%3A%2F%2Ftw-holidays.gooliya.com%2F"
+            target="_blank" rel="noopener noreferrer" class="social-btn threads" aria-label="Share on Threads">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                <path
+                    d="M12 21a9 9 0 0 1-6.4-2.6A9.4 9.4 0 0 1 3 12c0-2.5.9-4.8 2.6-6.6a8.8 8.8 0 0 1 6.3-2.4c3.4 0 6.2 1.9 7.7 4.9C21 11.2 21 14 19.8 16c-1.2 2-3.1 3-5.3 3a4 4 0 0 1-4-4v-3c0-1.7 1.3-3 3-3s3 1.3 3 3v3a1 1 0 0 0 1 1c1.2 0 2.2-1.3 2.7-3 .5-1.7.5-3.7-.6-5.2C13.8 6.4 12 5.5 10 5.5A6.5 6.5 0 0 0 3.5 12c0 1.8.7 3.4 1.9 4.6A6.5 6.5 0 0 0 10 18.5" />
+            </svg>
+            <span class="social-tooltip font-noto">Threads</span>
+        </a>
+
+        <!-- LINE -->
+        <a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Ftw-holidays.gooliya.com%2F"
+            target="_blank" rel="noopener noreferrer" class="social-btn line" aria-label="Share on LINE">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-message-circle">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+            </svg>
+            <span class="social-tooltip font-noto">LINE</span>
+        </a>
+    </div>
 
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     <script src="app.js"></script>
