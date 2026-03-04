@@ -3,12 +3,22 @@
     "date": "20210220",
     "week": "六",
     "isHoliday": false,
-    "description": "補行上班"
+    "description": "補行上班",
+    "lunar": {
+      "date": "二月二十",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20210911",
     "week": "六",
     "isHoliday": false,
-    "description": "補行上班"
+    "description": "補行上班",
+    "lunar": {
+      "date": "九月十一",
+      "festivals": [],
+      "solarTerm": null
+    }
   }
 ]

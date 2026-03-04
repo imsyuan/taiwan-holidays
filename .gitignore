@@ -26,3 +26,6 @@ Thumbs.db
 !.dev.vars.example
 .env*
 !.env.example
+
+# node modules
+node_modules/

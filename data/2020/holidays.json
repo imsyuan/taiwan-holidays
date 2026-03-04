@@ -3,108 +3,200 @@
     "date": "20200101",
     "week": "三",
     "isHoliday": true,
-    "description": "開國紀念日"
+    "description": "開國紀念日",
+    "lunar": {
+      "date": "正月初一",
+      "festivals": [
+        "春節"
+      ],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200123",
     "week": "四",
     "isHoliday": true,
-    "description": "調整放假"
+    "description": "調整放假",
+    "lunar": {
+      "date": "正月廿三",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200124",
     "week": "五",
     "isHoliday": true,
-    "description": "農曆除夕"
+    "description": "農曆除夕",
+    "lunar": {
+      "date": "正月廿四",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200125",
     "week": "六",
     "isHoliday": true,
-    "description": "春節"
+    "description": "春節",
+    "lunar": {
+      "date": "正月廿五",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200126",
     "week": "日",
     "isHoliday": true,
-    "description": "春節"
+    "description": "春節",
+    "lunar": {
+      "date": "正月廿六",
+      "festivals": [],
+      "solarTerm": "雨水"
+    }
   },
   {
     "date": "20200127",
     "week": "一",
     "isHoliday": true,
-    "description": "春節"
+    "description": "春節",
+    "lunar": {
+      "date": "正月廿七",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200128",
     "week": "二",
     "isHoliday": true,
-    "description": "補假"
+    "description": "補假",
+    "lunar": {
+      "date": "正月廿八",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200129",
     "week": "三",
     "isHoliday": true,
-    "description": "補假"
+    "description": "補假",
+    "lunar": {
+      "date": "正月廿九",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200228",
     "week": "五",
     "isHoliday": true,
-    "description": "和平紀念日"
+    "description": "和平紀念日",
+    "lunar": {
+      "date": "二月廿八",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200402",
     "week": "四",
     "isHoliday": true,
-    "description": "補假"
+    "description": "補假",
+    "lunar": {
+      "date": "四月初二",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200403",
     "week": "五",
     "isHoliday": true,
-    "description": "放假"
+    "description": "放假",
+    "lunar": {
+      "date": "四月初三",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200404",
     "week": "六",
     "isHoliday": true,
-    "description": "兒童節及民族掃墓節"
+    "description": "兒童節及民族掃墓節",
+    "lunar": {
+      "date": "四月初四",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200625",
     "week": "四",
     "isHoliday": true,
-    "description": "端午節"
+    "description": "端午節",
+    "lunar": {
+      "date": "六月廿五",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20200626",
     "week": "五",
     "isHoliday": true,
-    "description": "調整放假"
+    "description": "調整放假",
+    "lunar": {
+      "date": "六月廿六",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20201001",
     "week": "四",
     "isHoliday": true,
-    "description": "中秋節"
+    "description": "中秋節",
+    "lunar": {
+      "date": "十月初一",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20201002",
     "week": "五",
     "isHoliday": true,
-    "description": "調整放假"
+    "description": "調整放假",
+    "lunar": {
+      "date": "十月初二",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20201009",
     "week": "五",
     "isHoliday": true,
-    "description": "補假"
+    "description": "補假",
+    "lunar": {
+      "date": "十月初九",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20201010",
     "week": "六",
     "isHoliday": true,
-    "description": "國慶日"
+    "description": "國慶日",
+    "lunar": {
+      "date": "十月初十",
+      "festivals": [],
+      "solarTerm": null
+    }
   }
 ]

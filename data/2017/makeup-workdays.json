@@ -3,18 +3,29 @@
     "date": "20170218",
     "week": "六",
     "isHoliday": false,
-    "description": "調整上班"
+    "description": "調整上班",
+    "lunar": {
+      "date": "二月十八",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20170603",
     "week": "六",
     "isHoliday": false,
-    "description": "調整上班"
+    "description": "調整上班",
+    "lunar": {
+      "date": "六月初三",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20170930",
     "week": "六",
     "isHoliday": false,
-    "description": "調整上班"
+    "description": "調整上班",
+    "lunar": null
   }
 ]

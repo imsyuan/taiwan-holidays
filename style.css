@@ -4,12 +4,13 @@
   --color-primary: #3B82F6;
   --color-primary-light: #EFF6FF;
   --color-secondary: #60A5FA;
-  --color-accent: #F97316;
+  --color-accent: #EF4444;
+  /* Unified red for holidays */
   /* For holidays */
-  --color-accent-light: #FFF7ED;
-  --color-weekend: #10B981;
+  --color-accent-light: rgba(239, 68, 68, 0.1);
+  --color-weekend: #EF4444;
   /* For weekends */
-  --color-weekend-light: #ECFDF5;
+  --color-weekend-light: rgba(239, 68, 68, 0.1);
 
   /* New playful colors for strategy row */
   --color-brown-600: #8D6E63;
@@ -742,10 +743,26 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  font-size: 0.875rem;
   position: relative;
   transition: all var(--transition);
   color: var(--color-slate-900);
+}
+
+.solar-date {
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.lunar-date {
+  font-size: 0.6rem;
+  color: var(--color-slate-500);
+  line-height: 1;
+  margin-top: 2px;
+  transform: scale(0.9);
+}
+
+.lunar-festival {
+  color: var(--color-accent);
 }
 
 .day-cell.empty {
@@ -755,6 +772,14 @@ body {
 .day-cell.weekend {
   color: var(--color-weekend);
   background-color: var(--color-weekend-light);
+  cursor: pointer;
+}
+
+.day-cell.weekend:hover,
+.day-cell.holiday:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
 }
 
 .day-cell.holiday {
@@ -764,10 +789,27 @@ body {
   cursor: pointer;
 }
 
-.day-cell.holiday:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-md);
-  z-index: 10;
+.day-cell.today {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  z-index: 5;
+  box-shadow: var(--shadow-sm);
+}
+
+.day-cell.today.weekend {
+  background-color: var(--color-weekend);
+  color: white;
+}
+
+.day-cell.today.holiday {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.day-cell.today .holiday-dot {
+  background-color: white;
 }
 
 .holiday-dot {
@@ -833,29 +875,40 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
 /* GitHub Markdown Overrides for Brand Consistency */
 .markdown-body {
   font-family: var(--font-sans-tc) !important;
   color: var(--color-slate-900) !important;
 }
+
 .markdown-body a {
   color: var(--color-primary) !important;
   text-decoration: none !important;
   transition: all var(--transition);
 }
+
 .markdown-body a:hover {
   text-decoration: underline !important;
 }
-.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
   color: var(--color-slate-900) !important;
   border-bottom-color: var(--color-slate-200) !important;
 }
+
 .markdown-body code {
-  background-color: rgba(0,0,0,0.05) !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
   color: var(--color-accent) !important;
   padding: 0.2em 0.4em !important;
   border-radius: var(--radius-sm) !important;
 }
+
 .markdown-body pre {
   background-color: var(--color-slate-900) !important;
   color: #F8FAFC !important;
@@ -863,6 +916,7 @@ body {
   padding: 1rem !important;
   overflow: auto !important;
 }
+
 .markdown-body pre code {
   background-color: transparent !important;
   color: inherit !important;

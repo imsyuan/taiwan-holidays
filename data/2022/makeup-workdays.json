@@ -3,6 +3,11 @@
     "date": "20220122",
     "week": "六",
     "isHoliday": false,
-    "description": "補行上班"
+    "description": "補行上班",
+    "lunar": {
+      "date": "正月廿二",
+      "festivals": [],
+      "solarTerm": null
+    }
   }
 ]

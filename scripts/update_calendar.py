@@ -116,8 +116,62 @@ def download_csv(url):
     raise ValueError("無法解碼 CSV 檔案")
 
 
+from lunar_python import Lunar
+
+def s2t(text):
+    if not text:
+        return text
+    mapping = {
+        '春节': '春節', '元宵节': '元宵節', '清明节': '清明節', '端午节': '端午節', '中秋节': '中秋節', 
+        '重阳节': '重陽節', '除夕': '除夕', '七夕节': '七夕', '腊八节': '臘八節', '小年': '小年',
+        '正月': '正月', '腊月': '臘月', '冬月': '冬月', '闰': '閏',
+        '立春': '立春', '雨水': '雨水', '惊蛰': '驚蟄', '春分': '春分', '清明': '清明', '谷雨': '穀雨',
+        '立夏': '立夏', '小满': '小滿', '芒种': '芒種', '夏至': '夏至', '小暑': '小暑', '大暑': '大暑',
+        '立秋': '立秋', '处暑': '處暑', '白露': '白露', '秋分': '秋分', '寒露': '寒露', '霜降': '霜降',
+        '立冬': '立冬', '小雪': '小雪', '大雪': '大雪', '冬至': '冬至', '小寒': '小寒', '大寒': '大寒',
+        '初一': '初一', '初二': '初二', '初三': '初三', '初四': '初四', '初五': '初五',
+        '初六': '初六', '初七': '初七', '初八': '初八', '初九': '初九', '初十': '初十',
+        '十一': '十一', '十二': '十二', '十三': '十三', '十四': '十四', '十五': '十五',
+        '十六': '十六', '十七': '十七', '十八': '十八', '十九': '十九', '二十': '二十',
+        '廿一': '廿一', '廿二': '廿二', '廿三': '廿三', '廿四': '廿四', '廿5': '廿五',
+        '廿六': '廿六', '廿七': '廿七', '廿八': '廿八', '廿九': '廿九', '三十': '三十',
+        '劳动节': '勞動節', '国庆节': '國慶節', '妇女节': '婦女節', '青年节': '青年節',
+        '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節', '记者节': '記者節',
+        '父亲节': '父親節', '母亲节': '母親節', '万圣节': '萬聖節', '圣诞节': '聖誕節'
+    }
+    
+    # Word replacements first
+    words = {
+        '春节': '春節', '元宵节': '元宵節', '清明节': '清明節', '端午节': '端午節', '中秋节': '中秋節', 
+        '重阳节': '重陽節', '七夕节': '七夕', '腊八节': '臘八節', '惊蛰': '驚蟄', '谷雨': '穀雨',
+        '小满': '小滿', '芒种': '芒種', '处暑': '處暑', '劳动节': '勞動節', '国庆节': '國慶節',
+        '妇女节': '婦女節', '青年节': '青年節', '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節',
+        '记者节': '記者節'
+    }
+    
+    for s, t in words.items():
+        text = text.replace(s, t)
+        
+    # Character replace
+    res = ''
+    for char in text:
+        res += mapping.get(char, char)
+    
+    import re
+    res = re.sub(r'节', '節', res)
+    res = re.sub(r'惊', '驚', res)
+    res = re.sub(r'蛰', '蟄', res)
+    res = re.sub(r'谷', '穀', res)
+    res = re.sub(r'满', '滿', res)
+    res = re.sub(r'种', '種', res)
+    res = re.sub(r'处', '處', res)
+    res = re.sub(r'岁', '歲', res)
+    res = re.sub(r'龙', '龍', res)
+    res = re.sub(r'腊', '臘', res)
+    return res
+
 def convert_csv_to_json(csv_content):
-    """將 CSV 內容轉換為標準 JSON 格式"""
+    """將 CSV 內容轉換為標準 JSON 格式，並加入農曆資訊"""
     reader = csv.DictReader(StringIO(csv_content))
     
     result = []
@@ -143,11 +197,32 @@ def convert_csv_to_json(csv_content):
         
         description = str(desc_value).strip() if desc_value else ""
         
+        # Calculate Lunar Details
+        lunar_dict = None
+        try:
+            year = int(date_str[0:4])
+            month = int(date_str[4:6])
+            day = int(date_str[6:8])
+            
+            lunar = Lunar.fromYmd(year, month, day)
+            
+            festivals = [s2t(f) for f in lunar.getFestivals()]
+            jieQi = s2t(lunar.getJieQi())
+            
+            lunar_dict = {
+                "date": s2t(f"{lunar.getMonthInChinese()}月{lunar.getDayInChinese()}"),
+                "festivals": festivals,
+                "solarTerm": jieQi if jieQi else None
+            }
+        except Exception as e:
+            print(f"Error calculating lunar date for {date_str}: {e}")
+        
         result.append({
             "date": date_str,
             "week": week,
             "isHoliday": is_holiday,
-            "description": description
+            "description": description,
+            "lunar": lunar_dict
         })
     
     return result

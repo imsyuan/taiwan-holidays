@@ -188,13 +188,100 @@ document.addEventListener('DOMContentLoaded', () => {
                 daysGrid.appendChild(emptyCell);
             }
 
+            // Current date for comparison
+            const today = new Date();
+            const isCurrentYear = year === today.getFullYear();
+            const isCurrentMonth = monthIndex === today.getMonth();
+
             // Render Days
             monthData.forEach(dayDetails => {
                 const dateParts = parseDateString(dayDetails.date);
                 const dayOfMonth = dateParts.day;
                 const cell = document.createElement('div');
                 cell.className = 'day-cell font-outfit';
-                cell.textContent = dayOfMonth;
+
+                // Solar Date Container
+                const solarDateEl = document.createElement('div');
+                solarDateEl.className = 'solar-date';
+                solarDateEl.textContent = dayOfMonth;
+                cell.appendChild(solarDateEl);
+
+                // Lunar Date Logic
+                try {
+                    if (typeof Lunar !== 'undefined') {
+                        const lunarDate = Lunar.fromDate(new Date(dateParts.year, dateParts.month - 1, dateParts.day));
+                        const lunarText = document.createElement('div');
+                        lunarText.className = 'lunar-date font-noto';
+
+                        // Helper to convert simplified to traditional
+                        const s2t = (text) => {
+                            if (!text) return text;
+                            const map = {
+                                '春节': '春節', '元宵节': '元宵節', '清明节': '清明節', '端午节': '端午節', '中秋节': '中秋節',
+                                '重阳节': '重陽節', '除夕': '除夕', '七夕节': '七夕', '腊八节': '臘八節', '小年': '小年',
+                                '正月': '正月', '腊月': '臘月', '冬月': '冬月', '闰': '閏',
+                                '立春': '立春', '雨水': '雨水', '惊蛰': '驚蟄', '春分': '春分', '清明': '清明', '谷雨': '穀雨',
+                                '立夏': '立夏', '小满': '小滿', '芒种': '芒種', '夏至': '夏至', '小暑': '小暑', '大暑': '大暑',
+                                '立秋': '立秋', '处暑': '處暑', '白露': '白露', '秋分': '秋分', '寒露': '寒露', '霜降': '霜降',
+                                '立冬': '立冬', '小雪': '小雪', '大雪': '大雪', '冬至': '冬至', '小寒': '小寒', '大寒': '大寒',
+                                '初一': '初一', '初二': '初二', '初三': '初三', '初四': '初四', '初五': '初五',
+                                '初六': '初六', '初七': '初七', '初八': '初八', '初九': '初九', '初十': '初十',
+                                '十一': '十一', '十二': '十二', '十三': '十三', '十四': '十四', '十五': '十五',
+                                '十六': '十六', '十七': '十七', '十八': '十八', '十九': '十九', '二十': '二十',
+                                '廿一': '廿一', '廿二': '廿二', '廿三': '廿三', '廿四': '廿四', '廿五': '廿五',
+                                '廿六': '廿六', '廿七': '廿七', '廿八': '廿八', '廿九': '廿九', '三十': '三十',
+                                '劳动节': '勞動節', '国庆节': '國慶節', '妇女节': '婦女節', '青年节': '青年節',
+                                '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節', '记者节': '記者節',
+                                '父亲节': '父親節', '母亲节': '母親節', '万圣节': '萬聖節', '圣诞节': '聖誕節'
+                            };
+                            return text.split('').map(char => map[char] || char).join('').replace(/节/g, '節').replace(/惊/g, '驚').replace(/蛰/g, '蟄').replace(/谷/g, '穀').replace(/满/g, '滿').replace(/种/g, '種').replace(/处/g, '處').replace(/岁/g, '歲').replace(/龙/g, '龍').replace(/腊/g, '臘');
+                        };
+
+                        // Helper for full word replacement first
+                        const wordReplace = (text) => {
+                            if (!text) return text;
+                            const words = {
+                                '春节': '春節', '元宵节': '元宵節', '清明节': '清明節', '端午节': '端午節', '中秋节': '中秋節',
+                                '重阳节': '重陽節', '七夕节': '七夕', '腊八节': '臘八節', '惊蛰': '驚蟄', '谷雨': '穀雨',
+                                '小满': '小滿', '芒种': '芒種', '处暑': '處暑', '劳动节': '勞動節', '国庆节': '國慶節',
+                                '妇女节': '婦女節', '青年节': '青年節', '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節',
+                                '记者节': '記者節'
+                            };
+                            let newText = text;
+                            for (const [s, t] of Object.entries(words)) {
+                                newText = newText.replace(new RegExp(s, 'g'), t);
+                            }
+                            return s2t(newText);
+                        };
+
+                        // Prioritize Festivals or Solar Terms over normal Lunar date
+                        const festivals = lunarDate.getFestivals();
+                        const jieQi = lunarDate.getJieQi();
+
+                        if (festivals.length > 0) {
+                            lunarText.textContent = wordReplace(festivals[0]); // Show first festival
+                            lunarText.classList.add('lunar-festival');
+                        } else if (jieQi) {
+                            lunarText.textContent = wordReplace(jieQi);
+                            lunarText.classList.add('lunar-festival'); // Optionally style terms differently
+                        } else {
+                            // If it's the 1st of the lunar month, show the month name
+                            if (lunarDate.getDay() === 1) {
+                                lunarText.textContent = wordReplace(`${lunarDate.getMonthInChinese()}月`);
+                            } else {
+                                lunarText.textContent = wordReplace(lunarDate.getDayInChinese());
+                            }
+                        }
+
+                        cell.appendChild(lunarText);
+                    }
+                } catch (e) {
+                    console.error("Error displaying lunar date on cell:", e);
+                }
+
+                if (isCurrentYear && isCurrentMonth && dayOfMonth === today.getDate()) {
+                    cell.classList.add('today');
+                }
 
                 const dayOfWeekStr = dayDetails.week;
 
@@ -204,15 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         const dot = document.createElement('div');
                         dot.className = 'holiday-dot';
                         cell.appendChild(dot);
-
-                        // Setup Tooltip interaction
-                        cell.addEventListener('mouseenter', (e) => showTooltip(e, dayDetails));
-                        cell.addEventListener('mouseleave', hideTooltip);
-                        cell.addEventListener('click', (e) => showTooltip(e, dayDetails));
                     } else {
                         // Regular weekend
                         cell.classList.add('weekend');
                     }
+
+                    // Setup Tooltip interaction for all holidays/weekends
+                    cell.addEventListener('mouseenter', (e) => showTooltip(e, dayDetails));
+                    cell.addEventListener('mouseleave', hideTooltip);
+                    cell.addEventListener('click', (e) => showTooltip(e, dayDetails));
                 }
 
                 daysGrid.appendChild(cell);
@@ -254,9 +341,72 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateParts = parseDateString(dayDetails.date);
         const formattedDate = `${dateParts.month}月${dateParts.day}日 (${dayDetails.week})`;
 
+        let lunarText = "";
+        try {
+            // Include lunar date if library is available
+            if (typeof Lunar !== 'undefined') {
+                const lunarDate = Lunar.fromDate(new Date(dateParts.year, dateParts.month - 1, dateParts.day));
+                let festivalText = "";
+                const festivals = lunarDate.getFestivals();
+                const solarTerms = lunarDate.getJieQi();
+
+                // Helper to convert simplified to traditional
+                const s2t = (text) => {
+                    if (!text) return text;
+                    const map = {
+                        '春节': '春節', '元宵节': '元宵節', '清明节': '清明節', '端午节': '端午節', '中秋节': '中秋節',
+                        '重阳节': '重陽節', '除夕': '除夕', '七夕节': '七夕', '腊八节': '臘八節', '小年': '小年',
+                        '正月': '正月', '腊月': '臘月', '冬月': '冬月', '闰': '閏',
+                        '立春': '立春', '雨水': '雨水', '惊蛰': '驚蟄', '春分': '春分', '清明': '清明', '谷雨': '穀雨',
+                        '立夏': '立夏', '小满': '小滿', '芒种': '芒種', '夏至': '夏至', '小暑': '小暑', '大暑': '大暑',
+                        '立秋': '立秋', '处暑': '處暑', '白露': '白露', '秋分': '秋分', '寒露': '寒露', '霜降': '霜降',
+                        '立冬': '立冬', '小雪': '小雪', '大雪': '大雪', '冬至': '冬至', '小寒': '小寒', '大寒': '大寒',
+                        '初一': '初一', '初二': '初二', '初三': '初三', '初四': '初四', '初五': '初五',
+                        '初六': '初六', '初七': '初七', '初八': '初八', '初九': '初九', '初十': '初十',
+                        '十一': '十一', '十二': '十二', '十三': '十三', '十四': '十四', '十五': '十五',
+                        '十六': '十六', '十七': '十七', '十八': '十八', '十九': '十九', '二十': '二十',
+                        '廿一': '廿一', '廿二': '廿二', '廿三': '廿三', '廿四': '廿四', '廿五': '廿五',
+                        '廿六': '廿六', '廿七': '廿七', '廿八': '廿八', '廿九': '廿九', '三十': '三十',
+                        '劳动节': '勞動節', '国庆节': '國慶節', '妇女节': '婦女節', '青年节': '青年節',
+                        '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節', '记者节': '記者節',
+                        '父亲节': '父親節', '母亲节': '母親節', '万圣节': '萬聖節', '圣诞节': '聖誕節'
+                    };
+                    return text.split('').map(char => map[char] || char).join('').replace(/节/g, '節').replace(/惊/g, '驚').replace(/蛰/g, '蟄').replace(/谷/g, '穀').replace(/满/g, '滿').replace(/种/g, '種').replace(/处/g, '處').replace(/岁/g, '歲').replace(/龙/g, '龍').replace(/腊/g, '臘');
+                };
+
+                // Helper for full word replacement first
+                const wordReplace = (text) => {
+                    if (!text) return text;
+                    const words = {
+                        '春节': '春節', '元宵节': '元宵節', '清明节': '清明節', '端午节': '端午節', '中秋节': '中秋節',
+                        '重阳节': '重陽節', '七夕节': '七夕', '腊八节': '臘八節', '惊蛰': '驚蟄', '谷雨': '穀雨',
+                        '小满': '小滿', '芒种': '芒種', '处暑': '處暑', '劳动节': '勞動節', '国庆节': '國慶節',
+                        '妇女节': '婦女節', '青年节': '青年節', '儿童节': '兒童節', '建军节': '建軍節', '教师节': '教師節',
+                        '记者节': '記者節'
+                    };
+                    let newText = text;
+                    for (const [s, t] of Object.entries(words)) {
+                        newText = newText.replace(new RegExp(s, 'g'), t);
+                    }
+                    return s2t(newText);
+                };
+
+                if (festivals.length > 0) {
+                    festivalText = ` - ${wordReplace(festivals.join('、'))}`;
+                } else if (solarTerms) {
+                    festivalText = ` - ${wordReplace(solarTerms)}`;
+                }
+
+                lunarText = `<div class="text-slate-400 text-xs mt-1">農曆 ${wordReplace(lunarDate.getMonthInChinese())}月${wordReplace(lunarDate.getDayInChinese())}${festivalText}</div>`;
+            }
+        } catch (e) {
+            console.error("Error generating lunar date", e);
+        }
+
         elements.tooltip.innerHTML = `
-            <div class="font-bold mb-1">${dayDetails.description}</div>
+            <div class="font-bold mb-1">${dayDetails.description || '休假日'}</div>
             <div class="text-slate-300 text-xs">${formattedDate}</div>
+            ${lunarText}
         `;
 
         elements.tooltip.style.left = `${rect.left + (rect.width / 2)}px`;
