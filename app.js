@@ -131,6 +131,27 @@ document.addEventListener('DOMContentLoaded', () => {
         await fetchAndRenderYear(state.currentYear);
         setupEventListeners();
         updateYearButtons();
+
+        // 非阻塞地載入 GitHub star 數與最新版本（失敗不影響頁面）
+        loadRepoMeta();
+    }
+
+    const REPO = 'imsyuan/taiwan-holidays';
+
+    async function loadRepoMeta() {
+        // 最新發布版本
+        try {
+            const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`);
+            if (res.ok) {
+                const rel = await res.json();
+                const el = document.getElementById('versionBadge');
+                if (el && rel.tag_name) {
+                    el.textContent = rel.tag_name;
+                    if (rel.html_url) el.href = rel.html_url;
+                    el.hidden = false;
+                }
+            }
+        } catch (e) { /* 略過：版本徽章維持隱藏 */ }
     }
 
     // Event Listeners
