@@ -34,6 +34,51 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=2">
+    <!-- GitHub Star 按鈕與版本徽章（自包含樣式，避免與 style.css 待調整項目衝突）-->
+    <style>
+        .gh-star-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #1f2328;
+            color: #fff;
+            padding: 0.45rem 0.9rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .gh-star-btn:hover {
+            background: #000;
+            transform: translateY(-1px);
+        }
+
+        .gh-star-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 0.1rem 0.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            vertical-align: middle;
+            transition: background 0.2s ease;
+        }
+
+        .version-badge:hover {
+            background: #e2e8f0;
+        }
+    </style>
 </head>
 
 <body class="bg-sand-50">
@@ -59,7 +104,9 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="font-outfit text-slate-900">Taiwan Holidays</h1>
+                        <h1 class="font-outfit text-slate-900">Taiwan Holidays<a id="versionBadge"
+                                class="version-badge" href="https://github.com/imsyuan/taiwan-holidays/releases/latest"
+                                target="_blank" rel="noopener noreferrer" hidden></a></h1>
                         <p class="subtitle text-slate-600 font-noto" data-i18n="subtitle">台灣國定假日與行事曆</p>
                     </div>
                 </div>
@@ -106,20 +153,21 @@
                         <div class="icon-tooltip font-noto" data-i18n="lunarHover">顯示農民曆</div>
                     </div>
 
-                    <div class="icon-btn-wrapper ml-1">
-                        <a href="https://github.com/imsyuan/taiwan-holidays" target="_blank" rel="noopener noreferrer"
-                            class="nav-link text-slate-600 hover:text-slate-900 transition-colors p-2 rounded-md hover:bg-slate-100"
-                            aria-label="GitHub Repository">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-github">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg>
-                        </a>
-                        <div class="icon-tooltip font-noto tooltip-right" data-i18n="githubHover">專案原始碼</div>
-                    </div>
+                    <a id="ghStarBtn" class="gh-star-btn ml-1" href="https://github.com/imsyuan/taiwan-holidays"
+                        target="_blank" rel="noopener noreferrer" aria-label="Star on GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                            <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <span>Star</span>
+                    </a>
                 </div>
 
                 <div class="controls">
