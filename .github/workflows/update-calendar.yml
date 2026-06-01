@@ -10,35 +10,48 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+        with:
+          # 用 PAT（非預設 GITHUB_TOKEN），這樣機器人開的 PR 才會觸發 CI，
+          # required check 才會回報，auto-merge 才能在綠燈後自動合併。
+          token: ${{ secrets.DATA_BOT_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
+
       - name: Run update script
         run: python scripts/update_calendar.py
-      
-      - name: Check for changes
-        id: git-check
+
+      - name: Open PR and enable auto-merge if data changed
+        env:
+          GH_TOKEN: ${{ secrets.DATA_BOT_TOKEN }}
         run: |
-          git diff --exit-code data/ || echo "changes=true" >> $GITHUB_OUTPUT
-      
-      - name: Commit and push changes
-        if: steps.git-check.outputs.changes == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          if git diff --quiet data/; then
+            echo "資料無變更，結束。"
+            exit 0
+          fi
+
+          STAMP=$(date +'%Y%m%d-%H%M%S')
+          BRANCH="auto/update-calendar-${STAMP}"
+
+          git config user.name "calendar-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git switch -c "$BRANCH"
           git add data/
           git commit -m "chore: update calendar data $(date +'%Y-%m-%d')"
-          git push
+          git push -u origin "$BRANCH"
+
+          PR_URL=$(gh pr create --base main --head "$BRANCH" \
+            --title "chore: 自動更新行事曆資料 $(date +'%Y-%m-%d')" \
+            --body "由 update-calendar workflow 自動產生。CI（資料驗證）通過後會自動合併進 main。")
+
+          # 開啟 auto-merge：等 required check 綠燈後 GitHub 自動 squash 合併並刪分支。
+          gh pr merge "$PR_URL" --squash --auto --delete-branch

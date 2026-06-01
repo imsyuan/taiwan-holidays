@@ -171,6 +171,35 @@ def s2t(text):
     res = re.sub(r'腊', '臘', res)
     return res
 
+
+def compute_lunar(date_str):
+    """從西元日期字串 (YYYYMMDD) 計算農曆資訊，回傳 dict；失敗時回傳 None。
+
+    西元日期需先建立 Solar 物件再轉換為農曆，
+    直接用 Lunar.fromYmd 會把參數當成農曆日期而非公曆。
+    產生資料 (update_calendar) 與 CI 驗證 (validate_data) 共用此函式，
+    確保兩邊的農曆換算邏輯不會各寫一份而漂走。
+    """
+    try:
+        year = int(date_str[0:4])
+        month = int(date_str[4:6])
+        day = int(date_str[6:8])
+
+        lunar = Solar.fromYmd(year, month, day).getLunar()
+
+        festivals = [s2t(f) for f in lunar.getFestivals()]
+        jieQi = s2t(lunar.getJieQi())
+
+        return {
+            "date": s2t(f"{lunar.getMonthInChinese()}月{lunar.getDayInChinese()}"),
+            "festivals": festivals,
+            "solarTerm": jieQi if jieQi else None
+        }
+    except Exception as e:
+        print(f"Error calculating lunar date for {date_str}: {e}")
+        return None
+
+
 def convert_csv_to_json(csv_content):
     """將 CSV 內容轉換為標準 JSON 格式，並加入農曆資訊"""
     reader = csv.DictReader(StringIO(csv_content))
@@ -197,29 +226,10 @@ def convert_csv_to_json(csv_content):
             is_holiday = holiday_str == "2"
         
         description = str(desc_value).strip() if desc_value else ""
-        
-        # Calculate Lunar Details
-        lunar_dict = None
-        try:
-            year = int(date_str[0:4])
-            month = int(date_str[4:6])
-            day = int(date_str[6:8])
-            
-            # 西元日期需先建立 Solar 物件再轉換為農曆，
-            # 直接用 Lunar.fromYmd 會把參數當成農曆日期而非公曆。
-            lunar = Solar.fromYmd(year, month, day).getLunar()
-            
-            festivals = [s2t(f) for f in lunar.getFestivals()]
-            jieQi = s2t(lunar.getJieQi())
-            
-            lunar_dict = {
-                "date": s2t(f"{lunar.getMonthInChinese()}月{lunar.getDayInChinese()}"),
-                "festivals": festivals,
-                "solarTerm": jieQi if jieQi else None
-            }
-        except Exception as e:
-            print(f"Error calculating lunar date for {date_str}: {e}")
-        
+
+        # 計算農曆資訊（與 CI 驗證共用 compute_lunar）
+        lunar_dict = compute_lunar(date_str)
+
         result.append({
             "date": date_str,
             "week": week,
