@@ -5,10 +5,8 @@
     "isHoliday": true,
     "description": "開國紀念日",
     "lunar": {
-      "date": "正月初一",
-      "festivals": [
-        "春節"
-      ],
+      "date": "冬月十三",
+      "festivals": [],
       "solarTerm": null
     }
   },
@@ -18,7 +16,7 @@
     "isHoliday": true,
     "description": "小年夜",
     "lunar": {
-      "date": "二月十五",
+      "date": "臘月廿八",
       "festivals": [],
       "solarTerm": null
     }
@@ -29,8 +27,10 @@
     "isHoliday": true,
     "description": "農曆除夕",
     "lunar": {
-      "date": "二月十六",
-      "festivals": [],
+      "date": "臘月廿九",
+      "festivals": [
+        "除夕"
+      ],
       "solarTerm": null
     }
   },
@@ -40,8 +40,10 @@
     "isHoliday": true,
     "description": "春節",
     "lunar": {
-      "date": "二月十七",
-      "festivals": [],
+      "date": "正月初一",
+      "festivals": [
+        "春節"
+      ],
       "solarTerm": null
     }
   },
@@ -51,9 +53,9 @@
     "isHoliday": true,
     "description": "春節",
     "lunar": {
-      "date": "二月十八",
+      "date": "正月初二",
       "festivals": [],
-      "solarTerm": "清明"
+      "solarTerm": "雨水"
     }
   },
   {
@@ -62,7 +64,7 @@
     "isHoliday": true,
     "description": "春節",
     "lunar": {
-      "date": "二月十九",
+      "date": "正月初三",
       "festivals": [],
       "solarTerm": null
     }
@@ -73,7 +75,7 @@
     "isHoliday": true,
     "description": "補假",
     "lunar": {
-      "date": "二月二十",
+      "date": "正月初四",
       "festivals": [],
       "solarTerm": null
     }
@@ -84,7 +86,7 @@
     "isHoliday": true,
     "description": "補假",
     "lunar": {
-      "date": "二月廿七",
+      "date": "正月十一",
       "festivals": [],
       "solarTerm": null
     }
@@ -95,7 +97,7 @@
     "isHoliday": true,
     "description": "和平紀念日",
     "lunar": {
-      "date": "二月廿八",
+      "date": "正月十二",
       "festivals": [],
       "solarTerm": null
     }
@@ -106,7 +108,7 @@
     "isHoliday": true,
     "description": "補假",
     "lunar": {
-      "date": "四月初三",
+      "date": "二月十六",
       "festivals": [],
       "solarTerm": null
     }
@@ -117,7 +119,7 @@
     "isHoliday": true,
     "description": "兒童節",
     "lunar": {
-      "date": "四月初四",
+      "date": "二月十七",
       "festivals": [],
       "solarTerm": null
     }
@@ -128,9 +130,9 @@
     "isHoliday": true,
     "description": "清明節",
     "lunar": {
-      "date": "四月初五",
+      "date": "二月十八",
       "festivals": [],
-      "solarTerm": "小滿"
+      "solarTerm": "清明"
     }
   },
   {
@@ -139,7 +141,7 @@
     "isHoliday": true,
     "description": "補假",
     "lunar": {
-      "date": "四月初六",
+      "date": "二月十九",
       "festivals": [],
       "solarTerm": null
     }
@@ -150,7 +152,7 @@
     "isHoliday": true,
     "description": "勞動節",
     "lunar": {
-      "date": "五月初一",
+      "date": "三月十五",
       "festivals": [],
       "solarTerm": null
     }
@@ -161,8 +163,10 @@
     "isHoliday": true,
     "description": "端午節",
     "lunar": {
-      "date": "六月十九",
-      "festivals": [],
+      "date": "五月初五",
+      "festivals": [
+        "端午節"
+      ],
       "solarTerm": null
     }
   },
@@ -172,8 +176,10 @@
     "isHoliday": true,
     "description": "中秋節",
     "lunar": {
-      "date": "九月廿五",
-      "festivals": [],
+      "date": "八月十五",
+      "festivals": [
+        "中秋節"
+      ],
       "solarTerm": null
     }
   },
@@ -183,7 +189,7 @@
     "isHoliday": true,
     "description": "孔子誕辰紀念日/教師節",
     "lunar": {
-      "date": "九月廿八",
+      "date": "八月十八",
       "festivals": [],
       "solarTerm": null
     }
@@ -194,7 +200,7 @@
     "isHoliday": true,
     "description": "補假",
     "lunar": {
-      "date": "十月初九",
+      "date": "八月廿九",
       "festivals": [],
       "solarTerm": null
     }
@@ -205,7 +211,7 @@
     "isHoliday": true,
     "description": "國慶日",
     "lunar": {
-      "date": "十月初十",
+      "date": "九月初一",
       "festivals": [],
       "solarTerm": null
     }
@@ -216,7 +222,7 @@
     "isHoliday": true,
     "description": "臺灣光復暨金門古寧頭大捷紀念日",
     "lunar": {
-      "date": "十月廿五",
+      "date": "九月十六",
       "festivals": [],
       "solarTerm": null
     }
@@ -227,7 +233,7 @@
     "isHoliday": true,
     "description": "補假",
     "lunar": {
-      "date": "十月廿六",
+      "date": "九月十七",
       "festivals": [],
       "solarTerm": null
     }
@@ -238,7 +244,7 @@
     "isHoliday": true,
     "description": "行憲紀念日",
     "lunar": {
-      "date": "臘月廿五",
+      "date": "冬月十七",
       "festivals": [],
       "solarTerm": null
     }

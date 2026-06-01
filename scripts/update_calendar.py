@@ -116,7 +116,7 @@ def download_csv(url):
     raise ValueError("無法解碼 CSV 檔案")
 
 
-from lunar_python import Lunar
+from lunar_python import Solar
 
 def s2t(text):
     if not text:
@@ -205,7 +205,9 @@ def convert_csv_to_json(csv_content):
             month = int(date_str[4:6])
             day = int(date_str[6:8])
             
-            lunar = Lunar.fromYmd(year, month, day)
+            # 西元日期需先建立 Solar 物件再轉換為農曆，
+            # 直接用 Lunar.fromYmd 會把參數當成農曆日期而非公曆。
+            lunar = Solar.fromYmd(year, month, day).getLunar()
             
             festivals = [s2t(f) for f in lunar.getFestivals()]
             jieQi = s2t(lunar.getJieQi())
