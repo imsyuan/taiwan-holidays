@@ -4,7 +4,11 @@
     "week": "六",
     "isHoliday": false,
     "description": "調整上班",
-    "lunar": null
+    "lunar": {
+      "date": "二月十五",
+      "festivals": [],
+      "solarTerm": null
+    }
   },
   {
     "date": "20181222",
@@ -12,9 +16,9 @@
     "isHoliday": false,
     "description": "調整上班",
     "lunar": {
-      "date": "臘月廿二",
+      "date": "冬月十六",
       "festivals": [],
-      "solarTerm": null
+      "solarTerm": "冬至"
     }
   }
 ]

@@ -5,7 +5,7 @@
     "isHoliday": false,
     "description": "補行上班",
     "lunar": {
-      "date": "正月初七",
+      "date": "臘月十六",
       "festivals": [],
       "solarTerm": null
     }
@@ -16,9 +16,9 @@
     "isHoliday": false,
     "description": "補行上班",
     "lunar": {
-      "date": "二月初四",
+      "date": "正月十四",
       "festivals": [],
-      "solarTerm": null
+      "solarTerm": "立春"
     }
   },
   {
@@ -27,7 +27,7 @@
     "isHoliday": false,
     "description": "補行上班",
     "lunar": {
-      "date": "二月十八",
+      "date": "正月廿八",
       "festivals": [],
       "solarTerm": null
     }
@@ -38,7 +38,7 @@
     "isHoliday": false,
     "description": "補行上班",
     "lunar": {
-      "date": "三月廿五",
+      "date": "閏二月初四",
       "festivals": [],
       "solarTerm": null
     }
@@ -49,7 +49,7 @@
     "isHoliday": false,
     "description": "補行上班",
     "lunar": {
-      "date": "六月十七",
+      "date": "四月三十",
       "festivals": [],
       "solarTerm": null
     }
@@ -60,9 +60,9 @@
     "isHoliday": false,
     "description": "補行上班",
     "lunar": {
-      "date": "九月廿三",
+      "date": "八月初九",
       "festivals": [],
-      "solarTerm": null
+      "solarTerm": "秋分"
     }
   }
 ]
