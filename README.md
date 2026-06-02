@@ -79,6 +79,35 @@ workdays = requests.get(
 print(f"2026 年共有 {len(workdays)} 天需要補班")
 ```
 
+## 🤖 MCP Server（台灣工作日計算引擎）
+
+除了裸 JSON，本專案還提供一個 **remote MCP server**，讓 LLM／agent 與 HR／企業可以直接在台灣行事曆上「做時間決策」，而不只是查哪天放假。原始碼在 [`mcp/`](mcp/)，部署於 Cloudflare Workers，透過 Streamable HTTP 在 `/mcp` 對外。
+
+> 💡 MCP server 內建運算邏輯，並直接讀取與 Worker 一起 bundle 的 `data/*.json`，不在執行時繞 jsDelivr。
+
+### 工具一覽
+
+| 工具 | 用途 | 輸入 | 輸出 |
+| --- | --- | --- | --- |
+| `count_workdays` | 區間工作日數（自動扣假日、補班計入工作日） | `{ start, end }` | `{ workdays, holidays, makeupWorkdays }` |
+| `add_workdays` | 自某日起算第 N 個工作日（負值往回，起始日不計） | `{ from, workdays }` | `{ date }` |
+| `next_makeup_workday` | 下一個補班日，或區間內所有補班日 | `{ from? , range? }` | `{ next, all? }` |
+| `optimize_leave` | 請假最佳化，依「每請一天換幾天連假」排序 | `{ year, annualLeaveDays, range? }` | `LeavePlan[]` |
+| `find_travel_windows` | 最佳出遊時段（只算時機，不含訂位） | `{ year, annualLeaveDays, minTripLength, range? }` | `TravelWindow[]` |
+
+日期一律使用 `YYYY-MM-DD`。年份不可用回 `{ error: "year_unavailable", availableYears }`，輸入錯誤回 `{ error: "invalid_input", detail }`。
+
+### 本地啟動與連線
+
+```bash
+cd mcp
+npm install
+npm run dev          # wrangler dev，預設 http://localhost:8799/mcp
+npm test             # 執行 workday-engine 單元測試
+```
+
+MCP client（如 MCP Inspector）連線至 `http://localhost:8799/mcp` 即可列出並呼叫上述工具。詳細說明見 [`mcp/README.md`](mcp/README.md)。
+
 ## 📊 資料格式
 
 | 欄位 | 型別 | 說明 |

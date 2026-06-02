@@ -1,0 +1,29 @@
+{
+  // Cloudflare Worker deploying the Taiwan workday remote MCP server.
+  // The data/<year>.json files are bundled into the Worker at build time via
+  // src/generated/calendars.ts (see scripts/gen-manifest.mjs) — no runtime
+  // fetch to jsDelivr or any external CDN.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "taiwan-workday-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  // McpAgent is backed by a Durable Object (one per MCP session).
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "WorkdayMCP"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["WorkdayMCP"]
+    }
+  ]
+}

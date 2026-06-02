@@ -29,3 +29,5 @@ Thumbs.db
 
 # node modules
 node_modules/
+.spectra/
+openspec/.vector-search.db*
