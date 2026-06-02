@@ -15,6 +15,19 @@ makeup days, optimal leave, and travel windows.
 
 This version is public, read-only, and stateless (no auth, no billing).
 
+## Connect
+
+Production endpoint (no auth required):
+
+```
+https://mcp.tw-holidays.gooliya.com/mcp
+```
+
+- **Claude.ai (web/desktop)** — Settings → Connectors → Add custom connector → URL above.
+- **Claude Code** — `claude mcp add --transport http taiwan-workday https://mcp.tw-holidays.gooliya.com/mcp`
+- **MCP Inspector** — `npx @modelcontextprotocol/inspector`, Transport = Streamable HTTP, URL above.
+- **Any MCP client/agent** — point it at the URL with the Streamable HTTP transport.
+
 ## Tools
 
 All dates are `YYYY-MM-DD` strings.
