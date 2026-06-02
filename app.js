@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         zh: {
             subtitle: "專為軟體工程師與人資量身打造的台灣國定假日視覺化日曆與 JSON API",
             apiLink: "API 說明",
+            mcpLink: "MCP",
             lunarToggleText: "農民曆",
             totalHolidaysLabel: "休假日總數",
             strategyToggleBtnText: "聰明請假攻略",
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             subtitle: "Visual holidays calendar and JSON API built for software engineers and HRs in Taiwan.",
             apiLink: "API Docs",
+            mcpLink: "MCP",
             lunarToggleText: "Lunar",
             totalHolidaysLabel: "Total Holidays",
             strategyToggleBtnText: "Leave Strategies",

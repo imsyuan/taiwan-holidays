@@ -81,9 +81,40 @@ print(f"2026 年共有 {len(workdays)} 天需要補班")
 
 ## 🤖 MCP Server（台灣工作日計算引擎）
 
-除了裸 JSON，本專案還提供一個 **remote MCP server**，讓 LLM／agent 與 HR／企業可以直接在台灣行事曆上「做時間決策」，而不只是查哪天放假。原始碼在 [`mcp/`](mcp/)，部署於 Cloudflare Workers，透過 Streamable HTTP 在 `/mcp` 對外。
+除了裸 JSON，本專案還提供一個 **remote MCP server**，讓 LLM／agent 與 HR／企業可以直接在台灣行事曆上「做時間決策」，而不只是查哪天放假。原始碼在 [`mcp/`](mcp/)，部署於 Cloudflare Workers，透過 Streamable HTTP 對外。
+
+**正式端點（無需認證，公開唯讀）：**
+
+```
+https://mcp.tw-holidays.gooliya.com/mcp
+```
 
 > 💡 MCP server 內建運算邏輯，並直接讀取與 Worker 一起 bundle 的 `data/*.json`，不在執行時繞 jsDelivr。
+
+### 如何使用
+
+連上後就能用自然語言問：「2026 我有 5 天年假怎麼請最划算？」「今天起算 10 個工作日是哪天？」「下一個補班日？」
+
+**Claude.ai（網頁／桌面）— 自訂 Connector**
+
+1. Settings → Connectors → **Add custom connector**
+2. Name 填 `Taiwan Workday`，URL 填上面的正式端點
+3. 在對話中啟用該 connector 即可（需支援自訂 connector 的方案）
+
+**Claude Code（CLI）**
+
+```bash
+claude mcp add --transport http taiwan-workday https://mcp.tw-holidays.gooliya.com/mcp
+```
+
+**MCP Inspector（除錯／探索）**
+
+```bash
+npx @modelcontextprotocol/inspector
+# Transport 選 Streamable HTTP，URL 填正式端點
+```
+
+**其他 MCP client／agent**：transport 選 Streamable HTTP，指向同一網址即可。
 
 ### 工具一覽
 
@@ -97,16 +128,17 @@ print(f"2026 年共有 {len(workdays)} 天需要補班")
 
 日期一律使用 `YYYY-MM-DD`。年份不可用回 `{ error: "year_unavailable", availableYears }`，輸入錯誤回 `{ error: "invalid_input", detail }`。
 
-### 本地啟動與連線
+### 本地開發
 
 ```bash
 cd mcp
 npm install
-npm run dev          # wrangler dev，預設 http://localhost:8799/mcp
 npm test             # 執行 workday-engine 單元測試
+npm run dev          # wrangler dev，本地端點 http://localhost:8799/mcp
+npm run deploy       # 部署到 Cloudflare（需登入；CI 用 CLOUDFLARE_API_TOKEN）
 ```
 
-MCP client（如 MCP Inspector）連線至 `http://localhost:8799/mcp` 即可列出並呼叫上述工具。詳細說明見 [`mcp/README.md`](mcp/README.md)。
+資料每月更新或 `mcp/` 有改動時，GitHub Action 會自動重新部署。完整工具契約與連線說明見 [`mcp/README.md`](mcp/README.md)。
 
 ## 📊 資料格式
 
