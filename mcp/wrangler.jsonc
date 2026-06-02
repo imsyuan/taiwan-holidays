@@ -8,6 +8,11 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-05-01",
   "compatibility_flags": ["nodejs_compat"],
+  // Custom domain on the gooliya.com zone (kept separate from the static site
+  // Worker). Cloudflare auto-creates the DNS record and provisions the cert.
+  "routes": [
+    { "pattern": "mcp.tw-holidays.gooliya.com", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   },
