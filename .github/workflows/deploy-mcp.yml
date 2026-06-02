@@ -1,0 +1,46 @@
+name: Deploy MCP Worker
+
+# 資料每月更新（update-calendar）auto-merge 進 main，或 mcp/ 本身有改動時，
+# 重新 bundle 最新 data/ 並部署 MCP Worker。資料未變動時不觸發。
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'mcp/**'
+      - '.github/workflows/deploy-mcp.yml'
+  workflow_dispatch: # 允許手動觸發
+
+# 同一時間只跑一個部署，避免並發覆蓋
+concurrency:
+  group: deploy-mcp
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: mcp/package-lock.json
+
+      - name: Install dependencies
+        working-directory: mcp
+        run: npm ci
+
+      - name: Run engine tests
+        working-directory: mcp
+        run: npm test
+
+      - name: Deploy to Cloudflare
+        working-directory: mcp
+        # npm run deploy 會先 gen-manifest（從 data/*.json 重建 bundle）再 wrangler deploy
+        run: npm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
