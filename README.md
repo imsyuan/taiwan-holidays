@@ -1,6 +1,6 @@
 # Taiwan Holidays API
 
-> 專為台灣軟體工程師與人資 (HR) 量身打造的中華民國國定假日視覺化日曆與 JSON API 服務！提供包含農民曆、補班日與請假攻略的完整行事曆。
+> 台灣國定假日的視覺化日曆、JSON API 與**工作日計算引擎**。涵蓋國定假日、補班日、農民曆與請假攻略；除了裸 JSON，還提供一個 remote MCP server，讓 AI／agent 直接在台灣行事曆上「做時間決策」，而不只是查哪天放假。
 
 [![Update Calendar](https://github.com/imsyuan/taiwan-holidays/actions/workflows/update-calendar.yml/badge.svg)](https://github.com/imsyuan/taiwan-holidays/actions/workflows/update-calendar.yml)
 [![](https://data.jsdelivr.com/v1/package/gh/imsyuan/taiwan-holidays/badge?style=rounded)](https://www.jsdelivr.com/package/gh/imsyuan/taiwan-holidays)
@@ -14,8 +14,19 @@
 - 🌐 **中英雙語** — 提供英文版本，方便國際化應用
 - 🔄 **自動同步更新** — GitHub Actions 定期從政府開放資料同步
 - 📦 **CDN 快速存取** — jsDelivr 全球 CDN 加速
+- 🧮 **工作日計算引擎** — 不只查假日，還能算工作日、補班、請假最佳化（透過 MCP server）
 
-## 🔗 API 端點
+## 🚀 快速開始
+
+三種使用方式，各取所需：
+
+| 你想要 | 用這個 | 入口 |
+| --- | --- | --- |
+| 看視覺化日曆、請假攻略 | 網站 | [tw-holidays.gooliya.com](https://tw-holidays.gooliya.com) |
+| 在程式裡取假日／補班資料 | JSON API（jsDelivr CDN） | 見下方「JSON API」 |
+| 讓 AI／agent 算工作日、請假 | MCP server | 見下方「MCP Server」 |
+
+## 🔗 JSON API（透過 jsDelivr CDN）
 
 所有資料都可透過 jsDelivr CDN 存取，以 2026 年為例：
 
@@ -46,7 +57,7 @@ https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2026/calendar-en.json
 
 > 💡 其他年份只需將 `2026` 替換為 `2017`~`2026`
 
-## 🚀 使用範例
+### 程式範例
 
 **JavaScript - 取得國定假日**
 ```javascript
@@ -81,7 +92,7 @@ print(f"2026 年共有 {len(workdays)} 天需要補班")
 
 ## 🤖 MCP Server（台灣工作日計算引擎）
 
-除了裸 JSON，本專案還提供一個 **remote MCP server**，讓 LLM／agent 與 HR／企業可以直接在台灣行事曆上「做時間決策」，而不只是查哪天放假。原始碼在 [`mcp/`](mcp/)，部署於 Cloudflare Workers，透過 Streamable HTTP 對外。
+把台灣行事曆變成一個 **AI 可呼叫的工作日計算引擎**：不只查假日，還能算工作日、補班、請假最佳化與出遊時段，供 LLM／agent 與 HR／企業做時間決策。原始碼在 [`mcp/`](mcp/)，純函式引擎與 MCP 外殼解耦，部署於 Cloudflare Workers，透過 Streamable HTTP 對外。
 
 **正式端點（無需認證，公開唯讀）：**
 
@@ -188,13 +199,21 @@ npm run deploy       # 部署到 Cloudflare（需登入；CI 用 CLOUDFLARE_API_
 ## 📁 目錄結構
 
 ```
-data/
-├── 2026.json              # 完整日曆（中文）
-└── 2026/
-    ├── holidays.json      # 國定假日（中文）
-    ├── holidays-en.json   # 國定假日（英文）
-    ├── makeup-workdays.json # 補班日清單
-    └── calendar-en.json   # 完整日曆（英文）
+data/                          # 資料層（同時是公開 API，經 jsDelivr 對外）
+├── <year>.json                # 完整日曆（中文）
+└── <year>/
+    ├── holidays.json          # 國定假日（中文）
+    ├── holidays-en.json       # 國定假日（英文）
+    ├── makeup-workdays.json   # 補班日清單
+    └── calendar-en.json       # 完整日曆（英文）
+
+index.html / app.js / style.css   # 靜態前端（視覺化日曆）
+scripts/update_calendar.py        # 從政府開放資料產生 data/（GitHub Actions 月更）
+
+mcp/        # 工作日計算引擎 + remote MCP server（Cloudflare Workers）
+└── src/engine/                # 純函式計算核心（與 MCP 外殼解耦）
+
+monitor/    # 獨立健康檢查 Worker（cron 每日 ping MCP 端點，異常打 Discord）
 ```
 
 ## 📅 可用年份
