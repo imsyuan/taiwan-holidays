@@ -1,0 +1,19 @@
+{
+  // 獨立的 MCP 健康檢查 Worker。與 taiwan-workday-mcp 分開部署，
+  // 透過 Cron Trigger 每天從外部 ping 正式端點，異常時打 Discord webhook。
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tw-holidays-monitor",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-05-01",
+  "observability": {
+    "enabled": true
+  },
+  // 每天 01:00 UTC＝台灣時間 09:00 跑一次
+  "triggers": {
+    "crons": ["0 1 * * *"]
+  },
+  // 監控目標；改 MCP 網址只要動這裡。DISCORD_WEBHOOK 走 secret，不放這。
+  "vars": {
+    "TARGET_URL": "https://mcp.tw-holidays.gooliya.com/"
+  }
+}
