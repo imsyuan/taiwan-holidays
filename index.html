@@ -21,6 +21,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://tw-holidays.gooliya.com/">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tw-holidays.gooliya.com/">
@@ -89,6 +92,112 @@
             background: #e2e8f0;
         }
     </style>
+
+    <!-- Structured data: 讓 Google / AI 答案引擎能理解這是假日資料集 + 工具，而不只是一頁圖片 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://tw-holidays.gooliya.com/#organization",
+                "name": "Gooliya",
+                "url": "https://www.gooliya.com/"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://tw-holidays.gooliya.com/#website",
+                "url": "https://tw-holidays.gooliya.com/",
+                "name": "Taiwan Holidays",
+                "alternateName": "台灣國定假日行事曆",
+                "description": "台灣國定假日視覺化日曆與 JSON API，提供最新行事曆、補班日與請假攻略。",
+                "inLanguage": ["zh-TW", "en"],
+                "publisher": { "@id": "https://tw-holidays.gooliya.com/#organization" }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Taiwan Holidays 台灣國定假日行事曆",
+                "url": "https://tw-holidays.gooliya.com/",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any (Web Browser)",
+                "description": "台灣國定假日視覺化日曆與工作日計算工具，提供連假查詢、補班日提醒、農民曆與請假攻略。",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" },
+                "featureList": ["國定假日日曆", "補班日查詢", "農民曆", "連假請假攻略", "JSON API", "MCP server 工作日計算"]
+            },
+            {
+                "@type": "Dataset",
+                "name": "Taiwan Public Holidays Dataset",
+                "description": "台灣國定假日、補班日與農民曆資料，每月自動同步政府開放資料，涵蓋 2017–2026 年。",
+                "url": "https://tw-holidays.gooliya.com/api.html",
+                "license": "https://github.com/imsyuan/taiwan-holidays/blob/main/LICENSE",
+                "creator": { "@id": "https://tw-holidays.gooliya.com/#organization" },
+                "isBasedOn": {
+                    "@type": "CreativeWork",
+                    "name": "中華民國行政院人事行政總處 政府開放資料",
+                    "url": "https://data.gov.tw/dataset/14718"
+                },
+                "temporalCoverage": "2017/2026",
+                "distribution": [
+                    {
+                        "@type": "DataDownload",
+                        "encodingFormat": "application/json",
+                        "contentUrl": "https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2026/holidays.json"
+                    },
+                    {
+                        "@type": "DataDownload",
+                        "encodingFormat": "application/json",
+                        "contentUrl": "https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2026.json"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "2026 年台灣國定假日總共有幾天？",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "依政府公告資料，2026 年台灣國定假日（不含週六日）共 22 天，涵蓋開國紀念日、農曆春節、和平紀念日、兒童節、清明節、勞動節、端午節、中秋節、教師節、國慶日、台灣光復節、行憲紀念日等。"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "2026 年最長連假是哪一段？",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "農曆春節，依現有政府公告資料自 2/14（六）至 2/22（日）共 9 天，是 2026 年最長的連續假期，實際天數以官方最終公告為準。"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "2026 年有補班日嗎？",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "截至目前資料，2026 年尚未有公告需要補班的日期；如政府後續調整，本站資料會透過每月自動同步更新。"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "這份假日資料多久更新一次、來源是哪裡？",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "資料每月透過 GitHub Actions 自動從中華民國行政院人事行政總處的政府開放資料（data.gov.tw）同步，並提供 JSON API 供程式串接，不是人工維護的靜態清單。"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "可以用程式或 AI agent 直接查詢、計算工作日嗎？",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "可以。除了網站與 JSON API，本專案也提供一個 MCP server，讓 AI agent 能直接計算工作日、扣抵補班、規劃最佳請假組合，而不只是查詢單日是否放假。"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body class="bg-sand-50">
@@ -272,6 +381,33 @@
                 <!-- Months will be populated by JS -->
             </div>
         </main>
+
+        <!-- FAQ：純靜態文字，不依賴 JS 渲染，讓不執行 JavaScript 的搜尋／AI 爬蟲也讀得到內容 -->
+        <section class="max-w-7xl" style="padding: 0 1.5rem 2rem;">
+            <h2 class="font-outfit text-xl font-bold text-slate-900" style="margin-bottom: 0.75rem;">常見問題</h2>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <details class="glass-panel" style="padding: 0.9rem 1.1rem; border-radius: 0.75rem;">
+                    <summary class="font-noto font-bold text-slate-900" style="cursor: pointer;">2026 年台灣國定假日總共有幾天？</summary>
+                    <p class="font-noto text-slate-600" style="margin-top: 0.5rem;">依政府公告資料，2026 年台灣國定假日（不含週六日）共 22 天，涵蓋開國紀念日、農曆春節、和平紀念日、兒童節、清明節、勞動節、端午節、中秋節、教師節、國慶日、台灣光復節、行憲紀念日等。</p>
+                </details>
+                <details class="glass-panel" style="padding: 0.9rem 1.1rem; border-radius: 0.75rem;">
+                    <summary class="font-noto font-bold text-slate-900" style="cursor: pointer;">2026 年最長連假是哪一段？</summary>
+                    <p class="font-noto text-slate-600" style="margin-top: 0.5rem;">農曆春節，依現有政府公告資料自 2/14（六）至 2/22（日）共 9 天，是 2026 年最長的連續假期，實際天數以官方最終公告為準。</p>
+                </details>
+                <details class="glass-panel" style="padding: 0.9rem 1.1rem; border-radius: 0.75rem;">
+                    <summary class="font-noto font-bold text-slate-900" style="cursor: pointer;">2026 年有補班日嗎？</summary>
+                    <p class="font-noto text-slate-600" style="margin-top: 0.5rem;">截至目前資料，2026 年尚未有公告需要補班的日期；如政府後續調整，本站資料會透過每月自動同步更新。</p>
+                </details>
+                <details class="glass-panel" style="padding: 0.9rem 1.1rem; border-radius: 0.75rem;">
+                    <summary class="font-noto font-bold text-slate-900" style="cursor: pointer;">這份假日資料多久更新一次、來源是哪裡？</summary>
+                    <p class="font-noto text-slate-600" style="margin-top: 0.5rem;">資料每月透過 GitHub Actions 自動從中華民國行政院人事行政總處的政府開放資料（data.gov.tw）同步，並提供 JSON API 供程式串接，不是人工維護的靜態清單。</p>
+                </details>
+                <details class="glass-panel" style="padding: 0.9rem 1.1rem; border-radius: 0.75rem;">
+                    <summary class="font-noto font-bold text-slate-900" style="cursor: pointer;">可以用程式或 AI agent 直接查詢、計算工作日嗎？</summary>
+                    <p class="font-noto text-slate-600" style="margin-top: 0.5rem;">可以。除了網站與 <a href="api.html" style="color: inherit; text-decoration: underline;">JSON API</a>，本專案也提供一個 <a href="https://github.com/imsyuan/taiwan-holidays/blob/main/mcp/README.md" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">MCP server</a>，讓 AI agent 能直接計算工作日、扣抵補班、規劃最佳請假組合，而不只是查詢單日是否放假。</p>
+                </details>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="footer">

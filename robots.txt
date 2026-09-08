@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers — explicitly allowed so answer engines (ChatGPT, Perplexity,
+# Google AI Overviews, Claude) can read and cite this site's content.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://tw-holidays.gooliya.com/sitemap.xml
