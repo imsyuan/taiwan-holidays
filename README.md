@@ -66,7 +66,7 @@ const holidays = await fetch(
 ).then(r => r.json());
 
 console.log(holidays);
-// [{ date: "20260101", week: "三", isHoliday: true, description: "開國紀念日" }, ...]
+// [{ date: "20260101", week: "四", isHoliday: true, description: "開國紀念日" }, ...]
 ```
 
 **JavaScript - 英文版國定假日**
@@ -76,7 +76,7 @@ const holidays = await fetch(
 ).then(r => r.json());
 
 console.log(holidays);
-// [{ date: "20260101", week: "Wed", isHoliday: true, description: "New Year's Day" }, ...]
+// [{ date: "20260101", week: "Thu", isHoliday: true, description: "New Year's Day" }, ...]
 ```
 
 **Python - 查詢補班日**
@@ -170,11 +170,11 @@ npm run deploy       # 部署到 Cloudflare（需登入；CI 用 CLOUDFLARE_API_
 ```json
 {
   "date": "20260101",
-  "week": "三",
+  "week": "四",
   "isHoliday": true,
   "description": "開國紀念日",
   "lunar": {
-    "date": "十二月初二",
+    "date": "冬月十三",
     "festivals": [],
     "solarTerm": null
   }
@@ -185,11 +185,11 @@ npm run deploy       # 部署到 Cloudflare（需登入；CI 用 CLOUDFLARE_API_
 ```json
 {
   "date": "20260101",
-  "week": "Wed",
+  "week": "Thu",
   "isHoliday": true,
   "description": "New Year's Day",
   "lunar": {
-    "date": "十二月初二",
+    "date": "冬月十三",
     "festivals": [],
     "solarTerm": null
   }
