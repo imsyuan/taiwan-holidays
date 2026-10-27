@@ -160,7 +160,7 @@ npm run deploy       # 部署到 Cloudflare（需登入；CI 用 CLOUDFLARE_API_
 | `isHoliday` | `boolean` | `true` = 放假，`false` = 上班 |
 | `description` | `string` | 節日名稱或說明 |
 | `lunar` | `object` | 農曆資訊物件（包含農曆日期、傳統節日及節氣），若無對應轉換則為 `null` |
-| ↳ `date` | `string` | 農曆日期（如 `正月初一`、`十二月廿九`） |
+| ↳ `date` | `string` | 農曆日期（如 `正月初一`、`臘月廿九`） |
 | ↳ `festivals` | `array` | 農曆傳統節日陣列（如 `["春節"]`），無節日則為空陣列 |
 | ↳ `solarTerm` | `string` | 農曆二十四節氣（如 `立春`），若當日無節氣則為 `null` |
 
@@ -187,12 +187,7 @@ npm run deploy       # 部署到 Cloudflare（需登入；CI 用 CLOUDFLARE_API_
   "date": "20260101",
   "week": "Thu",
   "isHoliday": true,
-  "description": "New Year's Day",
-  "lunar": {
-    "date": "冬月十三",
-    "festivals": [],
-    "solarTerm": null
-  }
+  "description": "New Year's Day"
 }
 ```
 
