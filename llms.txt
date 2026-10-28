@@ -1,24 +1,42 @@
 # Taiwan Holidays — 台灣工作日計算引擎
 
-> 台灣國定假日視覺化日曆、免費 JSON API,以及給 AI agent 使用的工作日計算 MCP server。
+> 台灣國定假日視覺化日曆、免費 JSON API，以及給 AI agent 使用的工作日計算 MCP server。
 > 提供國定假日、補班日、農民曆資料，並在此之上做連假規劃與請假攻略計算。
-> 資料來源為中華民國行政院人事行政總處的政府開放資料，每月透過 GitHub Actions 自動同步，不是人工維護的過時清單。
+> 資料來源為中華民國行政院人事行政總處的政府開放資料（data.gov.tw 資料集 14718），每月透過 GitHub Actions 檢查並同步，不是人工維護的清單。
 
 ## 核心資源
 
-- [視覺化日曆網站](https://tw-holidays.gooliya.com/): 互動式台灣國定假日月曆（2017–2026），含連假清單與請假攻略，支援中英雙語與農民曆顯示
+- [完整版說明（LLM 專用，單一檔案）](https://tw-holidays.gooliya.com/llms-full.txt): 資料格式欄位表、真實請求／回應範例、MCP 端點與各工具輸入輸出、Claude Code／Cursor 設定、注意事項、授權
+- [OpenAPI 3.1 規格](https://tw-holidays.gooliya.com/openapi.json): 靜態 JSON 端點的機器可讀描述
+- [JSON API（jsDelivr CDN）](https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/): 免費、免金鑰，格式為 `data/<year>.json` 與 `data/<year>/{holidays,makeup-workdays,holidays-en,calendar-en}.json`，例如 `data/2026/holidays.json`
+- [MCP Server 端點（Streamable HTTP，無需認證）](https://mcp.tw-holidays.gooliya.com/mcp): 給 AI agent 直接呼叫的工作日計算工具（`count_workdays`、`add_workdays`、`next_makeup_workday`、`optimize_leave`、`find_travel_windows`）
+- [MCP 說明文件](https://github.com/imsyuan/taiwan-holidays/blob/main/mcp/README.md): 工具契約與連線方式
+- [視覺化日曆網站](https://tw-holidays.gooliya.com/): 互動式台灣國定假日月曆，含連假清單與請假攻略，支援中英雙語與農民曆顯示
 - [API 說明文件](https://tw-holidays.gooliya.com/api.html): JSON API 使用方式與欄位說明
-- [JSON API（jsDelivr CDN）](https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/): 免費、免金鑰的台灣國定假日／補班日／農民曆資料，例如 `data/2026/holidays.json`、`data/2026/makeup-workdays.json`
-- [MCP Server](https://github.com/imsyuan/taiwan-holidays/blob/main/mcp/README.md): 給 AI agent 直接呼叫的工作日計算工具（工作日加減天數、補班扣抵、請假最佳化、連假規劃），而不只是查詢單日是否放假
-- [GitHub Repo](https://github.com/imsyuan/taiwan-holidays): 原始碼、資料生成腳本、授權（MIT）
+- [GitHub Repo](https://github.com/imsyuan/taiwan-holidays): 原始碼、資料生成腳本
+
+## 目前資料概況
+
+<!-- facts:begin -->
+- 資料涵蓋 2017–2026 年（共 10 個年度，以 `data/` 目錄實際檔案為準；尚未公布的年度沒有檔案）。
+- 最新年度 2026：`data/2026/holidays.json` 共 22 筆放假紀錄（含補假，以及落在週六、週日的國定假日，不等於 22 個獨立節日，也不等於額外多放的平日）。
+- 2026 年補班日：無（該年度沒有補班日）。
+- 2026 年最長連假（連續放假含週末，依資料推算）：2/14（六）–2/22（日），共 9 天（含：小年夜、農曆除夕、春節、補假）。
+- 以上數字由 `scripts/generate_llms.py` 從 `data/` 產生；要最新、可驗證的數字請直接讀 JSON 或呼叫 MCP，不要沿用本段文字。
+<!-- facts:end -->
 
 ## 常見問題（適合直接引用回答使用者）
 
-- 2026 年台灣國定假日共 22 天，涵蓋開國紀念日、農曆春節、和平紀念日、兒童節、清明節、勞動節、端午節、中秋節、教師節、國慶日、台灣光復節、行憲紀念日等。
-- 2026 年最長連假是農曆春節，依現有政府公告資料自 2/14（六）至 2/22（日）共 9 天。
-- 資料每月自動從 data.gov.tw（行政院人事行政總處開放資料）同步，不是靜態寫死的清單，如遇政府調整公告會自動更新。
-- 需要程式化查詢或工作日計算（例如「N 個工作天後是哪一天」「這段期間扣掉假日還有幾個工作天」）時，優先使用 MCP server 而非自行用日期加減，因為台灣的補班／調移規則無法用演算法推導，只能依政府年度公告。
+- 某年有哪些國定假日？讀 `data/<year>/holidays.json`（只含有名稱的放假日，不含一般週末；補假與落在週末的假日也會列入）。
+- 某年有哪些補班日？讀 `data/<year>/makeup-workdays.json`；檔案為空陣列代表該年沒有補班。
+- 某天要不要上班？讀 `data/<year>.json` 該日的 `isHoliday`：`false` 即上班日（包含補班日），`true` 即放假（包含週末）。
+- 「N 個工作天後是哪一天」「這段期間有幾個工作天」「怎麼請假最划算」這類計算，請呼叫 MCP server，不要自行用日期加減推算：台灣的補班與彈性放假沒有演算法可推導，只能依政府每年公告的辦公日曆。
+- 資料來自政府公告的辦公日曆，每月自動檢查更新；政府尚未公布的年度沒有資料，詢問時應回覆「尚無官方資料」，不要估算。
+- 靜態 JSON 的日期格式是 `YYYYMMDD`，MCP 工具的日期格式是 `YYYY-MM-DD`，兩者不同。
 
 ## 授權
 
-資料與程式碼採 MIT License，可自由引用、轉載本站的假日清單與 API 回應內容，並請註明資料來源為行政院人事行政總處與本專案。
+採雙授權，引用時請依資料類型標示：
+
+- 程式碼（網站、MCP server、資料產生腳本）：MIT License。
+- 資料（`data/` 下的 JSON）：原始資料依「政府資料開放授權條款－第1版」取自政府資料開放平台（資料集 14718，中華民國行政院人事行政總處），本專案以 CC BY 4.0 釋出。轉載或引用資料請標示出處：政府資料開放平台／行政院人事行政總處，並註明本專案（https://github.com/imsyuan/taiwan-holidays）。

@@ -1,0 +1,238 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Taiwan Holidays Static JSON API",
+    "version": "1.0.0",
+    "summary": "台灣國定假日、補班日與農民曆的靜態 JSON 資料（經 jsDelivr CDN 提供）。",
+    "description": "台灣國定假日、補班日與農民曆資料。這些是 GitHub repo `imsyuan/taiwan-holidays` 的 `data/` 目錄下的靜態檔案，透過 jsDelivr CDN 提供，免金鑰。資料每月由 GitHub Actions 從政府資料開放平台（資料集 14718，行政院人事行政總處）同步。沒有該年度檔案時回 404，代表尚無官方資料。\n\n日期格式為 `YYYYMMDD`。中文檔含 `lunar` 欄位，英文檔完全不含 `lunar`。\n\n如需工作日計算（N 個工作天後、區間工作日數、請假最佳化），請改用 remote MCP server：https://mcp.tw-holidays.gooliya.com/mcp（Streamable HTTP，無需認證；不屬於本 OpenAPI 描述範圍）。\n\n授權：程式碼為 MIT；資料原始來源為政府資料開放授權條款第1版，本專案以 CC BY 4.0 釋出，引用請標示政府資料開放平台／行政院人事行政總處與本專案。",
+    "license": {
+      "name": "CC BY 4.0 (data); MIT (code)",
+      "url": "https://github.com/imsyuan/taiwan-holidays"
+    },
+    "contact": {
+      "name": "taiwan-holidays",
+      "url": "https://github.com/imsyuan/taiwan-holidays"
+    }
+  },
+  "externalDocs": {
+    "description": "完整說明（給 LLM 的單一檔案）",
+    "url": "https://tw-holidays.gooliya.com/llms-full.txt"
+  },
+  "servers": [
+    {
+      "url": "https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays",
+      "description": "jsDelivr CDN，直接代理 GitHub repo main 分支"
+    }
+  ],
+  "security": [],
+  "tags": [
+    { "name": "zh", "description": "中文版（含農曆 `lunar` 欄位）" },
+    { "name": "en", "description": "英文版（不含 `lunar` 欄位）" }
+  ],
+  "paths": {
+    "/data/{year}.json": {
+      "get": {
+        "operationId": "getCalendar",
+        "tags": ["zh"],
+        "summary": "全年完整日曆（中文）",
+        "description": "該年每一天一筆（365 或 366 筆），含週末、國定假日、補班日與農曆資訊。",
+        "parameters": [{ "$ref": "#/components/parameters/Year" }],
+        "responses": {
+          "200": {
+            "description": "該年每日資料",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/CalendarDay" } }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/data/{year}/holidays.json": {
+      "get": {
+        "operationId": "getHolidays",
+        "tags": ["zh"],
+        "summary": "國定假日（中文）",
+        "description": "只列出 `isHoliday` 為 true 且 `description` 非空的日子；不含一般週末。包含補假，也包含剛好落在週六、週日的國定假日。",
+        "parameters": [{ "$ref": "#/components/parameters/Year" }],
+        "responses": {
+          "200": {
+            "description": "國定假日清單",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/CalendarDay" } },
+                "example": [
+                  {
+                    "date": "20260101",
+                    "week": "四",
+                    "isHoliday": true,
+                    "description": "開國紀念日",
+                    "lunar": { "date": "冬月十三", "festivals": [], "solarTerm": null }
+                  }
+                ]
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/data/{year}/makeup-workdays.json": {
+      "get": {
+        "operationId": "getMakeupWorkdays",
+        "tags": ["zh"],
+        "summary": "補班日（中文）",
+        "description": "`isHoliday` 為 false 且 `description` 含「調整上班」「補行上班」或「補班」的日子。該年沒有補班日時回傳空陣列 `[]`（例如 2026），這是正常結果。沒有英文版檔案。",
+        "parameters": [{ "$ref": "#/components/parameters/Year" }],
+        "responses": {
+          "200": {
+            "description": "補班日清單，可能為空陣列",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/CalendarDay" } },
+                "example": [
+                  {
+                    "date": "20250208",
+                    "week": "六",
+                    "isHoliday": false,
+                    "description": "補行上班",
+                    "lunar": { "date": "正月十一", "festivals": [], "solarTerm": null }
+                  }
+                ]
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/data/{year}/calendar-en.json": {
+      "get": {
+        "operationId": "getCalendarEn",
+        "tags": ["en"],
+        "summary": "Full-year calendar (English)",
+        "description": "Same days as the Chinese full calendar, with weekday abbreviations and translated descriptions. Has NO `lunar` field.",
+        "parameters": [{ "$ref": "#/components/parameters/Year" }],
+        "responses": {
+          "200": {
+            "description": "Daily entries for the year",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/CalendarDayEn" } },
+                "example": [
+                  { "date": "20250208", "week": "Sat", "isHoliday": false, "description": "Make-up Workday" }
+                ]
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/data/{year}/holidays-en.json": {
+      "get": {
+        "operationId": "getHolidaysEn",
+        "tags": ["en"],
+        "summary": "Public holidays (English)",
+        "description": "Holidays only (weekends excluded), with translated descriptions. Has NO `lunar` field. Names missing from the translation dictionary stay in Chinese.",
+        "parameters": [{ "$ref": "#/components/parameters/Year" }],
+        "responses": {
+          "200": {
+            "description": "Holiday entries",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/CalendarDayEn" } },
+                "example": [
+                  { "date": "20250101", "week": "Wed", "isHoliday": true, "description": "New Year's Day" },
+                  { "date": "20250127", "week": "Mon", "isHoliday": true, "description": "Lunar New Year's Eve Eve" }
+                ]
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Year": {
+        "name": "year",
+        "in": "path",
+        "required": true,
+        "description": "四位數西元年。只有已有資料的年度才有檔案（目前起自 2017，終點隨政府公告逐年增加）；沒有檔案時回 404。",
+        "schema": { "type": "integer", "minimum": 2017, "examples": [2026] }
+      }
+    },
+    "responses": {
+      "NotFound": {
+        "description": "該年度沒有資料檔（政府尚未公布，或年份超出範圍）。回應本文不是 JSON。",
+        "content": { "text/plain": { "schema": { "type": "string" } } }
+      }
+    },
+    "schemas": {
+      "LunarInfo": {
+        "type": "object",
+        "description": "農曆資訊（僅中文檔）。",
+        "required": ["date", "festivals", "solarTerm"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "description": "農曆日期（繁體中文）", "examples": ["正月初一", "冬月十三"] },
+          "festivals": {
+            "type": "array",
+            "description": "農曆傳統節日；當天沒有則為空陣列",
+            "items": { "type": "string" },
+            "examples": [["春節"]]
+          },
+          "solarTerm": {
+            "type": ["string", "null"],
+            "description": "二十四節氣；當天沒有節氣為 null",
+            "examples": ["小寒", null]
+          }
+        }
+      },
+      "CalendarDay": {
+        "type": "object",
+        "description": "中文版的一天。",
+        "required": ["date", "week", "isHoliday", "description", "lunar"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "pattern": "^[0-9]{8}$", "description": "日期 YYYYMMDD（無分隔符號）", "examples": ["20260216"] },
+          "week": { "type": "string", "enum": ["一", "二", "三", "四", "五", "六", "日"], "description": "星期（中文）" },
+          "isHoliday": {
+            "type": "boolean",
+            "description": "true = 不用上班（週末與國定假日皆為 true）；false = 要上班（補班日也是 false）"
+          },
+          "description": {
+            "type": "string",
+            "description": "節日名稱或補班說明（政府公告原文，如「春節」「補假」「補行上班」）；一般平日與一般週末為空字串"
+          },
+          "lunar": {
+            "oneOf": [{ "$ref": "#/components/schemas/LunarInfo" }, { "type": "null" }],
+            "description": "農曆資訊；無法換算時為 null"
+          }
+        }
+      },
+      "CalendarDayEn": {
+        "type": "object",
+        "description": "英文版的一天。沒有 `lunar` 欄位。",
+        "required": ["date", "week", "isHoliday", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "pattern": "^[0-9]{8}$", "description": "日期 YYYYMMDD（無分隔符號）", "examples": ["20260101"] },
+          "week": { "type": "string", "enum": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "description": "Weekday abbreviation" },
+          "isHoliday": {
+            "type": "boolean",
+            "description": "true = day off (weekends and public holidays); false = working day (make-up workdays are also false)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Translated holiday name, e.g. \"New Year's Day\", \"Make-up Workday\"; empty string for ordinary days. Untranslated names remain in Chinese."
+          }
+        }
+      }
+    }
+  }
+}

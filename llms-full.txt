@@ -1,0 +1,326 @@
+# Taiwan Holidays — 完整說明（給 LLM／AI agent）
+
+> 台灣國定假日、補班日、農民曆的免費 JSON API，加上一個公開的 remote MCP server（工作日計算引擎）。
+> 本檔是單一、自包含的 Markdown 文件，目的是讓 LLM 不必再爬其他頁面就能正確使用與引用本專案。
+> 精簡版索引見 https://tw-holidays.gooliya.com/llms.txt；機器可讀的 JSON 端點規格見 https://tw-holidays.gooliya.com/openapi.json。
+
+## 1. 先看這裡：該用哪一種介面
+
+| 需求 | 用這個 | 入口 |
+| --- | --- | --- |
+| 查某年的國定假日、補班日、某天是否上班 | 靜態 JSON（免金鑰、可直接 `fetch`） | `https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/<year>/holidays.json` 等 |
+| 算「N 個工作天後」「區間有幾個工作天」「怎麼請假最划算」「下一個補班日」 | MCP server | `https://mcp.tw-holidays.gooliya.com/mcp` |
+| 給人看的月曆、連假與請假攻略 | 網站 | https://tw-holidays.gooliya.com/ |
+
+原則：只是查資料，用 JSON；要做**計算**，用 MCP，不要自己用日期加減推算（見第 5 節）。
+
+## 2. 目前資料概況（由腳本產生）
+
+以下區塊由 `scripts/generate_llms.py` 從 `data/` 產生，不是手寫；其餘章節皆為不隨年度變動的說明。
+
+<!-- facts-full:begin -->
+- 資料涵蓋 2017–2026 年（共 10 個年度，以 `data/` 目錄實際檔案為準；尚未公布的年度沒有檔案）。
+- 最新年度 2026：`data/2026/holidays.json` 共 22 筆放假紀錄（含補假，以及落在週六、週日的國定假日，不等於 22 個獨立節日，也不等於額外多放的平日）。
+- 2026 年補班日：無（該年度沒有補班日）。
+- 2026 年最長連假（連續放假含週末，依資料推算）：2/14（六）–2/22（日），共 9 天（含：小年夜、農曆除夕、春節、補假）。
+- 以上數字由 `scripts/generate_llms.py` 從 `data/` 產生；要最新、可驗證的數字請直接讀 JSON 或呼叫 MCP，不要沿用本段文字。
+
+逐年概況（同樣由 `data/` 產生；「最長連假」指該年內連續放假含週末的最長區段，不跨年計算）：
+
+| 年度 | holidays.json 筆數 | 補班日 | 最長連假 |
+| --- | --- | --- | --- |
+| 2017 | 17 | 3（2/18（六）、6/3（六）、9/30（六）） | 2017-01-27（五） 至 2017-02-01（三），6 天 |
+| 2018 | 15 | 2（3/31（六）、12/22（六）） | 2018-02-15（四） 至 2018-02-20（二），6 天 |
+| 2019 | 14 | 3（1/19（六）、2/23（六）、10/5（六）） | 2019-02-02（六） 至 2019-02-10（日），9 天 |
+| 2020 | 18 | 3（2/15（六）、6/20（六）、9/26（六）） | 2020-01-23（四） 至 2020-01-29（三），7 天 |
+| 2021 | 19 | 2（2/20（六）、9/11（六）） | 2021-02-10（三） 至 2021-02-16（二），7 天 |
+| 2022 | 13 | 1（1/22（六）） | 2022-01-29（六） 至 2022-02-06（日），9 天 |
+| 2023 | 20 | 6（1/7（六）、2/4（六）、2/18（六）、3/25（六）、6/17（六）、9/23（六）） | 2023-01-20（五） 至 2023-01-29（日），10 天 |
+| 2024 | 14 | 1（2/17（六）） | 2024-02-08（四） 至 2024-02-14（三），7 天 |
+| 2025 | 18 | 1（2/8（六）） | 2025-01-25（六） 至 2025-02-02（日），9 天 |
+| 2026 | 22 | 0 | 2026-02-14（六） 至 2026-02-22（日），9 天 |
+<!-- facts-full:end -->
+
+## 3. 靜態 JSON API
+
+### 3.1 端點
+
+Base URL：`https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays`（jsDelivr 直接代理 GitHub repo 的 `data/` 目錄；免金鑰；回應帶 `access-control-allow-origin: *`，瀏覽器可直接跨網域 fetch）。
+
+`<year>` 為四位數西元年，目前有檔案的年度見第 2 節。沒有該年度的檔案就是 404，代表資料尚未公布，不要自行推測。
+
+| 路徑 | 內容 | 語言 | 有 `lunar` |
+| --- | --- | --- | --- |
+| `/data/<year>.json` | 全年每一天（365／366 筆） | 中文 | 是 |
+| `/data/<year>/holidays.json` | 只含國定假日（`isHoliday` 為 true 且有 `description`；不含一般週末） | 中文 | 是 |
+| `/data/<year>/makeup-workdays.json` | 補班日（`isHoliday` 為 false 且說明含「調整上班」「補行上班」「補班」） | 中文 | 是 |
+| `/data/<year>/calendar-en.json` | 全年每一天 | 英文 | **否** |
+| `/data/<year>/holidays-en.json` | 只含國定假日 | 英文 | **否** |
+
+沒有 `makeup-workdays-en.json`。
+
+### 3.2 欄位表
+
+每個檔案都是 JSON 陣列，元素格式如下。
+
+| 欄位 | 型別 | 說明 |
+| --- | --- | --- |
+| `date` | string | `YYYYMMDD`（無分隔符號，注意與 MCP 的 `YYYY-MM-DD` 不同） |
+| `week` | string | 中文檔為 `一`～`日`；英文檔為 `Mon`～`Sun` |
+| `isHoliday` | boolean | `true` = 當天不用上班（週末與國定假日皆為 true）；`false` = 要上班（補班日也是 false） |
+| `description` | string | 節日名稱或補班說明；一般平日與一般週末為空字串 `""` |
+| `lunar` | object \| null | 僅中文檔。農曆資訊；若無法換算則為 `null` |
+| `lunar.date` | string | 農曆日期，如 `正月初一`、`冬月十三` |
+| `lunar.festivals` | string[] | 農曆傳統節日，如 `["春節"]`；無節日為 `[]` |
+| `lunar.solarTerm` | string \| null | 二十四節氣，如 `小寒`；當天沒有節氣為 `null` |
+
+英文檔沒有 `lunar` 欄位（不是 null，是整個欄位不存在）。英文的 `description` 以字典翻譯，如 `New Year's Day`、`Make-up Workday`；字典沒涵蓋的名稱會保留中文（目前的資料中，`勞動節`、`清明節` 在英文檔裡仍是中文）。
+
+`description` 的名稱不是固定清單，而是政府公告的原文，例如 `開國紀念日`、`小年夜`、`農曆除夕`、`春節`、`補假`、`調整放假`、`和平紀念日`、`兒童節及民族掃墓節`、`清明節`、`勞動節`、`端午節`、`中秋節`、`孔子誕辰紀念日/教師節`、`國慶日`、`臺灣光復暨金門古寧頭大捷紀念日`、`行憲紀念日`、`調整上班`、`補行上班`。不同年度同一個節日的名稱可能不同，比對時請用包含關係而非完全相等。
+
+### 3.3 真實範例
+
+以下皆為 repo 內實際資料（節錄）。
+
+`GET https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/2026/holidays.json`（前兩筆）：
+
+```json
+[
+  {
+    "date": "20260101",
+    "week": "四",
+    "isHoliday": true,
+    "description": "開國紀念日",
+    "lunar": { "date": "冬月十三", "festivals": [], "solarTerm": null }
+  },
+  {
+    "date": "20260216",
+    "week": "一",
+    "isHoliday": true,
+    "description": "農曆除夕",
+    "lunar": { "date": "臘月廿九", "festivals": ["除夕"], "solarTerm": null }
+  }
+]
+```
+
+`GET .../data/2025/makeup-workdays.json`（該年唯一一筆補班日）：
+
+```json
+[
+  {
+    "date": "20250208",
+    "week": "六",
+    "isHoliday": false,
+    "description": "補行上班",
+    "lunar": { "date": "正月十一", "festivals": [], "solarTerm": null }
+  }
+]
+```
+
+`GET .../data/2026/makeup-workdays.json`（該年沒有補班日，回傳空陣列，這是正常結果，不是錯誤）：
+
+```json
+[]
+```
+
+`GET .../data/2025/holidays-en.json`（前兩筆；英文檔無 `lunar`）：
+
+```json
+[
+  { "date": "20250101", "week": "Wed", "isHoliday": true, "description": "New Year's Day" },
+  { "date": "20250127", "week": "Mon", "isHoliday": true, "description": "Lunar New Year's Eve Eve" }
+]
+```
+
+`GET .../data/2025/calendar-en.json` 中的補班日那一天（週六、`isHoliday` 為 false）：
+
+```json
+{ "date": "20250208", "week": "Sat", "isHoliday": false, "description": "Make-up Workday" }
+```
+
+### 3.4 程式範例
+
+```javascript
+const base = 'https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data';
+const cal = await fetch(`${base}/2026.json`).then(r => r.json());
+const day = cal.find(d => d.date === '20260216');
+console.log(day.isHoliday ? '放假' : '上班', day.description); // 放假 農曆除夕
+```
+
+```python
+import requests
+base = "https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data"
+makeup = requests.get(f"{base}/2025/makeup-workdays.json", timeout=10).json()
+print([d["date"] for d in makeup])  # ['20250208']
+```
+
+### 3.5 快取
+
+jsDelivr 會快取。資料更新（每月 1 日由 GitHub Actions 檢查）合併後，CDN 上的內容可能延遲一段時間才更新（實測回應標頭 `cache-control: public, max-age=604800, s-maxage=43200`）。需要即時一致時請改用 MCP server（直接讀 bundle 的資料，並隨資料更新重新部署）。
+
+## 4. MCP server（工作日計算引擎）
+
+- 端點：`https://mcp.tw-holidays.gooliya.com/mcp`
+- 傳輸：Streamable HTTP（另有舊版 SSE：`/sse`）
+- 認證：無（公開、唯讀、無狀態）
+- 資料：與 Worker 一起 bundle 的 `data/<year>.json`，執行時不會再去 jsDelivr 取資料。`GET https://mcp.tw-holidays.gooliya.com/` 會回傳 JSON，列出工具名稱與 `availableYears`。
+- 日期格式一律 `YYYY-MM-DD`。
+- 工作日定義：`isHoliday === false` 的日子。週末與國定假日不是工作日；補班日是工作日。
+
+### 4.1 連線設定
+
+Claude Code（CLI）：
+
+```bash
+claude mcp add --transport http taiwan-workday https://mcp.tw-holidays.gooliya.com/mcp
+```
+
+或在專案根目錄的 `.mcp.json`：
+
+```json
+{
+  "mcpServers": {
+    "taiwan-workday": {
+      "type": "http",
+      "url": "https://mcp.tw-holidays.gooliya.com/mcp"
+    }
+  }
+}
+```
+
+Cursor（`~/.cursor/mcp.json` 或專案內 `.cursor/mcp.json`）：
+
+```json
+{
+  "mcpServers": {
+    "taiwan-workday": {
+      "url": "https://mcp.tw-holidays.gooliya.com/mcp"
+    }
+  }
+}
+```
+
+Claude.ai（網頁／桌面）：Settings → Connectors → Add custom connector，URL 填上面的端點。
+
+MCP Inspector：`npx @modelcontextprotocol/inspector`，Transport 選 Streamable HTTP，URL 填上面的端點。
+
+> 說明：端點與 `claude mcp add` 指令、Claude.ai 與 Inspector 步驟取自 repo 的 `mcp/README.md`；`.mcp.json` 與 Cursor 的設定檔是兩個工具各自的通用格式，並非本專案文件所載。若你的版本欄位名稱不同，以該工具文件為準。
+
+### 4.2 工具總覽
+
+| 工具 | 輸入 | 輸出 |
+| --- | --- | --- |
+| `count_workdays` | `start`, `end`（含頭尾） | `{ workdays, holidays, makeupWorkdays }` |
+| `add_workdays` | `from`, `workdays`（整數，負值往回） | `{ date }` |
+| `next_makeup_workday` | `from?` 或 `range?` | `{ next }`；給 `range` 時另有 `all` |
+| `optimize_leave` | `year`, `annualLeaveDays`, `range?` | `LeavePlan[]` |
+| `find_travel_windows` | `year`, `annualLeaveDays`, `minTripLength`, `range?` | `TravelWindow[]` |
+
+型別（`range` 為 `{ start, end }`，皆 `YYYY-MM-DD`，含頭尾）：
+
+```
+LeavePlan    = { leaveDates: string[], offRange: { start, end }, totalDaysOff: number, leaveSpent: number, efficiency: number }
+TravelWindow = { tripRange: { start, end }, tripLength: number, leaveDates: string[], leaveSpent: number }
+```
+
+工具出錯時不會丟例外，而是回傳結構化結果：
+
+- `{ "error": "year_unavailable", "availableYears": [...] }`：`optimize_leave`／`find_travel_windows` 的 `year` 沒有資料。
+- `{ "error": "invalid_input", "detail": "..." }`：日期格式錯、起訖顛倒、參數不合法，或 `add_workdays` 算出的結果超出已有資料的範圍。
+
+### 4.3 各工具細節與真實回應
+
+以下回應皆為實際呼叫正式端點的結果（資料版本以呼叫當下為準）。
+
+**`count_workdays`** — 區間內的工作日、放假日、補班日數量。`holidays` 含週末；`makeupWorkdays` 是已包含在 `workdays` 內的子集。
+
+```json
+// 輸入 { "start": "2026-02-01", "end": "2026-02-28" }
+{ "workdays": 14, "holidays": 14, "makeupWorkdays": 0 }
+```
+
+**`add_workdays`** — 從 `from` 往後（或往前）數第 N 個工作日；`from` 本身不計入；`workdays` 為 0 時回傳 `from`。
+
+```json
+// 輸入 { "from": "2026-02-13", "workdays": 3 }   （2/13 為週五，春節連假在 2/14–2/22）
+{ "date": "2026-02-25" }
+```
+
+**`next_makeup_workday`** — 給 `from`：回傳該日（含）之後的下一個補班日，沒有則 `next` 為 `null`；給 `range`：回傳區間內全部補班日。兩者都沒給會回 `invalid_input`；兩者都給時以 `range` 為準。
+
+```json
+// 輸入 { "from": "2025-01-01" }
+{ "next": "2025-02-08" }
+
+// 輸入 { "range": { "start": "2025-01-01", "end": "2025-12-31" } }
+{ "next": "2025-02-08", "all": ["2025-02-08"] }
+```
+
+**`optimize_leave`** — 找出「請幾天假，把前後兩段連續休假接在一起」的方案，依效率（總休假天數 ÷ 請假天數）由高到低排序。只考慮「兩段休假之間的整段上班日全部請掉」這一種做法，且該段長度不得超過 `annualLeaveDays`。不給 `range` 時會列出整年所有可行方案，數量可能很多，建議只取前幾筆或加上 `range`。
+
+```json
+// 輸入 { "year": 2026, "annualLeaveDays": 2, "range": { "start": "2026-01-01", "end": "2026-06-30" } }
+[
+  {
+    "leaveDates": ["2026-01-02"],
+    "offRange": { "start": "2026-01-01", "end": "2026-01-04" },
+    "totalDaysOff": 4,
+    "leaveSpent": 1,
+    "efficiency": 4
+  }
+]
+```
+
+**`find_travel_windows`** — 與 `optimize_leave` 同一套演算法，但只保留 `totalDaysOff >= minTripLength` 的方案，輸出為出遊時段（只有時機，不含訂位、機票等資料）。
+
+```json
+// 輸入 { "year": 2026, "annualLeaveDays": 4, "minTripLength": 9, "range": { "start": "2026-01-01", "end": "2026-06-30" } }
+[
+  { "tripRange": { "start": "2026-02-14", "end": "2026-03-01" }, "tripLength": 16,
+    "leaveDates": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26"], "leaveSpent": 4 },
+  { "tripRange": { "start": "2026-03-28", "end": "2026-04-06" }, "tripLength": 10,
+    "leaveDates": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02"], "leaveSpent": 4 }
+  // ……其餘省略（實際回傳共 5 筆）
+]
+```
+
+### 4.4 使用 MCP 時的陷阱
+
+- **超出資料範圍時，`count_workdays` 不會報錯**。查詢尚無資料的年度（例如在資料只到 2026 時查 2027-01）會得到 `{ "workdays": 0, "holidays": 0, "makeupWorkdays": 0 }`。回答使用者前請確認區間落在可用年度內（可用年度見 `GET /` 的 `availableYears`），否則不要把 0 當成答案。
+- `add_workdays` 在算到資料盡頭仍不夠天數時回 `invalid_input`（"result is beyond available calendar data"）。
+- `optimize_leave` 與 `find_travel_windows` 只在**單一年度**內計算，不會跨年接連假。
+- 回應內容是 JSON 字串，放在 MCP 工具結果的 text content 裡。
+
+## 5. 重要注意事項
+
+1. **補班與彈性放假無法用演算法推導。** 台灣的補班日、調整放假、補假由行政院人事行政總處每年公告，沒有規則可算（例如「週四放假，週五彈性放假，下週六補班」）。因此不要用「週一到週五上班」自行推算；一律讀資料或呼叫 MCP。
+2. **`isHoliday: true` 不等於國定假日。** 一般週末也是 true。要找國定假日請用 `holidays.json`（有 `description` 的放假日）。
+3. **`holidays.json` 的筆數不等於「國定假日天數」。** 它包含補假，也包含剛好落在週六、週日的國定假日（那些日子本來就休息）。若使用者問「今年多放幾天」，要扣掉落在週末的項目再回答。
+4. **連假長度要看含週末的連續放假。** 例如春節連假可以從週六一路連到隔週日。本檔第 2 節的「最長連假」就是這樣算的，並且是資料推算結果，不是政府對「連假」的正式定義。
+5. **尚未公布的年度沒有資料。** 專案約於每年 6 月起才會出現下一年度的資料（依政府公告時程而定）。問到沒有檔案的年度，請回答「尚無官方資料」，不要估算。
+6. **日期格式不一致。** 靜態 JSON 是 `YYYYMMDD`；MCP 工具是 `YYYY-MM-DD`。
+7. **農曆欄位是附帶資訊。** `lunar` 由程式換算，英文檔沒有；網站畫面上的農曆是瀏覽器端另外計算，兩者理論上一致，但以 JSON 為準。
+8. **時區。** 日期是台灣當地日曆日，沒有時間與時區成分。
+
+## 6. 資料來源與更新
+
+- 來源：中華民國行政院人事行政總處〈中華民國政府行政機關辦公日曆表〉，政府資料開放平台資料集 14718（https://data.gov.tw/dataset/14718）。
+- 更新：GitHub Actions 每月 1 日（UTC 00:00）執行 `scripts/update_calendar.py`，有變更時自動開 PR，通過資料驗證（`scripts/validate_data.py`）後自動合併。
+- 農曆：由 `lunar-python` 換算。
+
+## 7. 授權與引用
+
+採雙授權：
+
+- 程式碼（網站、MCP server、資料產生腳本）：MIT License。
+- 資料（`data/` 下的 JSON）：原始資料依「政府資料開放授權條款－第1版」取自政府資料開放平台；本專案以「創用 CC 姓名標示 4.0 國際版（CC BY 4.0）」釋出。
+
+引用或轉載資料時請標示：資料來源為政府資料開放平台／行政院人事行政總處（資料集 14718），並註明本專案 https://github.com/imsyuan/taiwan-holidays 。
+
+## 8. 連結
+
+- 網站：https://tw-holidays.gooliya.com/
+- API 說明頁：https://tw-holidays.gooliya.com/api.html
+- 原始碼：https://github.com/imsyuan/taiwan-holidays
+- MCP 說明：https://github.com/imsyuan/taiwan-holidays/blob/main/mcp/README.md
+- OpenAPI：https://tw-holidays.gooliya.com/openapi.json
