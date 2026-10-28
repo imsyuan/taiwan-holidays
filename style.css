@@ -1,43 +1,131 @@
-/* Design System Variables */
+/* Design System Variables
+   顏色一律走語意 token（surface / text / border / primary / accent(假日) / makeup / today …）。
+   淺色值寫在 :root；深色值寫在下面兩個 dark 區塊（自動跟隨系統、手動選深色）。
+   舊的 --color-slate-* 等名稱保留為別名，既有 utility class 不用改。 */
 :root {
-  /* Colors - Sleek Light Mode */
+  color-scheme: light;
+
+  /* 表面 */
+  --color-page: #FFFDF8;
+  /* 首頁 body（.bg-sand-50） */
+  --color-page-transparent: rgba(255, 253, 248, 0);
+  /* 連假 chips 捲動列右側漸層的起點 */
+  --color-bg: #F8FAFC;
+  /* api.html body 底色 */
+  --page-gradient:
+    radial-gradient(at 0% 0%, hsla(217, 100%, 96%, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(28, 100%, 95%, 1) 0px, transparent 50%);
+  --color-surface: #FFFFFF;
+  /* 實色卡片、按鈕 */
+  --color-surface-raised: #FFFFFF;
+  /* 卡片裡再疊一層（攻略日格、倒數 chip） */
+  --color-surface-glass: rgba(255, 255, 255, 0.85);
+  /* glass-panel / month-card */
+  --color-surface-muted: #F1F5F9;
+  /* hover 底、inline code 底 */
+  --color-header-bg: rgba(248, 250, 252, 0.8);
+  --color-toolbar-bg: rgba(255, 253, 248, 0.88);
+  --color-days-header-bg: rgba(248, 250, 252, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.5);
+  --color-glass-border-strong: rgba(255, 255, 255, 0.8);
+
+  /* 文字、邊框、焦點 */
+  --color-text: #1E293B;
+  /* 標題 */
+  --color-text-body: #475569;
+  /* 內文 */
+  --color-text-muted: #64748B;
+  /* 次要文字 */
+  --color-border: #E2E8F0;
+  --color-focus: #3B82F6;
+
+  /* 主色（藍）：-600 當實色底配白字（5.2:1）；-fg 當文字；-soft 當淡底 */
   --color-primary: #3B82F6;
   --color-primary-600: #2563EB;
-  /* 白字放在藍底上要用 600，對比才過 AA */
-  --color-primary-light: #EFF6FF;
+  --color-primary-700: #1D4ED8;
+  --color-primary-fg: #2563EB;
+  --color-primary-soft: #EFF6FF;
   --color-secondary: #60A5FA;
+  --logo-gradient: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+
+  /* 假日（紅）：-600 當實色底配白字（4.8:1）；-fg 放在淡粉底上的紅字（5.6:1）；-soft 淡粉底 */
   --color-accent: #EF4444;
-  /* Unified red for holidays (backgrounds / dots) */
   --color-accent-600: #DC2626;
   --color-accent-fg: #B91C1C;
-  /* 放在淡粉底上的紅字用這個，對比 5.6:1 */
-  --color-accent-light: rgba(239, 68, 68, 0.1);
-  --color-weekend: #DC2626;
-  /* For weekends */
-  --color-weekend-light: rgba(239, 68, 68, 0.1);
+  --color-accent-soft: rgba(239, 68, 68, 0.1);
+  --color-weekend-fg: #DC2626;
+  --color-hero-bg: linear-gradient(135deg, #FFF1F2 0%, #FFF7ED 100%);
+  --color-hero-border: rgba(239, 68, 68, 0.18);
 
-  /* Playful colors for strategy row */
+  /* 補班／請假（藍字淡藍底） */
+  --color-makeup-fg: #1D4ED8;
+  --color-makeup-soft: #EFF6FF;
+
+  /* 今天 */
+  --color-today-bg: #2563EB;
+  --color-today-fg: #FFFFFF;
+  --color-today-ring: rgba(37, 99, 235, 0.25);
+  --color-today-ring-red: rgba(220, 38, 38, 0.25);
+
+  /* 日格下方的小圓點與圖例：深色底要用亮一階的紅／藍才看得到（3:1） */
+  --color-holiday-dot: #DC2626;
+  --color-makeup-dot: #2563EB;
+
+  /* 攻略區（棕色系） */
   --color-brown-600: #8D6E63;
-  --color-brown-700: #6D4C41;
+  /* 月份方塊底，白字 4.6:1 */
   --color-brown-100: #EFEBE9;
-  --color-holiday-text: #B91C1C;
-  --color-workday-text: #1D4ED8;
+  --color-strategy-fg: #6D4C41;
+  /* 攻略文字、圖例 */
+  --color-strategy-bg: #FDF3E7;
+  --color-strategy-border: #F3E0CC;
+  --color-best: #F59E0B;
+  --color-best-flag-bg: #FEF3C7;
+  --color-best-flag-fg: #92400E;
 
-  --color-bg: #F8FAFC;
-  --color-sand-50: #FFFDF8;
-  /* Softer sandy background */
-  --color-surface: rgba(255, 255, 255, 0.85);
-  /* Glassmorphism base */
+  /* 反色區塊：tooltip、toast、skip link */
+  --color-inverse-bg: #1E293B;
+  --color-inverse-fg: #FFFFFF;
+  --color-inverse-muted: #CBD5E1;
 
-  --color-slate-900: #1E293B;
-  /* Headings */
-  --color-slate-600: #475569;
-  /* Body text */
-  --color-slate-500: #64748B;
-  /* Muted text */
-  --color-slate-200: #E2E8F0;
-  /* Borders */
-  --color-slate-100: #F1F5F9;
+  /* 程式碼區塊 */
+  --color-code-bg: #1E293B;
+  --color-code-fg: #F8FAFC;
+  --color-inline-code-bg: rgba(0, 0, 0, 0.05);
+
+  /* GitHub Star 膠囊與版本徽章 */
+  --color-pill-bg: #1E293B;
+  --color-pill-bg-hover: #000000;
+  --color-pill-fg: #FFFFFF;
+  --color-badge-bg: #F1F5F9;
+  --color-badge-bg-hover: #E2E8F0;
+  --color-badge-fg: #475569;
+
+  /* 複製成功 */
+  --color-success-bg: #DCFCE7;
+  --color-success-fg: #166534;
+  --color-success-border: #BBF7D0;
+
+  /* api.html 的 GitHub Markdown 覆寫（表格、引言、分隔線） */
+  --color-md-row: #FFFFFF;
+  --color-md-row-alt: #F6F8FA;
+  --color-md-border: #D0D7DE;
+  --color-md-muted: #656D76;
+
+  /* 舊名稱別名（utility class 與既有規則沿用，不要再新增使用） */
+  --color-sand-50: var(--color-page);
+  --color-slate-900: var(--color-text);
+  --color-slate-600: var(--color-text-body);
+  --color-slate-500: var(--color-text-muted);
+  --color-slate-200: var(--color-border);
+  --color-slate-100: var(--color-surface-muted);
+  --color-primary-light: var(--color-primary-soft);
+  --color-accent-light: var(--color-accent-soft);
+  --color-weekend: var(--color-weekend-fg);
+  --color-weekend-light: var(--color-accent-soft);
+  --color-holiday-text: var(--color-accent-fg);
+  --color-workday-text: var(--color-makeup-fg);
+  --color-brown-700: var(--color-strategy-fg);
 
   /* Typography */
   --font-sans-tc: 'Noto Sans TC', sans-serif;
@@ -52,6 +140,10 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-flat: 0 4px 0px rgba(0, 0, 0, 0.05);
+  --shadow-flat-hover: 0 6px 0px rgba(0, 0, 0, 0.08);
+  --shadow-social: 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+  --shadow-social-hover: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
 
   /* Radius */
   --radius-sm: 0.375rem;
@@ -61,6 +153,143 @@
 
   /* Animation */
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 深色主題：只覆寫會變的語意 token；與淺色相同的（實色藍／紅底、棕色方塊、最划算標籤）不重複列。
+   下面兩個區塊的內容必須完全一樣——第一個是「自動」跟著系統，第二個是使用者在工具列手動選「深色」；
+   純 CSS 沒辦法共用一個宣告區塊，改其中一個時記得同步另一個。 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-page: #0F172A;
+    --color-page-transparent: rgba(15, 23, 42, 0);
+    --color-bg: #0F172A;
+    --page-gradient: none;
+    --color-surface: #1E293B;
+    --color-surface-raised: #283548;
+    --color-surface-glass: rgba(30, 41, 59, 0.85);
+    --color-surface-muted: #334155;
+    --color-header-bg: rgba(15, 23, 42, 0.8);
+    --color-toolbar-bg: rgba(15, 23, 42, 0.88);
+    --color-days-header-bg: rgba(255, 255, 255, 0.03);
+    --color-glass-border: rgba(255, 255, 255, 0.08);
+    --color-glass-border-strong: rgba(255, 255, 255, 0.1);
+    --color-text: #F1F5F9;
+    --color-text-body: #CBD5E1;
+    --color-text-muted: #94A3B8;
+    --color-border: #334155;
+    --color-focus: #93C5FD;
+    --color-primary: #60A5FA;
+    --color-primary-fg: #93C5FD;
+    --color-primary-soft: rgba(96, 165, 250, 0.16);
+    --color-accent: #F87171;
+    --color-accent-fg: #FCA5A5;
+    --color-accent-soft: rgba(248, 113, 113, 0.16);
+    --color-weekend-fg: #FCA5A5;
+    --color-hero-bg: linear-gradient(135deg, #2B1D22 0%, #2A2219 100%);
+    --color-hero-border: rgba(248, 113, 113, 0.28);
+    --color-makeup-fg: #93C5FD;
+    --color-makeup-soft: rgba(96, 165, 250, 0.16);
+    --color-today-ring: rgba(96, 165, 250, 0.75);
+    --color-today-ring-red: rgba(248, 113, 113, 0.75);
+    --color-holiday-dot: #F87171;
+    --color-makeup-dot: #60A5FA;
+    --color-brown-100: #3D322C;
+    --color-strategy-fg: #DCC3B6;
+    --color-strategy-bg: #241C18;
+    --color-strategy-border: #3A2D26;
+    --color-inverse-bg: #334155;
+    --color-inverse-fg: #F8FAFC;
+    --color-code-bg: #0B1120;
+    --color-code-fg: #E2E8F0;
+    --color-inline-code-bg: rgba(255, 255, 255, 0.08);
+    --color-pill-bg: #30363D;
+    --color-pill-bg-hover: #3D444D;
+    --color-pill-fg: #F0F6FC;
+    --color-badge-bg: #334155;
+    --color-badge-bg-hover: #475569;
+    --color-badge-fg: #CBD5E1;
+    --color-success-bg: rgba(34, 197, 94, 0.18);
+    --color-success-fg: #86EFAC;
+    --color-success-border: rgba(34, 197, 94, 0.4);
+    --color-md-row: #1E293B;
+    --color-md-row-alt: #243044;
+    --color-md-border: #3B4A61;
+    --color-md-muted: #94A3B8;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.45), 0 4px 6px -4px rgb(0 0 0 / 0.45);
+    --shadow-flat: 0 4px 0px rgba(0, 0, 0, 0.35);
+    --shadow-flat-hover: 0 6px 0px rgba(0, 0, 0, 0.45);
+    --shadow-social: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-social-hover: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-page: #0F172A;
+  --color-page-transparent: rgba(15, 23, 42, 0);
+  --color-bg: #0F172A;
+  --page-gradient: none;
+  --color-surface: #1E293B;
+  --color-surface-raised: #283548;
+  --color-surface-glass: rgba(30, 41, 59, 0.85);
+  --color-surface-muted: #334155;
+  --color-header-bg: rgba(15, 23, 42, 0.8);
+  --color-toolbar-bg: rgba(15, 23, 42, 0.88);
+  --color-days-header-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-border-strong: rgba(255, 255, 255, 0.1);
+  --color-text: #F1F5F9;
+  --color-text-body: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-border: #334155;
+  --color-focus: #93C5FD;
+  --color-primary: #60A5FA;
+  --color-primary-fg: #93C5FD;
+  --color-primary-soft: rgba(96, 165, 250, 0.16);
+  --color-accent: #F87171;
+  --color-accent-fg: #FCA5A5;
+  --color-accent-soft: rgba(248, 113, 113, 0.16);
+  --color-weekend-fg: #FCA5A5;
+  --color-hero-bg: linear-gradient(135deg, #2B1D22 0%, #2A2219 100%);
+  --color-hero-border: rgba(248, 113, 113, 0.28);
+  --color-makeup-fg: #93C5FD;
+  --color-makeup-soft: rgba(96, 165, 250, 0.16);
+  --color-today-ring: rgba(96, 165, 250, 0.75);
+  --color-today-ring-red: rgba(248, 113, 113, 0.75);
+  --color-holiday-dot: #F87171;
+  --color-makeup-dot: #60A5FA;
+  --color-brown-100: #3D322C;
+  --color-strategy-fg: #DCC3B6;
+  --color-strategy-bg: #241C18;
+  --color-strategy-border: #3A2D26;
+  --color-inverse-bg: #334155;
+  --color-inverse-fg: #F8FAFC;
+  --color-code-bg: #0B1120;
+  --color-code-fg: #E2E8F0;
+  --color-inline-code-bg: rgba(255, 255, 255, 0.08);
+  --color-pill-bg: #30363D;
+  --color-pill-bg-hover: #3D444D;
+  --color-pill-fg: #F0F6FC;
+  --color-badge-bg: #334155;
+  --color-badge-bg-hover: #475569;
+  --color-badge-fg: #CBD5E1;
+  --color-success-bg: rgba(34, 197, 94, 0.18);
+  --color-success-fg: #86EFAC;
+  --color-success-border: rgba(34, 197, 94, 0.4);
+  --color-md-row: #1E293B;
+  --color-md-row-alt: #243044;
+  --color-md-border: #3B4A61;
+  --color-md-muted: #94A3B8;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.45), 0 4px 6px -4px rgb(0 0 0 / 0.45);
+  --shadow-flat: 0 4px 0px rgba(0, 0, 0, 0.35);
+  --shadow-flat-hover: 0 6px 0px rgba(0, 0, 0, 0.45);
+  --shadow-social: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-social-hover: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
 }
 
 /* Base Styles */
@@ -77,9 +306,7 @@ html {
 body {
   font-family: var(--font-sans-tc);
   background-color: var(--color-bg);
-  background-image:
-    radial-gradient(at 0% 0%, hsla(217, 100%, 96%, 1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(28, 100%, 95%, 1) 0px, transparent 50%);
+  background-image: var(--page-gradient);
   background-attachment: fixed;
   color: var(--color-slate-600);
   line-height: 1.6;
@@ -97,7 +324,7 @@ a {
 
 /* 鍵盤聚焦一律看得到 */
 :focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -128,7 +355,7 @@ a {
 }
 
 .text-primary {
-  color: var(--color-primary-600);
+  color: var(--color-primary-fg);
 }
 
 .bg-primary-light {
@@ -136,7 +363,8 @@ a {
 }
 
 .bg-gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  /* 品牌 logo 的漸層兩個主題都一樣，不跟著 --color-primary 變淡 */
+  background: var(--logo-gradient);
 }
 
 .font-noto {
@@ -193,10 +421,10 @@ a {
 
 /* Glassmorphism Panel */
 .glass-panel {
-  background: var(--color-surface);
+  background: var(--color-surface-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-glass-border);
   box-shadow: var(--shadow-sm);
 }
 
@@ -206,8 +434,8 @@ a {
   left: 1rem;
   top: -100px;
   z-index: 100;
-  background: var(--color-slate-900);
-  color: #fff;
+  background: var(--color-inverse-bg);
+  color: var(--color-inverse-fg);
   padding: 0.6rem 1rem;
   border-radius: var(--radius-md);
   text-decoration: none;
@@ -227,7 +455,7 @@ a {
 
 /* Header（不 sticky，捲走就捲走；常用控制在下方的 .toolbar） */
 .header {
-  background: rgba(248, 250, 252, 0.8);
+  background: var(--color-header-bg);
   border-bottom: 1px solid var(--color-slate-200);
   padding: 0.9rem 1.5rem;
 }
@@ -303,7 +531,7 @@ a {
 }
 
 .nav-link:hover {
-  color: var(--color-primary-600);
+  color: var(--color-primary-fg);
   background-color: var(--color-slate-100);
 }
 
@@ -316,7 +544,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(255, 253, 248, 0.88);
+  background: var(--color-toolbar-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-slate-200);
@@ -359,7 +587,7 @@ a {
 
 .icon-btn:hover:not(:disabled) {
   background-color: var(--color-slate-200);
-  color: var(--color-primary-600);
+  color: var(--color-primary-fg);
 }
 
 .icon-btn:disabled {
@@ -405,15 +633,27 @@ a {
 }
 
 .tool-btn[aria-pressed="true"] {
-  background: var(--color-primary-light);
-  color: var(--color-primary-600);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-fg);
 }
 
 .tool-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-primary-600);
+  background: var(--color-primary-fg);
+}
+
+/* 外觀切換：自動／淺色／深色三個圖示只顯示目前模式的那一個。
+   用 <html data-theme> 決定（head 裡的小腳本在首次繪製前就設好），不等 app.js 才對得上 */
+.theme-toggle [data-theme-icon] {
+  display: none;
+}
+
+html:not([data-theme]) .theme-toggle [data-theme-icon="auto"],
+html[data-theme="light"] .theme-toggle [data-theme-icon="light"],
+html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
+  display: block;
 }
 
 .lang-toggle {
@@ -461,8 +701,8 @@ a {
 
 .hero-card {
   position: relative;
-  background: linear-gradient(135deg, #FFF1F2 0%, #FFF7ED 100%);
-  border: 1px solid rgba(239, 68, 68, 0.18);
+  background: var(--color-hero-bg);
+  border: 1px solid var(--color-hero-border);
   border-radius: var(--radius-xl);
   padding: 1.25rem 1.4rem;
   box-shadow: var(--shadow-md);
@@ -514,16 +754,9 @@ a {
 }
 
 .hero-count {
-  background: #fff;
-  color: var(--color-slate-900);
-  border: 1px solid var(--color-slate-200);
-}
-
-.hero-tip {
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
-  color: var(--color-brown-700);
-  font-weight: 600;
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
 }
 
 .hero-note {
@@ -552,16 +785,16 @@ a {
 }
 
 .hero-btn:hover {
-  background: #1D4ED8;
+  background: var(--color-primary-700);
 }
 
 .hero-btn.secondary {
-  background: #fff;
-  color: var(--color-primary-600);
+  background: var(--color-surface);
+  color: var(--color-primary-fg);
 }
 
 .hero-btn.secondary:hover {
-  background: var(--color-primary-light);
+  background: var(--color-primary-soft);
 }
 
 .year-summary {
@@ -615,8 +848,8 @@ a {
   align-items: flex-start;
   padding: 0.65rem 0.9rem;
   border-radius: var(--radius-md);
-  background: white;
-  border: 1px solid var(--color-accent-light);
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent-soft);
   min-width: 128px;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
@@ -629,8 +862,10 @@ a {
   transform: translateY(-1px);
 }
 
-.period-card.past {
-  opacity: 0.55;
+.period-card.past .period-name,
+.period-card.past .period-days,
+.period-card.past .period-date {
+  color: var(--color-slate-500);
 }
 
 .period-name {
@@ -677,7 +912,7 @@ a {
 .strategy-section {
   margin-bottom: 2rem;
   padding: 0;
-  background: white;
+  background: var(--color-surface);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
   border: 1px dashed var(--color-slate-200);
@@ -725,10 +960,10 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr));
   gap: 1rem;
-  background-color: #FDF3E7;
+  background-color: var(--color-strategy-bg);
   padding: 1.25rem;
   border-radius: var(--radius-xl);
-  border: 4px solid #F3E0CC;
+  border: 4px solid var(--color-strategy-border);
 }
 
 .strategy-more {
@@ -743,8 +978,8 @@ a {
   padding: 0.6rem 1rem;
   border: 1px dashed var(--color-brown-600);
   border-radius: var(--radius-md);
-  background: #fff;
-  color: var(--color-brown-700);
+  background: var(--color-surface);
+  color: var(--color-strategy-fg);
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
@@ -752,16 +987,16 @@ a {
 }
 
 .strategy-more-btn:hover {
-  background: #FDF3E7;
+  background: var(--color-strategy-bg);
 }
 
 /* Cute row card */
 .strategy-new-card {
   display: flex;
   align-items: stretch;
-  background: white;
+  background: var(--color-surface);
   border-radius: 16px;
-  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-flat);
   transition: transform 0.2s, box-shadow 0.2s;
   border: 2px solid var(--color-brown-100);
   min-width: 0;
@@ -769,16 +1004,17 @@ a {
 
 .strategy-new-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-flat-hover);
 }
 
 .strategy-new-card.best {
-  border-color: #F59E0B;
+  border-color: var(--color-best);
 }
 
-.strategy-new-card.past {
-  opacity: 0.6;
-  filter: grayscale(0.4);
+.strategy-new-card.past .badge-total,
+.strategy-new-card.past .badge-range,
+.strategy-new-card.past .strategy-alt {
+  color: var(--color-slate-500);
 }
 
 /* Left Label (Brown Box) */
@@ -818,8 +1054,8 @@ a {
 }
 
 .strategy-flag.best {
-  background: #FEF3C7;
-  color: #92400E;
+  background: var(--color-best-flag-bg);
+  color: var(--color-best-flag-fg);
 }
 
 .strategy-flag.past {
@@ -874,8 +1110,8 @@ a {
 }
 
 .cal-body {
-  background-color: white;
-  border: 1px solid var(--color-slate-200);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
   border-top: none;
   font-size: 1.05rem;
   border-bottom-left-radius: 4px;
@@ -897,12 +1133,12 @@ a {
 }
 
 .cal-day-col.workday .cal-body {
-  color: var(--color-workday-text);
-  background-color: var(--color-primary-light);
+  color: var(--color-makeup-fg);
+  background-color: var(--color-makeup-soft);
 }
 
 .cal-day-col.is-today .cal-body {
-  box-shadow: inset 0 0 0 2px var(--color-slate-900);
+  box-shadow: inset 0 0 0 2px var(--color-text);
 }
 
 /* Festival Tag below column：static、超出就省略號 */
@@ -932,8 +1168,8 @@ a {
   justify-content: center;
   text-align: center;
   gap: 0.1rem;
-  border-left: 2px dashed var(--color-slate-200);
-  background-color: white;
+  border-left: 2px dashed var(--color-border);
+  background-color: var(--color-surface);
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
   min-width: 128px;
@@ -989,11 +1225,11 @@ a {
 }
 
 .legend-dot.holiday {
-  background-color: var(--color-accent-600);
+  background-color: var(--color-holiday-dot);
 }
 
 .legend-dot.workday {
-  background-color: var(--color-primary-600);
+  background-color: var(--color-makeup-dot);
 }
 
 /* Loading */
@@ -1048,17 +1284,17 @@ a {
   align-items: center;
   min-height: 40px;
   padding: 0.45rem 1rem;
-  border: 1px solid var(--color-slate-200);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: #fff;
-  color: var(--color-slate-900);
+  background: var(--color-surface);
+  color: var(--color-text);
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn:hover {
-  background: var(--color-slate-100);
+  background: var(--color-surface-muted);
 }
 
 .btn-primary {
@@ -1068,7 +1304,7 @@ a {
 }
 
 .btn-primary:hover {
-  background: #1D4ED8;
+  background: var(--color-primary-700);
 }
 
 /* Calendar Grid */
@@ -1079,9 +1315,9 @@ a {
 }
 
 .month-card {
-  background: var(--color-surface);
+  background: var(--color-surface-glass);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-glass-border-strong);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -1096,7 +1332,7 @@ a {
 
 .month-card.current {
   border: 2px solid var(--color-primary);
-  box-shadow: 0 0 0 4px var(--color-primary-light), var(--shadow-md);
+  box-shadow: 0 0 0 4px var(--color-primary-soft), var(--shadow-md);
 }
 
 .month-card.flash {
@@ -1152,8 +1388,8 @@ a {
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
   padding: 0.6rem 0.75rem;
-  background: rgba(248, 250, 252, 0.5);
-  border-bottom: 1px solid var(--color-slate-200);
+  background: var(--color-days-header-bg);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .day-label {
@@ -1233,8 +1469,8 @@ a {
 }
 
 .day-cell.makeup {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-600);
+  background-color: var(--color-makeup-soft);
+  color: var(--color-primary-fg);
   font-weight: 600;
 }
 
@@ -1245,28 +1481,24 @@ a {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--color-primary-600);
+  background: var(--color-primary-fg);
 }
 
 .day-cell.today {
-  background-color: var(--color-primary-600);
-  color: white;
+  background-color: var(--color-today-bg);
+  color: var(--color-today-fg);
   font-weight: 700;
   border-radius: var(--radius-sm);
   z-index: 5;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 0 0 3px var(--color-today-ring);
 }
 
-.day-cell.today.weekend {
-  background-color: var(--color-weekend);
-  color: white;
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
-}
-
+/* 今天剛好是週末／假日：底色用實色紅（兩個主題都一樣），白字對比 4.8:1 */
+.day-cell.today.weekend,
 .day-cell.today.holiday {
   background-color: var(--color-accent-600);
-  color: white;
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+  color: var(--color-today-fg);
+  box-shadow: 0 0 0 3px var(--color-today-ring-red);
 }
 
 .day-cell.today .lunar-date,
@@ -1281,7 +1513,7 @@ a {
 .holiday-dot {
   width: 4px;
   height: 4px;
-  background-color: var(--color-accent-600);
+  background-color: var(--color-holiday-dot);
   border-radius: 50%;
   position: absolute;
   bottom: 4px;
@@ -1290,8 +1522,8 @@ a {
 /* Tooltip */
 .tooltip {
   position: fixed;
-  background-color: var(--color-slate-900);
-  color: white;
+  background-color: var(--color-inverse-bg);
+  color: var(--color-inverse-fg);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-md);
   font-size: 0.875rem;
@@ -1319,12 +1551,12 @@ a {
 }
 
 .tooltip-date {
-  color: #CBD5E1;
+  color: var(--color-inverse-muted);
   font-size: 0.75rem;
 }
 
 .tooltip-lunar {
-  color: #CBD5E1;
+  color: var(--color-inverse-muted);
   font-size: 0.75rem;
   margin-top: 0.25rem;
 }
@@ -1335,8 +1567,8 @@ a {
   left: 50%;
   bottom: 1.5rem;
   transform: translateX(-50%) translateY(20px);
-  background: var(--color-slate-900);
-  color: #fff;
+  background: var(--color-inverse-bg);
+  color: var(--color-inverse-fg);
   padding: 0.6rem 1.1rem;
   border-radius: 999px;
   font-size: 0.875rem;
@@ -1394,7 +1626,7 @@ a {
   gap: 0.6rem;
   padding: 1.25rem;
   border-radius: var(--radius-lg);
-  background: #fff;
+  background: var(--color-surface);
   min-width: 0;
 }
 
@@ -1411,8 +1643,8 @@ a {
   font-weight: 700;
   padding: 0.1rem 0.5rem;
   border-radius: 999px;
-  background: var(--color-primary-light);
-  color: var(--color-primary-600);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-fg);
 }
 
 .dev-card p {
@@ -1442,8 +1674,8 @@ a {
   min-width: 0;
   margin: 0;
   padding: 0.6rem 0.75rem;
-  background: var(--color-slate-900);
-  color: #F8FAFC;
+  background: var(--color-code-bg);
+  color: var(--color-code-fg);
   border-radius: var(--radius-sm);
   font-size: 0.78rem;
   line-height: 1.5;
@@ -1457,10 +1689,10 @@ a {
   min-width: var(--touch);
   min-height: var(--touch);
   padding: 0 0.75rem;
-  border: 1px solid var(--color-slate-200);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: #fff;
-  color: var(--color-slate-600);
+  background: var(--color-surface);
+  color: var(--color-text-body);
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
@@ -1468,14 +1700,14 @@ a {
 }
 
 .copy-btn:hover {
-  background: var(--color-slate-100);
-  color: var(--color-slate-900);
+  background: var(--color-surface-muted);
+  color: var(--color-text);
 }
 
 .copy-btn.is-done {
-  background: #DCFCE7;
-  color: #166534;
-  border-color: #BBF7D0;
+  background: var(--color-success-bg);
+  color: var(--color-success-fg);
+  border-color: var(--color-success-border);
 }
 
 .dev-links {
@@ -1491,7 +1723,7 @@ a {
 .noscript-box a,
 .faq-item a,
 #faqLangNote a {
-  color: var(--color-primary-600);
+  color: var(--color-primary-fg);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -1513,8 +1745,8 @@ a {
   min-height: 40px;
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  background: var(--color-slate-900);
-  color: #fff;
+  background: var(--color-pill-bg);
+  color: var(--color-pill-fg);
   font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
@@ -1522,7 +1754,7 @@ a {
 }
 
 .star-link:hover {
-  background: #000;
+  background: var(--color-pill-bg-hover);
 }
 
 /* FAQ */
@@ -1596,11 +1828,11 @@ a {
   width: var(--touch);
   height: var(--touch);
   border-radius: 50%;
-  color: var(--color-slate-600);
-  background: white;
-  border: 1px solid var(--color-slate-200);
+  color: var(--color-text-body);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-social);
   text-decoration: none;
 }
 
@@ -1613,8 +1845,8 @@ a {
 .social-tooltip {
   position: absolute;
   right: calc(100% + 12px);
-  background: var(--color-slate-900);
-  color: white;
+  background: var(--color-inverse-bg);
+  color: var(--color-inverse-fg);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.75rem;
@@ -1658,7 +1890,7 @@ a {
 
 .social-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-social-hover);
 }
 
 .social-btn:hover svg {
@@ -1678,7 +1910,7 @@ a {
   transform: translateY(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent transparent var(--color-slate-900);
+  border-color: transparent transparent transparent var(--color-inverse-bg);
 }
 
 /* GitHub Markdown Overrides for Brand Consistency (api.html) */
@@ -1688,7 +1920,8 @@ a {
 }
 
 .markdown-body a {
-  color: var(--color-primary) !important;
+  /* 連結字用 -fg（淺色 #2563EB 5.2:1）；原本的 #3B82F6 放在白底只有 3.7:1，不到 AA */
+  color: var(--color-primary-fg) !important;
   text-decoration: none !important;
   transition: all var(--transition);
 }
@@ -1703,20 +1936,49 @@ a {
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  color: var(--color-slate-900) !important;
-  border-bottom-color: var(--color-slate-200) !important;
+  color: var(--color-text) !important;
+  border-bottom-color: var(--color-border) !important;
+}
+
+.markdown-body h6,
+.markdown-body blockquote {
+  color: var(--color-md-muted) !important;
+}
+
+.markdown-body blockquote {
+  border-left-color: var(--color-md-border) !important;
+}
+
+.markdown-body hr {
+  background-color: var(--color-md-border) !important;
+}
+
+/* 表格：github-markdown-css 5.5 寫死了白底／灰底，深色要整組換掉 */
+.markdown-body table tr {
+  background-color: var(--color-md-row) !important;
+  border-top-color: var(--color-md-border) !important;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: var(--color-md-row-alt) !important;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  border-color: var(--color-md-border) !important;
 }
 
 .markdown-body code {
-  background-color: rgba(0, 0, 0, 0.05) !important;
-  color: var(--color-accent) !important;
+  /* 行內程式碼用 -fg 紅（淺色 #B91C1C 5.3:1）；原本的 #EF4444 只有 3.8:1 */
+  background-color: var(--color-inline-code-bg) !important;
+  color: var(--color-accent-fg) !important;
   padding: 0.2em 0.4em !important;
   border-radius: var(--radius-sm) !important;
 }
 
 .markdown-body pre {
-  background-color: var(--color-slate-900) !important;
-  color: #F8FAFC !important;
+  background-color: var(--color-code-bg) !important;
+  color: var(--color-code-fg) !important;
   border-radius: var(--radius-lg) !important;
   padding: 1rem !important;
   overflow: auto !important;
@@ -1869,7 +2131,7 @@ a {
     bottom: 0.25rem;
     width: 48px;
     pointer-events: none;
-    background: linear-gradient(to right, rgba(255, 253, 248, 0), var(--color-sand-50));
+    background: linear-gradient(to right, var(--color-page-transparent), var(--color-page));
     opacity: 0;
     transition: opacity var(--transition);
   }
@@ -1950,7 +2212,7 @@ a {
 
   .strategy-right-badge {
     border-left: none;
-    border-top: 2px dashed var(--color-slate-200);
+    border-top: 2px dashed var(--color-border);
     width: 100%;
     flex-direction: row;
     justify-content: center;
@@ -2007,14 +2269,28 @@ a {
     display: none;
   }
 
-  /* 窄螢幕（含 360px 的 Android）：工具列再縮一點，英文 "Today" 也放得下 */
+  /* 窄螢幕（含 360px 的 Android）：工具列再縮一點，英文 "Today" 也放得下。
+     多了外觀切換鈕之後 6 顆按鈕要塞進 390px，點擊區縮到 40px、間距歸零才不會橫向溢出 */
   .toolbar {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
+  .toolbar-actions {
+    gap: 0;
+  }
+
+  .year-selector {
+    padding: 0;
+  }
+
+  .icon-btn {
+    width: 40px;
+  }
+
   .tool-btn {
-    padding: 0.4rem 0.3rem;
+    min-width: 40px;
+    padding: 0.4rem 0.2rem;
   }
 
   .lang-sep {
@@ -2023,8 +2299,9 @@ a {
 }
 
 @media (max-width: 374px) {
-  .icon-btn {
-    width: 40px;
+  /* 360px：「今天」前面的小圓點拿掉，英文 "Today" 才放得下 */
+  .tool-dot {
+    display: none;
   }
 }
 

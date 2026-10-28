@@ -4,6 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 外觀：沿用首頁存在 localStorage 的選擇，在首次繪製前套到 <html>；沒選過就跟隨系統 -->
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('twh-theme');
+                if (theme === 'light' || theme === 'dark') document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) { /* 儲存空間被擋就維持自動 */ }
+        })();
+    </script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F8FAFC">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F172A">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRPQC1GM0S"></script>
@@ -43,7 +55,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=6">
     <!-- GitHub Markdown CSS -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css">
@@ -96,7 +108,7 @@
         <!-- Main Content -->
         <main class="main-content max-w-3xl" style="margin: 0 auto;">
             <section class="glass-panel p-8"
-                style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: 2.5rem;">
+                style="background: var(--color-surface); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: 2.5rem;">
 
                 <!-- Loading State -->
                 <div id="readmeLoadingState" class="loading-container">
@@ -162,7 +174,7 @@
                 readmeContent.classList.remove('hidden');
             } catch (error) {
                 console.error('Error fetching README:', error);
-                loadingState.innerHTML = '<p class="text-red-500 font-noto" style="color: #ef4444; text-align: center;">無法載入文件，請稍後再試或直接前往 <a href="https://github.com/imsyuan/taiwan-holidays" target="_blank" class="text-primary hover:underline" style="text-decoration: underline;">GitHub</a> 查看。</p>';
+                loadingState.innerHTML = '<p class="text-red-500 font-noto" style="color: var(--color-accent-fg); text-align: center;">無法載入文件，請稍後再試或直接前往 <a href="https://github.com/imsyuan/taiwan-holidays" target="_blank" class="text-primary hover:underline" style="text-decoration: underline;">GitHub</a> 查看。</p>';
             }
         });
     </script>

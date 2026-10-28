@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         languageToggle: document.getElementById('languageToggle'),
         langToggleBtn: document.getElementById('langToggleBtn'),
         lunarToggleBtn: document.getElementById('lunarToggleBtn'),
+        themeToggleBtn: document.getElementById('themeToggleBtn'),
         jumpTodayBtn: document.getElementById('jumpTodayBtn'),
         shareBtn: document.getElementById('shareBtn'),
         faqSection: document.getElementById('faq'),
@@ -35,13 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialTitle = document.title;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // 外觀：auto（跟隨系統）→ light → dark 循環。head 裡的小腳本已在首次繪製前把存下的選擇
+    // 套到 <html data-theme>，這裡只接手按鈕與後續切換；localStorage 被擋時只套用在這一次。
+    const THEME_KEY = 'twh-theme';
+    const THEME_ORDER = ['auto', 'light', 'dark'];
+    const THEME_LABEL_KEY = { auto: 'themeAuto', light: 'themeLight', dark: 'themeDark' };
+    const THEME_COLOR = { light: '#FFFDF8', dark: '#0F172A' };
+    const darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
     // State
     let state = {
         currentYear: todayYear,
         holidaysData: [],
         availableYears: [],
         lunarVisible: true,
-        strategiesExpanded: false
+        strategiesExpanded: false,
+        themeMode: THEME_ORDER.includes(document.documentElement.getAttribute('data-theme'))
+            ? document.documentElement.getAttribute('data-theme')
+            : 'auto'
     };
 
     // `${lang}:${year}` -> data array；切換語言／年份不重抓
@@ -63,6 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
             jumpTodayTitle: "跳到今天所在的月份",
             lunarToggleText: "農民曆",
             lunarToggle: "顯示農民曆",
+            themeAuto: "自動",
+            themeLight: "淺色",
+            themeDark: "深色",
+            themeAria: "外觀：${mode}，點一下改成${next}",
             langToggle: "Switch to English",
             share: "分享",
             shareAria: "分享這個頁面",
@@ -78,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             strategySubUpcoming: "接下來 ${n} 個請假機會，依日期排序",
             strategySubPast: "這一年的 ${n} 則攻略都已過期",
             showAll: "看全年 ${n} 則",
-            showAllWithPast: "看全年 ${n} 則（含已過 ${past} 則）",
             showLess: "收合，只看接下來的",
             best: "最划算",
             past: "已過",
@@ -114,10 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
             heroRemaining: "還剩 ${days} 天",
             heroDays: "連休 ${days} 天",
             heroSingleDay: "放假 1 天",
-            heroTip: "請 ${leave} 天可連休 ${total} 天（${range}）",
             heroViewMonth: "看當月行事曆",
             heroSwitchYear: "切換到 ${year} 年",
-            heroNextYearOut: "${year} 年行事曆已公告",
             heroNoMore: "今年的國定假日都放完了，先看明年的吧",
             devTitle: "給開發者與 AI 的入口",
             devSub: "同一份政府公告資料，三種拿法：裸 JSON、MCP 工作日計算引擎、給 LLM 讀的說明文件。免費、免金鑰。",
@@ -147,6 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
             jumpTodayTitle: "Jump to the current month",
             lunarToggleText: "Lunar",
             lunarToggle: "Show lunar calendar",
+            themeAuto: "Auto",
+            themeLight: "Light",
+            themeDark: "Dark",
+            themeAria: "Appearance: ${mode}. Click to switch to ${next}",
             langToggle: "切換成中文",
             share: "Share",
             shareAria: "Share this page",
@@ -162,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             strategySubUpcoming: "${n} upcoming opportunities, in date order",
             strategySubPast: "All ${n} strategies for this year have passed",
             showAll: "Show all ${n}",
-            showAllWithPast: "Show all ${n} (${past} past)",
             showLess: "Show upcoming only",
             best: "Best value",
             past: "Past",
@@ -198,10 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
             heroRemaining: "${days} day(s) left",
             heroDays: "${days} days off",
             heroSingleDay: "1 day off",
-            heroTip: "Take ${leave} day(s) leave for ${total} days off (${range})",
             heroViewMonth: "View that month",
             heroSwitchYear: "Switch to ${year}",
-            heroNextYearOut: "${year} calendar is out",
             heroNoMore: "No public holidays left this year — here is next year's first one",
             devTitle: "For developers and AI agents",
             devSub: "The same government-published data, three ways: raw JSON, an MCP workday engine, and LLM-ready docs. Free, no API key.",
@@ -354,6 +368,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // 外觀切換：自動 → 淺色 → 深色 → 自動
+        if (elements.themeToggleBtn) {
+            elements.themeToggleBtn.addEventListener('click', () => {
+                const next = THEME_ORDER[(THEME_ORDER.indexOf(state.themeMode) + 1) % THEME_ORDER.length];
+                applyTheme(next);
+            });
+        }
+
+        // 「自動」模式下系統切換深淺色時，瀏覽器工具列顏色要跟著換（舊版 Safari 只有 addListener）
+        const onSchemeChange = () => syncThemeChrome();
+        if (darkMedia.addEventListener) darkMedia.addEventListener('change', onSchemeChange);
+        else if (darkMedia.addListener) darkMedia.addListener(onSchemeChange);
+
         // Language toggle（明確的 中 / EN 文字切換）
         if (elements.langToggleBtn) {
             elements.langToggleBtn.addEventListener('click', () => {
@@ -415,6 +442,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 套用外觀：light / dark 寫到 <html data-theme>；auto 拿掉屬性，交給 prefers-color-scheme
+    function applyTheme(mode) {
+        state.themeMode = THEME_ORDER.includes(mode) ? mode : 'auto';
+        const root = document.documentElement;
+        if (state.themeMode === 'auto') root.removeAttribute('data-theme');
+        else root.setAttribute('data-theme', state.themeMode);
+        try {
+            if (state.themeMode === 'auto') localStorage.removeItem(THEME_KEY);
+            else localStorage.setItem(THEME_KEY, state.themeMode);
+        } catch (e) { /* localStorage 不可用時只套用在這一次 */ }
+        syncThemeChrome();
+    }
+
+    // 按鈕文字／aria-label（依目前語言）與 <meta name="theme-color"> 跟著實際生效的主題走
+    function syncThemeChrome() {
+        const mode = state.themeMode;
+        const effectiveDark = mode === 'dark' || (mode === 'auto' && darkMedia.matches);
+        document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+            meta.setAttribute('content', effectiveDark ? THEME_COLOR.dark : THEME_COLOR.light);
+        });
+
+        const btn = elements.themeToggleBtn;
+        if (!btn) return;
+        const next = THEME_ORDER[(THEME_ORDER.indexOf(mode) + 1) % THEME_ORDER.length];
+        btn.setAttribute('aria-label', t('themeAria', { mode: t(THEME_LABEL_KEY[mode]), next: t(THEME_LABEL_KEY[next]) }));
+        const label = btn.querySelector('[data-theme-label]');
+        if (label) label.textContent = t(THEME_LABEL_KEY[mode]);
+    }
+
     // 語言切換時連 <html lang>、document.title、按鈕狀態、FAQ 一起換
     function applyLanguageChrome() {
         const lang = currentLang();
@@ -434,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updateStaticTexts();
+        syncThemeChrome();
     }
 
     async function changeYear(year) {
@@ -821,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderLeaveStrategies(strategies, year);
 
         // 畫面最上方的「下一個連假」
-        renderHero(runs, strategies, year);
+        renderHero(runs, year);
     }
 
     // 把一段 holiday run 或攻略裡的節日名稱挑一個最有代表性的出來
@@ -910,11 +967,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.classList.remove('hidden');
 
-        // 手機的橫向捲動列：直接捲到第一個還沒過的連假
-        const firstUpcoming = container.querySelector('.period-card:not(.past)');
-        if (firstUpcoming && container.scrollWidth > container.clientWidth) {
-            container.scrollLeft = Math.max(0, firstUpcoming.offsetLeft - container.offsetLeft - 8);
-        }
         updateChipScrollHint();
     }
 
@@ -1078,9 +1130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const upcoming = strategies.filter(s => !s.isPast);
         const past = strategies.filter(s => s.isPast);
 
-        // 預設只放「接下來的前 3 則」；整年都過了（看舊年份）就放前 3 則灰掉的
+        // 預設放前 3 則：接下來的排前面，不足 3 則就用已過的補滿，所以每一年看起來都一樣
         const PRIMARY_COUNT = 3;
-        const primary = upcoming.length ? upcoming.slice(0, PRIMARY_COUNT) : strategies.slice(0, PRIMARY_COUNT);
+        const primary = [...upcoming, ...past].slice(0, PRIMARY_COUNT);
         const rest = strategies.filter(s => !primary.includes(s));
 
         // 「最划算」：接下來的攻略裡效率最高的（至少要有兩則才有比較的意義）
@@ -1100,7 +1152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = elements.strategyMoreBtn;
         btn.hidden = rest.length === 0;
         btn.dataset.total = strategies.length;
-        btn.dataset.past = past.length;
         syncStrategyMore();
     }
 
@@ -1108,26 +1159,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = elements.strategyMoreBtn;
         const more = elements.leaveStrategiesMore;
         const total = Number(btn.dataset.total || 0);
-        const past = Number(btn.dataset.past || 0);
         more.hidden = !state.strategiesExpanded;
         btn.setAttribute('aria-expanded', String(state.strategiesExpanded));
         if (state.strategiesExpanded) {
             btn.textContent = t('showLess');
         } else {
-            btn.textContent = (past > 0 && past < total) ? t('showAllWithPast', { n: total, past }) : t('showAll', { n: total });
+            btn.textContent = t('showAll', { n: total });
         }
     }
 
     // 畫面最上方：下一個連假（以「今天」為準）。看過去的年份就不顯示；
     // 今年的假都放完了就抓明年的第一個來顯示（年底不會空著）。
-    function renderHero(runs, strategies, year) {
+    function renderHero(runs, year) {
         const card = elements.nextHolidayCard;
         card.classList.add('hidden');
         if (year < todayYear) return;
 
         const next = runs.find(r => r.hasNational && r.endKey >= todayKey);
         if (next) {
-            paintHero(next, strategies, year, { fromYear: year });
+            paintHero(next, year, { fromYear: year });
             return;
         }
 
@@ -1138,11 +1188,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextRuns = findHolidayRuns(data);
             const nextRun = nextRuns.find(r => r.hasNational && r.endKey >= todayKey);
             if (!nextRun) return;
-            paintHero(nextRun, findLeaveStrategies(data), year, { fromYear: nextYear, noMoreThisYear: true });
+            paintHero(nextRun, year, { fromYear: nextYear, noMoreThisYear: true });
         }).catch(() => { /* 明年資料抓不到就不顯示 hero */ });
     }
 
-    function paintHero(run, strategies, viewedYear, meta) {
+    function paintHero(run, viewedYear, meta) {
         const card = elements.nextHolidayCard;
         const startDate = keyToDate(run.startKey);
         const endDate = keyToDate(run.endKey);
@@ -1162,11 +1212,6 @@ document.addEventListener('DOMContentLoaded', () => {
             countdown = t('heroCountdown', { days: diff });
         }
 
-        // 跟這段連假有關、而且還來得及請的攻略：挑最划算的一個
-        const related = strategies
-            .filter(s => !s.isPast && s.timeline.some(d => d.date >= run.startKey && d.date <= run.endKey))
-            .sort((a, b) => b.efficiency - a.efficiency || a.leaveDays - b.leaveDays)[0];
-
         const startParts = parseDateString(run.startKey);
         const yearBadge = meta.fromYear !== viewedYear || meta.fromYear !== todayYear ? ` · ${meta.fromYear}` : '';
 
@@ -1178,14 +1223,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="hero-days">${run.days === 1 ? t('heroSingleDay') : t('heroDays', { days: run.days })}</span>
                 <span class="hero-count">${escapeHtml(countdown)}</span>
             </div>
-            ${related ? `<div class="hero-tip font-noto"><span aria-hidden="true">💡</span> ${escapeHtml(t('heroTip', { leave: related.leaveDays, total: related.totalDays, range: related.leaveRange }))}</div>` : ''}
             ${meta.noMoreThisYear ? `<div class="hero-note font-noto">${escapeHtml(t('heroNoMore'))}</div>` : ''}
             <div class="hero-actions">
                 <button type="button" class="hero-btn font-noto" data-jump-year="${meta.fromYear}" data-jump-month="${startParts.month - 1}">${t('heroViewMonth')}</button>
                 ${meta.fromYear !== viewedYear ? `<button type="button" class="hero-btn secondary font-noto" data-switch-year="${meta.fromYear}">${t('heroSwitchYear', { year: meta.fromYear })}</button>` : ''}
-                ${meta.fromYear === viewedYear && viewedYear === todayYear && state.availableYears.includes(viewedYear + 1)
-                    ? `<button type="button" class="hero-btn secondary font-noto" data-switch-year="${viewedYear + 1}">${t('heroNextYearOut', { year: viewedYear + 1 })} →</button>`
-                    : ''}
             </div>
         `;
 
