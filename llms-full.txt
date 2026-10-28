@@ -286,7 +286,7 @@ TravelWindow = { tripRange: { start, end }, tripLength: number, leaveDates: stri
 
 ### 4.4 使用 MCP 時的陷阱
 
-- **超出資料範圍時，`count_workdays` 不會報錯**。查詢尚無資料的年度（例如在資料只到 2026 時查 2027-01）會得到 `{ "workdays": 0, "holidays": 0, "makeupWorkdays": 0 }`。回答使用者前請確認區間落在可用年度內（可用年度見 `GET /` 的 `availableYears`），否則不要把 0 當成答案。
+- **超出資料範圍時會回報 `year_unavailable`**。`count_workdays`、`next_makeup_workday` 查詢的區間涵蓋尚無資料的年度（例如資料只到 2027 時查 2028-01）時，回傳 `{ "error": "year_unavailable", "availableYears": [...] }`，不會把 0 當成答案。可用年度也可見 `GET /` 的 `availableYears`。
 - `add_workdays` 在算到資料盡頭仍不夠天數時回 `invalid_input`（"result is beyond available calendar data"）。
 - `optimize_leave` 與 `find_travel_windows` 只在**單一年度**內計算，不會跨年接連假。
 - 回應內容是 JSON 字串，放在 MCP 工具結果的 text content 裡。

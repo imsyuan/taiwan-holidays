@@ -64,6 +64,24 @@ function sorted(calendar: Calendar): Calendar {
   return [...calendar].sort((a, b) => a.date.localeCompare(b.date));
 }
 
+// A range that touches a year with no data would otherwise silently count as zero.
+function missingYearError(
+  calendar: Calendar,
+  startC: string,
+  endC: string,
+): EngineError | null {
+  const loaded = new Set(calendar.map((d) => Number(d.date.slice(0, 4))));
+  for (let y = Number(startC.slice(0, 4)); y <= Number(endC.slice(0, 4)); y++) {
+    if (!loaded.has(y)) {
+      return {
+        error: "year_unavailable",
+        availableYears: [...loaded].sort((a, b) => a - b),
+      };
+    }
+  }
+  return null;
+}
+
 // ---- count_workdays ----
 
 export function countWorkdays(
@@ -77,6 +95,9 @@ export function countWorkdays(
   const startC = isoToCompact(start);
   const endC = isoToCompact(end);
   if (startC > endC) return invalid("start must not be after end");
+
+  const missing = missingYearError(calendar, startC, endC);
+  if (missing) return missing;
 
   let workdays = 0;
   let holidays = 0;
@@ -152,6 +173,8 @@ export function nextMakeupWorkday(
     const s = isoToCompact(range.start);
     const e = isoToCompact(range.end);
     if (s > e) return invalid("range start must not be after end");
+    const missing = missingYearError(days, s, e);
+    if (missing) return missing;
     const all = days
       .filter((d) => d.date >= s && d.date <= e && isMakeupWorkday(d))
       .map((d) => compactToIso(d.date));
@@ -161,6 +184,8 @@ export function nextMakeupWorkday(
   if (from !== undefined) {
     if (!isValidIso(from)) return invalid("from must be in YYYY-MM-DD form");
     const fromC = isoToCompact(from);
+    const missing = missingYearError(days, fromC, fromC);
+    if (missing) return missing;
     const hit = days.find((d) => d.date >= fromC && isMakeupWorkday(d));
     return { next: hit ? compactToIso(hit.date) : null };
   }

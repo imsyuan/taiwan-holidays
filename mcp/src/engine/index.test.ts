@@ -55,6 +55,17 @@ describe("Count workdays in a date range", () => {
       error: "invalid_input",
     });
   });
+  it("reports year_unavailable instead of zeros for a year with no data", () => {
+    expect(countWorkdays(cal2025, "2099-01-01", "2099-01-31")).toEqual({
+      error: "year_unavailable",
+      availableYears: [2025],
+    });
+  });
+  it("reports year_unavailable when a range runs into a missing year", () => {
+    expect(countWorkdays(cal2025, "2025-12-25", "2026-01-05")).toMatchObject({
+      error: "year_unavailable",
+    });
+  });
 });
 
 describe("Add workdays to a date", () => {
@@ -98,6 +109,14 @@ describe("Identify makeup workdays", () => {
     expect(nextMakeupWorkday(cal2025, {})).toMatchObject({
       error: "invalid_input",
     });
+  });
+  it("reports year_unavailable when the base date or range is in a missing year", () => {
+    expect(nextMakeupWorkday(cal2025, { from: "2099-01-01" })).toMatchObject({
+      error: "year_unavailable",
+    });
+    expect(
+      nextMakeupWorkday(cal2025, { range: { start: "2099-01-01", end: "2099-12-31" } }),
+    ).toMatchObject({ error: "year_unavailable" });
   });
 });
 
