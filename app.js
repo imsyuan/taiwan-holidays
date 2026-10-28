@@ -116,13 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize App
     async function init() {
-        // Fetch available years from GitHub API (or statically if we know them)
-        // Since we are deploying to GitHub Pages, we can't easily read the directory dynamically
-        // without a build step or an API call. A robust approach for static sites is to pre-define them
-        // or attempt to fetch up to a known range.
-
-        // For this static site, we will hardcode the available range based on the data directory (2017-2026)
-        state.availableYears = Array.from({ length: 10 }, (_, i) => 2017 + i);
+        // Available years come from data/years.json, which scripts/update_calendar.py regenerates
+        // whenever it adds a year. If the manifest can't be loaded, fall back to a known range.
+        try {
+            const res = await fetch('data/years.json');
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const manifest = await res.json();
+            state.availableYears = manifest.years.map(Number).sort((a, b) => a - b);
+            if (state.availableYears.length === 0) throw new Error('empty manifest');
+        } catch (error) {
+            console.warn('Failed to load data/years.json, using fallback range:', error);
+            state.availableYears = Array.from({ length: 11 }, (_, i) => 2017 + i);
+        }
 
         // Default to the latest year available
         const latestYear = state.availableYears[state.availableYears.length - 1];

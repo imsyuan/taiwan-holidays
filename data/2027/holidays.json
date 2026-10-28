@@ -1,0 +1,274 @@
+[
+  {
+    "date": "20270101",
+    "week": "五",
+    "isHoliday": true,
+    "description": "開國紀念日",
+    "lunar": {
+      "date": "冬月廿四",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270204",
+    "week": "四",
+    "isHoliday": true,
+    "description": "小年夜",
+    "lunar": {
+      "date": "臘月廿八",
+      "festivals": [],
+      "solarTerm": "立春"
+    }
+  },
+  {
+    "date": "20270205",
+    "week": "五",
+    "isHoliday": true,
+    "description": "農曆除夕",
+    "lunar": {
+      "date": "臘月廿九",
+      "festivals": [
+        "除夕"
+      ],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270206",
+    "week": "六",
+    "isHoliday": true,
+    "description": "春節",
+    "lunar": {
+      "date": "正月初一",
+      "festivals": [
+        "春節"
+      ],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270207",
+    "week": "日",
+    "isHoliday": true,
+    "description": "春節",
+    "lunar": {
+      "date": "正月初二",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270208",
+    "week": "一",
+    "isHoliday": true,
+    "description": "春節",
+    "lunar": {
+      "date": "正月初三",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270209",
+    "week": "二",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "正月初四",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270210",
+    "week": "三",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "正月初五",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270228",
+    "week": "日",
+    "isHoliday": true,
+    "description": "和平紀念日",
+    "lunar": {
+      "date": "正月廿三",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270301",
+    "week": "一",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "正月廿四",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270404",
+    "week": "日",
+    "isHoliday": true,
+    "description": "兒童節",
+    "lunar": {
+      "date": "二月廿八",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270405",
+    "week": "一",
+    "isHoliday": true,
+    "description": "清明節",
+    "lunar": {
+      "date": "二月廿九",
+      "festivals": [],
+      "solarTerm": "清明"
+    }
+  },
+  {
+    "date": "20270406",
+    "week": "二",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "二月三十",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270430",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "三月廿四",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270501",
+    "week": "六",
+    "isHoliday": true,
+    "description": "勞動節",
+    "lunar": {
+      "date": "三月廿五",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270609",
+    "week": "三",
+    "isHoliday": true,
+    "description": "端午節",
+    "lunar": {
+      "date": "五月初五",
+      "festivals": [
+        "端午節"
+      ],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270915",
+    "week": "三",
+    "isHoliday": true,
+    "description": "中秋節",
+    "lunar": {
+      "date": "八月十五",
+      "festivals": [
+        "中秋節"
+      ],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20270928",
+    "week": "二",
+    "isHoliday": true,
+    "description": "孔子誕辰紀念日/教師節",
+    "lunar": {
+      "date": "八月廿八",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20271010",
+    "week": "日",
+    "isHoliday": true,
+    "description": "國慶日",
+    "lunar": {
+      "date": "九月十一",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20271011",
+    "week": "一",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "九月十二",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20271025",
+    "week": "一",
+    "isHoliday": true,
+    "description": "臺灣光復暨金門古寧頭大捷紀念日",
+    "lunar": {
+      "date": "九月廿六",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20271224",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "冬月廿七",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20271225",
+    "week": "六",
+    "isHoliday": true,
+    "description": "行憲紀念日",
+    "lunar": {
+      "date": "冬月廿八",
+      "festivals": [],
+      "solarTerm": null
+    }
+  },
+  {
+    "date": "20271231",
+    "week": "五",
+    "isHoliday": true,
+    "description": "補假",
+    "lunar": {
+      "date": "臘月初四",
+      "festivals": [],
+      "solarTerm": null
+    }
+  }
+]

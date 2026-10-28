@@ -49,6 +49,7 @@ HOLIDAY_EN_MAP = {
     "和平紀念日": "Peace Memorial Day",
     "兒童節及民族掃墓節": "Children's Day & Tomb Sweeping Day",
     "兒童節": "Children's Day",
+    "清明節": "Tomb Sweeping Day",
     "民族掃墓節": "Tomb Sweeping Day",
     "端午節": "Dragon Boat Festival",
     "中秋節": "Mid-Autumn Festival",
@@ -316,6 +317,12 @@ def process_year(year, csv_content):
     save_json(en_holidays, year_dir / "holidays-en.json", "英文國定假日")
 
 
+def write_years_manifest():
+    """掃描 data/ 目錄，寫出 data/years.json（前端據此得知有哪些年份）"""
+    years = sorted(int(p.stem) for p in DATA_DIR.glob("[0-9][0-9][0-9][0-9].json"))
+    save_json({"years": years}, DATA_DIR / "years.json", "年份清單")
+
+
 def main():
     """主程式"""
     print("=" * 60)
@@ -337,6 +344,8 @@ def main():
             except Exception as e:
                 print(f"  ❌ 錯誤: {e}")
         
+        write_years_manifest()
+
         print("\n" + "=" * 60)
         print("✅ 更新完成!")
         print("=" * 60)
