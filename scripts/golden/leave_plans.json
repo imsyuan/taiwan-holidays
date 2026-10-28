@@ -1,0 +1,2292 @@
+{
+  "2026": {
+    "1": [
+      {
+        "leaveDates": [
+          "2026-01-02"
+        ],
+        "offRange": {
+          "start": "2026-01-01",
+          "end": "2026-01-04"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      }
+    ],
+    "2": [
+      {
+        "leaveDates": [
+          "2026-01-02"
+        ],
+        "offRange": {
+          "start": "2026-01-01",
+          "end": "2026-01-04"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      }
+    ],
+    "3": [
+      {
+        "leaveDates": [
+          "2026-01-02"
+        ],
+        "offRange": {
+          "start": "2026-01-01",
+          "end": "2026-01-04"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      }
+    ],
+    "4": [
+      {
+        "leaveDates": [
+          "2026-02-23",
+          "2026-02-24",
+          "2026-02-25",
+          "2026-02-26"
+        ],
+        "offRange": {
+          "start": "2026-02-14",
+          "end": "2026-03-01"
+        },
+        "totalDaysOff": 16,
+        "leaveSpent": 4,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2026-01-02"
+        ],
+        "offRange": {
+          "start": "2026-01-01",
+          "end": "2026-01-04"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2026-03-30",
+          "2026-03-31",
+          "2026-04-01",
+          "2026-04-02"
+        ],
+        "offRange": {
+          "start": "2026-03-28",
+          "end": "2026-04-06"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-04-07",
+          "2026-04-08",
+          "2026-04-09",
+          "2026-04-10"
+        ],
+        "offRange": {
+          "start": "2026-04-03",
+          "end": "2026-04-12"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24"
+        ],
+        "offRange": {
+          "start": "2026-09-19",
+          "end": "2026-09-28"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02"
+        ],
+        "offRange": {
+          "start": "2026-09-25",
+          "end": "2026-10-04"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-04-27",
+          "2026-04-28",
+          "2026-04-29",
+          "2026-04-30"
+        ],
+        "offRange": {
+          "start": "2026-04-25",
+          "end": "2026-05-03"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-06-15",
+          "2026-06-16",
+          "2026-06-17",
+          "2026-06-18"
+        ],
+        "offRange": {
+          "start": "2026-06-13",
+          "end": "2026-06-21"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08"
+        ],
+        "offRange": {
+          "start": "2026-10-03",
+          "end": "2026-10-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30"
+        ],
+        "offRange": {
+          "start": "2026-10-24",
+          "end": "2026-11-01"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-12-21",
+          "2026-12-22",
+          "2026-12-23",
+          "2026-12-24"
+        ],
+        "offRange": {
+          "start": "2026-12-19",
+          "end": "2026-12-27"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      }
+    ],
+    "5": [
+      {
+        "leaveDates": [
+          "2026-02-23",
+          "2026-02-24",
+          "2026-02-25",
+          "2026-02-26"
+        ],
+        "offRange": {
+          "start": "2026-02-14",
+          "end": "2026-03-01"
+        },
+        "totalDaysOff": 16,
+        "leaveSpent": 4,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2026-01-02"
+        ],
+        "offRange": {
+          "start": "2026-01-01",
+          "end": "2026-01-04"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2026-02-09",
+          "2026-02-10",
+          "2026-02-11",
+          "2026-02-12",
+          "2026-02-13"
+        ],
+        "offRange": {
+          "start": "2026-02-07",
+          "end": "2026-02-22"
+        },
+        "totalDaysOff": 16,
+        "leaveSpent": 5,
+        "efficiency": 3.2
+      },
+      {
+        "leaveDates": [
+          "2026-03-30",
+          "2026-03-31",
+          "2026-04-01",
+          "2026-04-02"
+        ],
+        "offRange": {
+          "start": "2026-03-28",
+          "end": "2026-04-06"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-04-07",
+          "2026-04-08",
+          "2026-04-09",
+          "2026-04-10"
+        ],
+        "offRange": {
+          "start": "2026-04-03",
+          "end": "2026-04-12"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24"
+        ],
+        "offRange": {
+          "start": "2026-09-19",
+          "end": "2026-09-28"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02"
+        ],
+        "offRange": {
+          "start": "2026-09-25",
+          "end": "2026-10-04"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 4,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2026-04-27",
+          "2026-04-28",
+          "2026-04-29",
+          "2026-04-30"
+        ],
+        "offRange": {
+          "start": "2026-04-25",
+          "end": "2026-05-03"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-06-15",
+          "2026-06-16",
+          "2026-06-17",
+          "2026-06-18"
+        ],
+        "offRange": {
+          "start": "2026-06-13",
+          "end": "2026-06-21"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08"
+        ],
+        "offRange": {
+          "start": "2026-10-03",
+          "end": "2026-10-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30"
+        ],
+        "offRange": {
+          "start": "2026-10-24",
+          "end": "2026-11-01"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-12-21",
+          "2026-12-22",
+          "2026-12-23",
+          "2026-12-24"
+        ],
+        "offRange": {
+          "start": "2026-12-19",
+          "end": "2026-12-27"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2026-03-02",
+          "2026-03-03",
+          "2026-03-04",
+          "2026-03-05",
+          "2026-03-06"
+        ],
+        "offRange": {
+          "start": "2026-02-27",
+          "end": "2026-03-08"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2026-05-04",
+          "2026-05-05",
+          "2026-05-06",
+          "2026-05-07",
+          "2026-05-08"
+        ],
+        "offRange": {
+          "start": "2026-05-01",
+          "end": "2026-05-10"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2026-06-22",
+          "2026-06-23",
+          "2026-06-24",
+          "2026-06-25",
+          "2026-06-26"
+        ],
+        "offRange": {
+          "start": "2026-06-19",
+          "end": "2026-06-28"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16"
+        ],
+        "offRange": {
+          "start": "2026-10-09",
+          "end": "2026-10-18"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23"
+        ],
+        "offRange": {
+          "start": "2026-10-17",
+          "end": "2026-10-26"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2026-01-05",
+          "2026-01-06",
+          "2026-01-07",
+          "2026-01-08",
+          "2026-01-09"
+        ],
+        "offRange": {
+          "start": "2026-01-03",
+          "end": "2026-01-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-01-12",
+          "2026-01-13",
+          "2026-01-14",
+          "2026-01-15",
+          "2026-01-16"
+        ],
+        "offRange": {
+          "start": "2026-01-10",
+          "end": "2026-01-18"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-01-19",
+          "2026-01-20",
+          "2026-01-21",
+          "2026-01-22",
+          "2026-01-23"
+        ],
+        "offRange": {
+          "start": "2026-01-17",
+          "end": "2026-01-25"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-01-26",
+          "2026-01-27",
+          "2026-01-28",
+          "2026-01-29",
+          "2026-01-30"
+        ],
+        "offRange": {
+          "start": "2026-01-24",
+          "end": "2026-02-01"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-02-02",
+          "2026-02-03",
+          "2026-02-04",
+          "2026-02-05",
+          "2026-02-06"
+        ],
+        "offRange": {
+          "start": "2026-01-31",
+          "end": "2026-02-08"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-03-09",
+          "2026-03-10",
+          "2026-03-11",
+          "2026-03-12",
+          "2026-03-13"
+        ],
+        "offRange": {
+          "start": "2026-03-07",
+          "end": "2026-03-15"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-03-16",
+          "2026-03-17",
+          "2026-03-18",
+          "2026-03-19",
+          "2026-03-20"
+        ],
+        "offRange": {
+          "start": "2026-03-14",
+          "end": "2026-03-22"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-03-23",
+          "2026-03-24",
+          "2026-03-25",
+          "2026-03-26",
+          "2026-03-27"
+        ],
+        "offRange": {
+          "start": "2026-03-21",
+          "end": "2026-03-29"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-04-13",
+          "2026-04-14",
+          "2026-04-15",
+          "2026-04-16",
+          "2026-04-17"
+        ],
+        "offRange": {
+          "start": "2026-04-11",
+          "end": "2026-04-19"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-04-20",
+          "2026-04-21",
+          "2026-04-22",
+          "2026-04-23",
+          "2026-04-24"
+        ],
+        "offRange": {
+          "start": "2026-04-18",
+          "end": "2026-04-26"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-05-11",
+          "2026-05-12",
+          "2026-05-13",
+          "2026-05-14",
+          "2026-05-15"
+        ],
+        "offRange": {
+          "start": "2026-05-09",
+          "end": "2026-05-17"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-05-18",
+          "2026-05-19",
+          "2026-05-20",
+          "2026-05-21",
+          "2026-05-22"
+        ],
+        "offRange": {
+          "start": "2026-05-16",
+          "end": "2026-05-24"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-05-25",
+          "2026-05-26",
+          "2026-05-27",
+          "2026-05-28",
+          "2026-05-29"
+        ],
+        "offRange": {
+          "start": "2026-05-23",
+          "end": "2026-05-31"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-06-01",
+          "2026-06-02",
+          "2026-06-03",
+          "2026-06-04",
+          "2026-06-05"
+        ],
+        "offRange": {
+          "start": "2026-05-30",
+          "end": "2026-06-07"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-06-08",
+          "2026-06-09",
+          "2026-06-10",
+          "2026-06-11",
+          "2026-06-12"
+        ],
+        "offRange": {
+          "start": "2026-06-06",
+          "end": "2026-06-14"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-06-29",
+          "2026-06-30",
+          "2026-07-01",
+          "2026-07-02",
+          "2026-07-03"
+        ],
+        "offRange": {
+          "start": "2026-06-27",
+          "end": "2026-07-05"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-07-06",
+          "2026-07-07",
+          "2026-07-08",
+          "2026-07-09",
+          "2026-07-10"
+        ],
+        "offRange": {
+          "start": "2026-07-04",
+          "end": "2026-07-12"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-07-13",
+          "2026-07-14",
+          "2026-07-15",
+          "2026-07-16",
+          "2026-07-17"
+        ],
+        "offRange": {
+          "start": "2026-07-11",
+          "end": "2026-07-19"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-07-20",
+          "2026-07-21",
+          "2026-07-22",
+          "2026-07-23",
+          "2026-07-24"
+        ],
+        "offRange": {
+          "start": "2026-07-18",
+          "end": "2026-07-26"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-07-27",
+          "2026-07-28",
+          "2026-07-29",
+          "2026-07-30",
+          "2026-07-31"
+        ],
+        "offRange": {
+          "start": "2026-07-25",
+          "end": "2026-08-02"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-08-03",
+          "2026-08-04",
+          "2026-08-05",
+          "2026-08-06",
+          "2026-08-07"
+        ],
+        "offRange": {
+          "start": "2026-08-01",
+          "end": "2026-08-09"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13",
+          "2026-08-14"
+        ],
+        "offRange": {
+          "start": "2026-08-08",
+          "end": "2026-08-16"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-08-17",
+          "2026-08-18",
+          "2026-08-19",
+          "2026-08-20",
+          "2026-08-21"
+        ],
+        "offRange": {
+          "start": "2026-08-15",
+          "end": "2026-08-23"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-08-24",
+          "2026-08-25",
+          "2026-08-26",
+          "2026-08-27",
+          "2026-08-28"
+        ],
+        "offRange": {
+          "start": "2026-08-22",
+          "end": "2026-08-30"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-08-31",
+          "2026-09-01",
+          "2026-09-02",
+          "2026-09-03",
+          "2026-09-04"
+        ],
+        "offRange": {
+          "start": "2026-08-29",
+          "end": "2026-09-06"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-09-07",
+          "2026-09-08",
+          "2026-09-09",
+          "2026-09-10",
+          "2026-09-11"
+        ],
+        "offRange": {
+          "start": "2026-09-05",
+          "end": "2026-09-13"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-09-14",
+          "2026-09-15",
+          "2026-09-16",
+          "2026-09-17",
+          "2026-09-18"
+        ],
+        "offRange": {
+          "start": "2026-09-12",
+          "end": "2026-09-20"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06"
+        ],
+        "offRange": {
+          "start": "2026-10-31",
+          "end": "2026-11-08"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-11-09",
+          "2026-11-10",
+          "2026-11-11",
+          "2026-11-12",
+          "2026-11-13"
+        ],
+        "offRange": {
+          "start": "2026-11-07",
+          "end": "2026-11-15"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20"
+        ],
+        "offRange": {
+          "start": "2026-11-14",
+          "end": "2026-11-22"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-11-23",
+          "2026-11-24",
+          "2026-11-25",
+          "2026-11-26",
+          "2026-11-27"
+        ],
+        "offRange": {
+          "start": "2026-11-21",
+          "end": "2026-11-29"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-11-30",
+          "2026-12-01",
+          "2026-12-02",
+          "2026-12-03",
+          "2026-12-04"
+        ],
+        "offRange": {
+          "start": "2026-11-28",
+          "end": "2026-12-06"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-12-07",
+          "2026-12-08",
+          "2026-12-09",
+          "2026-12-10",
+          "2026-12-11"
+        ],
+        "offRange": {
+          "start": "2026-12-05",
+          "end": "2026-12-13"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2026-12-14",
+          "2026-12-15",
+          "2026-12-16",
+          "2026-12-17",
+          "2026-12-18"
+        ],
+        "offRange": {
+          "start": "2026-12-12",
+          "end": "2026-12-20"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      }
+    ]
+  },
+  "2027": {
+    "1": [
+      {
+        "leaveDates": [
+          "2027-09-27"
+        ],
+        "offRange": {
+          "start": "2027-09-25",
+          "end": "2027-09-28"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      }
+    ],
+    "2": [
+      {
+        "leaveDates": [
+          "2027-02-11",
+          "2027-02-12"
+        ],
+        "offRange": {
+          "start": "2027-02-04",
+          "end": "2027-02-14"
+        },
+        "totalDaysOff": 11,
+        "leaveSpent": 2,
+        "efficiency": 5.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-27"
+        ],
+        "offRange": {
+          "start": "2027-09-25",
+          "end": "2027-09-28"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-06-07",
+          "2027-06-08"
+        ],
+        "offRange": {
+          "start": "2027-06-05",
+          "end": "2027-06-09"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-06-10",
+          "2027-06-11"
+        ],
+        "offRange": {
+          "start": "2027-06-09",
+          "end": "2027-06-13"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-13",
+          "2027-09-14"
+        ],
+        "offRange": {
+          "start": "2027-09-11",
+          "end": "2027-09-15"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-16",
+          "2027-09-17"
+        ],
+        "offRange": {
+          "start": "2027-09-15",
+          "end": "2027-09-19"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      }
+    ],
+    "3": [
+      {
+        "leaveDates": [
+          "2027-02-11",
+          "2027-02-12"
+        ],
+        "offRange": {
+          "start": "2027-02-04",
+          "end": "2027-02-14"
+        },
+        "totalDaysOff": 11,
+        "leaveSpent": 2,
+        "efficiency": 5.5
+      },
+      {
+        "leaveDates": [
+          "2027-02-01",
+          "2027-02-02",
+          "2027-02-03"
+        ],
+        "offRange": {
+          "start": "2027-01-30",
+          "end": "2027-02-10"
+        },
+        "totalDaysOff": 12,
+        "leaveSpent": 3,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-09-27"
+        ],
+        "offRange": {
+          "start": "2027-09-25",
+          "end": "2027-09-28"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-04-07",
+          "2027-04-08",
+          "2027-04-09"
+        ],
+        "offRange": {
+          "start": "2027-04-03",
+          "end": "2027-04-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 3,
+        "efficiency": 3
+      },
+      {
+        "leaveDates": [
+          "2027-06-07",
+          "2027-06-08"
+        ],
+        "offRange": {
+          "start": "2027-06-05",
+          "end": "2027-06-09"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-06-10",
+          "2027-06-11"
+        ],
+        "offRange": {
+          "start": "2027-06-09",
+          "end": "2027-06-13"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-13",
+          "2027-09-14"
+        ],
+        "offRange": {
+          "start": "2027-09-11",
+          "end": "2027-09-15"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-16",
+          "2027-09-17"
+        ],
+        "offRange": {
+          "start": "2027-09-15",
+          "end": "2027-09-19"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-29",
+          "2027-09-30",
+          "2027-10-01"
+        ],
+        "offRange": {
+          "start": "2027-09-28",
+          "end": "2027-10-03"
+        },
+        "totalDaysOff": 6,
+        "leaveSpent": 3,
+        "efficiency": 2
+      }
+    ],
+    "4": [
+      {
+        "leaveDates": [
+          "2027-02-11",
+          "2027-02-12"
+        ],
+        "offRange": {
+          "start": "2027-02-04",
+          "end": "2027-02-14"
+        },
+        "totalDaysOff": 11,
+        "leaveSpent": 2,
+        "efficiency": 5.5
+      },
+      {
+        "leaveDates": [
+          "2027-02-01",
+          "2027-02-02",
+          "2027-02-03"
+        ],
+        "offRange": {
+          "start": "2027-01-30",
+          "end": "2027-02-10"
+        },
+        "totalDaysOff": 12,
+        "leaveSpent": 3,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-09-27"
+        ],
+        "offRange": {
+          "start": "2027-09-25",
+          "end": "2027-09-28"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-04-07",
+          "2027-04-08",
+          "2027-04-09"
+        ],
+        "offRange": {
+          "start": "2027-04-03",
+          "end": "2027-04-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 3,
+        "efficiency": 3
+      },
+      {
+        "leaveDates": [
+          "2027-06-07",
+          "2027-06-08"
+        ],
+        "offRange": {
+          "start": "2027-06-05",
+          "end": "2027-06-09"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-06-10",
+          "2027-06-11"
+        ],
+        "offRange": {
+          "start": "2027-06-09",
+          "end": "2027-06-13"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-13",
+          "2027-09-14"
+        ],
+        "offRange": {
+          "start": "2027-09-11",
+          "end": "2027-09-15"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-16",
+          "2027-09-17"
+        ],
+        "offRange": {
+          "start": "2027-09-15",
+          "end": "2027-09-19"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-03-02",
+          "2027-03-03",
+          "2027-03-04",
+          "2027-03-05"
+        ],
+        "offRange": {
+          "start": "2027-02-27",
+          "end": "2027-03-07"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-04-26",
+          "2027-04-27",
+          "2027-04-28",
+          "2027-04-29"
+        ],
+        "offRange": {
+          "start": "2027-04-24",
+          "end": "2027-05-02"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-10-12",
+          "2027-10-13",
+          "2027-10-14",
+          "2027-10-15"
+        ],
+        "offRange": {
+          "start": "2027-10-09",
+          "end": "2027-10-17"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-10-26",
+          "2027-10-27",
+          "2027-10-28",
+          "2027-10-29"
+        ],
+        "offRange": {
+          "start": "2027-10-23",
+          "end": "2027-10-31"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-12-20",
+          "2027-12-21",
+          "2027-12-22",
+          "2027-12-23"
+        ],
+        "offRange": {
+          "start": "2027-12-18",
+          "end": "2027-12-26"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-12-27",
+          "2027-12-28",
+          "2027-12-29",
+          "2027-12-30"
+        ],
+        "offRange": {
+          "start": "2027-12-24",
+          "end": "2027-12-31"
+        },
+        "totalDaysOff": 8,
+        "leaveSpent": 4,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-09-29",
+          "2027-09-30",
+          "2027-10-01"
+        ],
+        "offRange": {
+          "start": "2027-09-28",
+          "end": "2027-10-03"
+        },
+        "totalDaysOff": 6,
+        "leaveSpent": 3,
+        "efficiency": 2
+      }
+    ],
+    "5": [
+      {
+        "leaveDates": [
+          "2027-02-11",
+          "2027-02-12"
+        ],
+        "offRange": {
+          "start": "2027-02-04",
+          "end": "2027-02-14"
+        },
+        "totalDaysOff": 11,
+        "leaveSpent": 2,
+        "efficiency": 5.5
+      },
+      {
+        "leaveDates": [
+          "2027-02-01",
+          "2027-02-02",
+          "2027-02-03"
+        ],
+        "offRange": {
+          "start": "2027-01-30",
+          "end": "2027-02-10"
+        },
+        "totalDaysOff": 12,
+        "leaveSpent": 3,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-09-27"
+        ],
+        "offRange": {
+          "start": "2027-09-25",
+          "end": "2027-09-28"
+        },
+        "totalDaysOff": 4,
+        "leaveSpent": 1,
+        "efficiency": 4
+      },
+      {
+        "leaveDates": [
+          "2027-04-07",
+          "2027-04-08",
+          "2027-04-09"
+        ],
+        "offRange": {
+          "start": "2027-04-03",
+          "end": "2027-04-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 3,
+        "efficiency": 3
+      },
+      {
+        "leaveDates": [
+          "2027-06-07",
+          "2027-06-08"
+        ],
+        "offRange": {
+          "start": "2027-06-05",
+          "end": "2027-06-09"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-06-10",
+          "2027-06-11"
+        ],
+        "offRange": {
+          "start": "2027-06-09",
+          "end": "2027-06-13"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-13",
+          "2027-09-14"
+        ],
+        "offRange": {
+          "start": "2027-09-11",
+          "end": "2027-09-15"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-09-16",
+          "2027-09-17"
+        ],
+        "offRange": {
+          "start": "2027-09-15",
+          "end": "2027-09-19"
+        },
+        "totalDaysOff": 5,
+        "leaveSpent": 2,
+        "efficiency": 2.5
+      },
+      {
+        "leaveDates": [
+          "2027-03-02",
+          "2027-03-03",
+          "2027-03-04",
+          "2027-03-05"
+        ],
+        "offRange": {
+          "start": "2027-02-27",
+          "end": "2027-03-07"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-04-26",
+          "2027-04-27",
+          "2027-04-28",
+          "2027-04-29"
+        ],
+        "offRange": {
+          "start": "2027-04-24",
+          "end": "2027-05-02"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-10-12",
+          "2027-10-13",
+          "2027-10-14",
+          "2027-10-15"
+        ],
+        "offRange": {
+          "start": "2027-10-09",
+          "end": "2027-10-17"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-10-26",
+          "2027-10-27",
+          "2027-10-28",
+          "2027-10-29"
+        ],
+        "offRange": {
+          "start": "2027-10-23",
+          "end": "2027-10-31"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-12-20",
+          "2027-12-21",
+          "2027-12-22",
+          "2027-12-23"
+        ],
+        "offRange": {
+          "start": "2027-12-18",
+          "end": "2027-12-26"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 4,
+        "efficiency": 2.25
+      },
+      {
+        "leaveDates": [
+          "2027-03-29",
+          "2027-03-30",
+          "2027-03-31",
+          "2027-04-01",
+          "2027-04-02"
+        ],
+        "offRange": {
+          "start": "2027-03-27",
+          "end": "2027-04-06"
+        },
+        "totalDaysOff": 11,
+        "leaveSpent": 5,
+        "efficiency": 2.2
+      },
+      {
+        "leaveDates": [
+          "2027-01-04",
+          "2027-01-05",
+          "2027-01-06",
+          "2027-01-07",
+          "2027-01-08"
+        ],
+        "offRange": {
+          "start": "2027-01-01",
+          "end": "2027-01-10"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-02-22",
+          "2027-02-23",
+          "2027-02-24",
+          "2027-02-25",
+          "2027-02-26"
+        ],
+        "offRange": {
+          "start": "2027-02-20",
+          "end": "2027-03-01"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-05-03",
+          "2027-05-04",
+          "2027-05-05",
+          "2027-05-06",
+          "2027-05-07"
+        ],
+        "offRange": {
+          "start": "2027-04-30",
+          "end": "2027-05-09"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-10-04",
+          "2027-10-05",
+          "2027-10-06",
+          "2027-10-07",
+          "2027-10-08"
+        ],
+        "offRange": {
+          "start": "2027-10-02",
+          "end": "2027-10-11"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-10-18",
+          "2027-10-19",
+          "2027-10-20",
+          "2027-10-21",
+          "2027-10-22"
+        ],
+        "offRange": {
+          "start": "2027-10-16",
+          "end": "2027-10-25"
+        },
+        "totalDaysOff": 10,
+        "leaveSpent": 5,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-12-27",
+          "2027-12-28",
+          "2027-12-29",
+          "2027-12-30"
+        ],
+        "offRange": {
+          "start": "2027-12-24",
+          "end": "2027-12-31"
+        },
+        "totalDaysOff": 8,
+        "leaveSpent": 4,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-09-29",
+          "2027-09-30",
+          "2027-10-01"
+        ],
+        "offRange": {
+          "start": "2027-09-28",
+          "end": "2027-10-03"
+        },
+        "totalDaysOff": 6,
+        "leaveSpent": 3,
+        "efficiency": 2
+      },
+      {
+        "leaveDates": [
+          "2027-01-11",
+          "2027-01-12",
+          "2027-01-13",
+          "2027-01-14",
+          "2027-01-15"
+        ],
+        "offRange": {
+          "start": "2027-01-09",
+          "end": "2027-01-17"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-01-18",
+          "2027-01-19",
+          "2027-01-20",
+          "2027-01-21",
+          "2027-01-22"
+        ],
+        "offRange": {
+          "start": "2027-01-16",
+          "end": "2027-01-24"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-01-25",
+          "2027-01-26",
+          "2027-01-27",
+          "2027-01-28",
+          "2027-01-29"
+        ],
+        "offRange": {
+          "start": "2027-01-23",
+          "end": "2027-01-31"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-02-15",
+          "2027-02-16",
+          "2027-02-17",
+          "2027-02-18",
+          "2027-02-19"
+        ],
+        "offRange": {
+          "start": "2027-02-13",
+          "end": "2027-02-21"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-03-08",
+          "2027-03-09",
+          "2027-03-10",
+          "2027-03-11",
+          "2027-03-12"
+        ],
+        "offRange": {
+          "start": "2027-03-06",
+          "end": "2027-03-14"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-03-15",
+          "2027-03-16",
+          "2027-03-17",
+          "2027-03-18",
+          "2027-03-19"
+        ],
+        "offRange": {
+          "start": "2027-03-13",
+          "end": "2027-03-21"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-03-22",
+          "2027-03-23",
+          "2027-03-24",
+          "2027-03-25",
+          "2027-03-26"
+        ],
+        "offRange": {
+          "start": "2027-03-20",
+          "end": "2027-03-28"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-04-12",
+          "2027-04-13",
+          "2027-04-14",
+          "2027-04-15",
+          "2027-04-16"
+        ],
+        "offRange": {
+          "start": "2027-04-10",
+          "end": "2027-04-18"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-04-19",
+          "2027-04-20",
+          "2027-04-21",
+          "2027-04-22",
+          "2027-04-23"
+        ],
+        "offRange": {
+          "start": "2027-04-17",
+          "end": "2027-04-25"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-05-10",
+          "2027-05-11",
+          "2027-05-12",
+          "2027-05-13",
+          "2027-05-14"
+        ],
+        "offRange": {
+          "start": "2027-05-08",
+          "end": "2027-05-16"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-05-17",
+          "2027-05-18",
+          "2027-05-19",
+          "2027-05-20",
+          "2027-05-21"
+        ],
+        "offRange": {
+          "start": "2027-05-15",
+          "end": "2027-05-23"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-05-24",
+          "2027-05-25",
+          "2027-05-26",
+          "2027-05-27",
+          "2027-05-28"
+        ],
+        "offRange": {
+          "start": "2027-05-22",
+          "end": "2027-05-30"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-05-31",
+          "2027-06-01",
+          "2027-06-02",
+          "2027-06-03",
+          "2027-06-04"
+        ],
+        "offRange": {
+          "start": "2027-05-29",
+          "end": "2027-06-06"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-06-14",
+          "2027-06-15",
+          "2027-06-16",
+          "2027-06-17",
+          "2027-06-18"
+        ],
+        "offRange": {
+          "start": "2027-06-12",
+          "end": "2027-06-20"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-06-21",
+          "2027-06-22",
+          "2027-06-23",
+          "2027-06-24",
+          "2027-06-25"
+        ],
+        "offRange": {
+          "start": "2027-06-19",
+          "end": "2027-06-27"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-06-28",
+          "2027-06-29",
+          "2027-06-30",
+          "2027-07-01",
+          "2027-07-02"
+        ],
+        "offRange": {
+          "start": "2027-06-26",
+          "end": "2027-07-04"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-07-05",
+          "2027-07-06",
+          "2027-07-07",
+          "2027-07-08",
+          "2027-07-09"
+        ],
+        "offRange": {
+          "start": "2027-07-03",
+          "end": "2027-07-11"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-07-12",
+          "2027-07-13",
+          "2027-07-14",
+          "2027-07-15",
+          "2027-07-16"
+        ],
+        "offRange": {
+          "start": "2027-07-10",
+          "end": "2027-07-18"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-07-19",
+          "2027-07-20",
+          "2027-07-21",
+          "2027-07-22",
+          "2027-07-23"
+        ],
+        "offRange": {
+          "start": "2027-07-17",
+          "end": "2027-07-25"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-07-26",
+          "2027-07-27",
+          "2027-07-28",
+          "2027-07-29",
+          "2027-07-30"
+        ],
+        "offRange": {
+          "start": "2027-07-24",
+          "end": "2027-08-01"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-08-02",
+          "2027-08-03",
+          "2027-08-04",
+          "2027-08-05",
+          "2027-08-06"
+        ],
+        "offRange": {
+          "start": "2027-07-31",
+          "end": "2027-08-08"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-08-09",
+          "2027-08-10",
+          "2027-08-11",
+          "2027-08-12",
+          "2027-08-13"
+        ],
+        "offRange": {
+          "start": "2027-08-07",
+          "end": "2027-08-15"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-08-16",
+          "2027-08-17",
+          "2027-08-18",
+          "2027-08-19",
+          "2027-08-20"
+        ],
+        "offRange": {
+          "start": "2027-08-14",
+          "end": "2027-08-22"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-08-23",
+          "2027-08-24",
+          "2027-08-25",
+          "2027-08-26",
+          "2027-08-27"
+        ],
+        "offRange": {
+          "start": "2027-08-21",
+          "end": "2027-08-29"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-08-30",
+          "2027-08-31",
+          "2027-09-01",
+          "2027-09-02",
+          "2027-09-03"
+        ],
+        "offRange": {
+          "start": "2027-08-28",
+          "end": "2027-09-05"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-09-06",
+          "2027-09-07",
+          "2027-09-08",
+          "2027-09-09",
+          "2027-09-10"
+        ],
+        "offRange": {
+          "start": "2027-09-04",
+          "end": "2027-09-12"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-09-20",
+          "2027-09-21",
+          "2027-09-22",
+          "2027-09-23",
+          "2027-09-24"
+        ],
+        "offRange": {
+          "start": "2027-09-18",
+          "end": "2027-09-26"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-11-01",
+          "2027-11-02",
+          "2027-11-03",
+          "2027-11-04",
+          "2027-11-05"
+        ],
+        "offRange": {
+          "start": "2027-10-30",
+          "end": "2027-11-07"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-11-08",
+          "2027-11-09",
+          "2027-11-10",
+          "2027-11-11",
+          "2027-11-12"
+        ],
+        "offRange": {
+          "start": "2027-11-06",
+          "end": "2027-11-14"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-11-15",
+          "2027-11-16",
+          "2027-11-17",
+          "2027-11-18",
+          "2027-11-19"
+        ],
+        "offRange": {
+          "start": "2027-11-13",
+          "end": "2027-11-21"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-11-22",
+          "2027-11-23",
+          "2027-11-24",
+          "2027-11-25",
+          "2027-11-26"
+        ],
+        "offRange": {
+          "start": "2027-11-20",
+          "end": "2027-11-28"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-11-29",
+          "2027-11-30",
+          "2027-12-01",
+          "2027-12-02",
+          "2027-12-03"
+        ],
+        "offRange": {
+          "start": "2027-11-27",
+          "end": "2027-12-05"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-12-06",
+          "2027-12-07",
+          "2027-12-08",
+          "2027-12-09",
+          "2027-12-10"
+        ],
+        "offRange": {
+          "start": "2027-12-04",
+          "end": "2027-12-12"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      },
+      {
+        "leaveDates": [
+          "2027-12-13",
+          "2027-12-14",
+          "2027-12-15",
+          "2027-12-16",
+          "2027-12-17"
+        ],
+        "offRange": {
+          "start": "2027-12-11",
+          "end": "2027-12-19"
+        },
+        "totalDaysOff": 9,
+        "leaveSpent": 5,
+        "efficiency": 1.8
+      }
+    ]
+  }
+}

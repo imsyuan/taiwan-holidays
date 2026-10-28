@@ -2,8 +2,9 @@ name: Update Taiwan Calendar Data
 
 on:
   schedule:
-    # 每月 1 日 UTC 00:00 (台灣時間 08:00)
-    - cron: '0 0 1 * *'
+    # 每週一 UTC 00:00 (台灣時間 08:00)。政府約在每年年中公告隔年度辦公日曆，
+    # 且年底前可能再修正（例如新增補假），所以全年每週檢查；沒有變更時不會開 PR。
+    - cron: '0 0 * * 1'
   workflow_dispatch:
     # 允許手動觸發
 
@@ -30,11 +31,19 @@ jobs:
       - name: Run update script
         run: python scripts/update_calendar.py
 
+      - name: Regenerate llms facts
+        run: python scripts/generate_llms.py
+
+      - name: Generate static year pages
+        run: python scripts/generate_pages.py
+
       - name: Open PR and enable auto-merge if data changed
         env:
           GH_TOKEN: ${{ secrets.DATA_BOT_TOKEN }}
         run: |
-          if git diff --quiet data/; then
+          # 用 git status 而不是 git diff：新年度的檔案是「未追蹤」檔，git diff 看不到，
+          # 會讓新年度資料永遠不被提交（2027 年資料曾因此漏掉）。
+          if [ -z "$(git status --porcelain data/ llms.txt llms-full.txt sitemap.xml 20[0-9][0-9]/)" ]; then
             echo "資料無變更，結束。"
             exit 0
           fi
@@ -45,7 +54,7 @@ jobs:
           git config user.name "calendar-bot"
           git config user.email "actions@users.noreply.github.com"
           git switch -c "$BRANCH"
-          git add data/
+          git add data/ llms.txt llms-full.txt sitemap.xml 20[0-9][0-9]/
           git commit -m "chore: update calendar data $(date +'%Y-%m-%d')"
           git push -u origin "$BRANCH"
 
