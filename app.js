@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         cell.classList.add('weekend');
                     }
 
-                    // 可用鍵盤聚焦，Enter / Space 也能打開說明
+                    // 可用鍵盤聚焦，Enter / Space 也能開啟說明
                     cell.tabIndex = 0;
                     cell.setAttribute('role', 'button');
                     cell.setAttribute('aria-label', `${formatDate(dayDetails)} ${dayDetails.description || t('holidayTag')}`);
@@ -820,7 +820,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const strategies = findLeaveStrategies(data);
         renderLeaveStrategies(strategies, year);
 
-        // 第一屏的「下一個連假」
+        // 畫面最上方的「下一個連假」
         renderHero(runs, strategies, year);
     }
 
@@ -1118,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 第一屏：下一個連假（以「今天」為準）。看過去的年份就不顯示；
+    // 畫面最上方：下一個連假（以「今天」為準）。看過去的年份就不顯示；
     // 今年的假都放完了就抓明年的第一個來顯示（年底不會空著）。
     function renderHero(runs, strategies, year) {
         const card = elements.nextHolidayCard;

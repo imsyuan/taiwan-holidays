@@ -443,7 +443,7 @@ a {
   width: 100%;
 }
 
-/* 第一屏：hero + 數字 + 連假 chips */
+/* 畫面最上方：hero + 數字 + 連假 chips */
 .stats-section {
   display: grid;
   grid-template-columns: minmax(300px, 400px) 1fr;
