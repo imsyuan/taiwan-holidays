@@ -39,9 +39,58 @@ All dates are `YYYY-MM-DD` strings.
 | `next_makeup_workday` | `{ from? }` or `{ range? }` | `{ next }`, plus `{ all }` when a range is given |
 | `optimize_leave` | `{ year, annualLeaveDays, range? }` | `LeavePlan[]` sorted by efficiency (days off ÷ leave spent), desc |
 | `find_travel_windows` | `{ year, annualLeaveDays, minTripLength, range? }` | `TravelWindow[]` (timing only, no booking data) |
+| `build_travel_links` | `{ destination, departDate, returnDate?, destinationName?, origin?, adults?, hotelCheckIn?, hotelCheckOut?, rooms? }` | `{ flights[], hotels[], disclaimer, notes? }` — neutral search-page links only |
 
 `LeavePlan = { leaveDates[], offRange: { start, end }, totalDaysOff, leaveSpent, efficiency }`
 `TravelWindow = { tripRange: { start, end }, tripLength, leaveDates[], leaveSpent }`
+
+### `build_travel_links`
+
+Turns a chosen trip (typically a `LeavePlan.offRange` / `TravelWindow.tripRange` from the tools above) into
+flight and hotel **search links**. It returns no prices or availability, books nothing, calls no external
+API and adds no affiliate parameters; every URL just opens the provider's own search page with the route and
+dates prefilled.
+
+| Param | Notes |
+| --- | --- |
+| `destination` | required, 3-letter IATA city/airport code (`TYO`, `NRT`, `KIX`, `BKK`) |
+| `origin` | 3-letter IATA code, default `TPE` |
+| `departDate`, `returnDate` | `YYYY-MM-DD`; `returnDate` must be on/after `departDate`; omit it for one-way |
+| `adults` | integer 1-9, default 1 |
+| `destinationName` | place name for hotel search (`"Tokyo"`, `"東京"`), 1-80 chars. **Optional, but without it no hotel links are returned** (an IATA code cannot be turned into a place name without a lookup table) |
+| `hotelCheckIn`, `hotelCheckOut` | default to `departDate` / `returnDate`; check-out must be after check-in. A one-way trip needs an explicit `hotelCheckOut` to get hotel links |
+| `rooms` | integer 1-9, default 1 |
+
+Providers (each URL pattern was opened in a real browser and confirmed to prefill the route/destination and
+dates; test case 2027-02-11 to 02-14, TPE -> Tokyo, 2 adults):
+
+- Flights: Google Flights, Skyscanner (`skyscanner.com.tw`), Trip.com (`tw.trip.com`)
+- Hotels: Booking.com (`zh-tw`), Google Hotels (destination + dates only; party size and rooms are not
+  carried, the page defaults to 2 guests, and a `notes` entry says so)
+- Not included: Agoda and Trip.com hotels. Their search pages ignore a plain place name and need an internal
+  numeric city ID (Agoda redirects to the home page; Trip.com leaves the destination blank), so a link would
+  not prefill.
+
+Example (`{ destination: "TYO", destinationName: "Tokyo", departDate: "2027-02-11", returnDate: "2027-02-14", adults: 2 }`):
+
+```json
+{
+  "flights": [
+    { "provider": "Google Flights", "url": "https://www.google.com/travel/flights?q=Flights%20from%20TPE%20to%20TYO%20on%202027-02-11%20through%202027-02-14%202%20passengers&hl=en" },
+    { "provider": "Skyscanner", "url": "https://www.skyscanner.com.tw/transport/flights/tpe/tyo/270211/270214/?adultsv2=2&rtn=1" },
+    { "provider": "Trip.com", "url": "https://tw.trip.com/flights/showfarefirst?dcity=tpe&acity=tyo&ddate=2027-02-11&rdate=2027-02-14&triptype=rt&class=y&quantity=2" }
+  ],
+  "hotels": [
+    { "provider": "Booking.com", "url": "https://www.booking.com/searchresults.zh-tw.html?ss=Tokyo&checkin=2027-02-11&checkout=2027-02-14&group_adults=2&no_rooms=1&group_children=0" },
+    { "provider": "Google Hotels", "url": "https://www.google.com/travel/search?q=Tokyo%20hotels%202027-02-11%20to%202027-02-14" }
+  ],
+  "disclaimer": "以上連結只會開啟各服務商自己的搜尋頁，本工具不提供任何價格或空房／座位資訊，也不代為訂位或訂房；實際價格、可訂狀態與取消規則請在服務商網站確認。連結僅為搜尋捷徑，不代表推薦。"
+}
+```
+
+Inputs are validated strictly (IATA = 3 letters, real calendar dates, bounded integers) and every free-text
+value is percent-encoded, so nothing can add parameters to a URL. Provider URL formats are not stable
+contracts; if one stops prefilling, update or drop it in `src/engine/travel.ts`.
 
 ### Errors
 

@@ -9,7 +9,7 @@
 - [完整版說明（LLM 專用，單一檔案）](https://tw-holidays.gooliya.com/llms-full.txt): 資料格式欄位表、真實請求／回應範例、MCP 端點與各工具輸入輸出、Claude Code／Cursor 設定、注意事項、授權
 - [OpenAPI 3.1 規格](https://tw-holidays.gooliya.com/openapi.json): 靜態 JSON 端點的機器可讀描述
 - [JSON API（jsDelivr CDN）](https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/): 免費、免金鑰，格式為 `data/<year>.json` 與 `data/<year>/{holidays,makeup-workdays,holidays-en,calendar-en}.json`，例如 `data/2026/holidays.json`
-- [MCP Server 端點（Streamable HTTP，無需認證）](https://mcp.tw-holidays.gooliya.com/mcp): 給 AI agent 直接呼叫的工作日計算工具（`count_workdays`、`add_workdays`、`next_makeup_workday`、`optimize_leave`、`find_travel_windows`）
+- [MCP Server 端點（Streamable HTTP，無需認證）](https://mcp.tw-holidays.gooliya.com/mcp): 給 AI agent 直接呼叫的工作日計算工具（`count_workdays`、`add_workdays`、`next_makeup_workday`、`optimize_leave`、`find_travel_windows`、`build_travel_links`）
 - [MCP 說明文件](https://github.com/imsyuan/taiwan-holidays/blob/main/mcp/README.md): 工具契約與連線方式
 - [視覺化日曆網站](https://tw-holidays.gooliya.com/): 互動式台灣國定假日月曆，含連假清單與請假攻略，支援中英雙語與農民曆顯示
 - [API 說明文件](https://tw-holidays.gooliya.com/api.html): JSON API 使用方式與欄位說明

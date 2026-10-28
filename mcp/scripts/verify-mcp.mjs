@@ -20,7 +20,15 @@ await call("add_workdays", { from: "2026-01-02", workdays: 1 });
 await call("next_makeup_workday", { from: "2025-01-01" });
 await call("optimize_leave", { year: 2026, annualLeaveDays: 5 });
 await call("find_travel_windows", { year: 2026, annualLeaveDays: 5, minTripLength: 10 });
+await call("build_travel_links", {
+  destination: "TYO",
+  destinationName: "Tokyo",
+  departDate: "2027-02-11",
+  returnDate: "2027-02-14",
+  adults: 2,
+});
 // error paths
+await call("build_travel_links", { destination: "TYO", departDate: "2027-02-14", returnDate: "2027-02-11" });
 await call("optimize_leave", { year: 1999, annualLeaveDays: 3 });
 await call("count_workdays", { start: "bad", end: "2025-02-12" });
 

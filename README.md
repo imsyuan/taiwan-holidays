@@ -136,6 +136,7 @@ npx @modelcontextprotocol/inspector
 | `next_makeup_workday` | 下一個補班日，或區間內所有補班日 | `{ from? , range? }` | `{ next, all? }` |
 | `optimize_leave` | 請假最佳化，依「每請一天換幾天連假」排序 | `{ year, annualLeaveDays, range? }` | `LeavePlan[]` |
 | `find_travel_windows` | 最佳出遊時段（只算時機，不含訂位） | `{ year, annualLeaveDays, minTripLength, range? }` | `TravelWindow[]` |
+| `build_travel_links` | 把選定日期轉成機票／住宿搜尋連結（只給連結，無價格、不代訂） | `{ destination, departDate, returnDate?, destinationName?, … }` | `{ flights[], hotels[], disclaimer }` |
 
 日期一律使用 `YYYY-MM-DD`。年份不可用回 `{ error: "year_unavailable", availableYears }`，輸入錯誤回 `{ error: "invalid_input", detail }`。
 

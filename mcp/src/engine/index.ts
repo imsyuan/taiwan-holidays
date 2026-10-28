@@ -22,7 +22,7 @@ const ISO_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 // ---- date helpers ----
 
-function isValidIso(value: unknown): value is string {
+export function isValidIso(value: unknown): value is string {
   if (typeof value !== "string") return false;
   const m = ISO_RE.exec(value);
   if (!m) return false;

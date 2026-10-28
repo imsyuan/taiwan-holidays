@@ -16,6 +16,7 @@ import {
   nextMakeupWorkday,
   optimizeLeave,
 } from "./engine/index.js";
+import { buildTravelLinks } from "./engine/travel.js";
 import { allDays, availableYears, calendarsByYear } from "./data.js";
 
 export interface Env {
@@ -91,6 +92,44 @@ export class WorkdayMCP extends McpAgent<Env> {
           }),
         ),
     );
+
+    this.server.tool(
+      "build_travel_links",
+      "Build neutral search-page links (no prices, no availability, no booking, no affiliate codes) for flights (Google Flights, Skyscanner, Trip.com) and hotels (Booking.com, Google Hotels) for a chosen trip. Use the dates of a plan from optimize_leave / find_travel_windows; the user decides destination and flight times. Hotel links need destinationName.",
+      {
+        origin: z
+          .string()
+          .optional()
+          .describe("Departure IATA airport/city code, 3 letters. Default TPE."),
+        destination: z
+          .string()
+          .describe("Arrival IATA airport/city code, 3 letters (e.g. TYO, NRT, KIX, BKK)."),
+        destinationName: z
+          .string()
+          .optional()
+          .describe(
+            "Place name for the hotel search, e.g. 'Tokyo' or '東京'. Without it no hotel links are returned.",
+          ),
+        departDate: z.string().describe("Departure date, YYYY-MM-DD."),
+        returnDate: z
+          .string()
+          .optional()
+          .describe("Return date, YYYY-MM-DD, on or after departDate. Omit for a one-way flight."),
+        adults: z.number().optional().describe("Number of adults, integer 1-9. Default 1."),
+        hotelCheckIn: z
+          .string()
+          .optional()
+          .describe("Hotel check-in date, YYYY-MM-DD. Defaults to departDate."),
+        hotelCheckOut: z
+          .string()
+          .optional()
+          .describe(
+            "Hotel check-out date, YYYY-MM-DD, after check-in. Defaults to returnDate.",
+          ),
+        rooms: z.number().optional().describe("Number of hotel rooms, integer 1-9. Default 1."),
+      },
+      async (args) => reply(buildTravelLinks(args)),
+    );
   }
 }
 
@@ -116,6 +155,7 @@ export default {
             "next_makeup_workday",
             "optimize_leave",
             "find_travel_windows",
+            "build_travel_links",
           ],
           availableYears,
         }),

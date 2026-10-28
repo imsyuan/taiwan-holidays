@@ -84,3 +84,40 @@ export interface TravelWindow {
   leaveDates: string[];
   leaveSpent: number;
 }
+
+// ---- Travel links (link-only: no prices, no availability, no affiliate codes) ----
+
+export interface TravelLinksParams {
+  /** IATA airport/city code, 3 letters. Default "TPE". */
+  origin?: string;
+  /** IATA airport/city code, 3 letters. Required. */
+  destination: string;
+  /** Free-text place name for hotel search (e.g. "Tokyo", "東京"). Optional; hotels are omitted without it. */
+  destinationName?: string;
+  /** "YYYY-MM-DD" */
+  departDate: string;
+  /** "YYYY-MM-DD", must be >= departDate. Omit for one-way. */
+  returnDate?: string;
+  /** 1-9, default 1 */
+  adults?: number;
+  /** "YYYY-MM-DD", defaults to departDate */
+  hotelCheckIn?: string;
+  /** "YYYY-MM-DD", defaults to returnDate; must be after the check-in date */
+  hotelCheckOut?: string;
+  /** 1-9, default 1 */
+  rooms?: number;
+}
+
+export interface TravelLink {
+  provider: string;
+  url: string;
+}
+
+export interface TravelLinksResult {
+  flights: TravelLink[];
+  hotels: TravelLink[];
+  /** Traditional Chinese: links only, no prices or availability; confirm on the provider site. */
+  disclaimer: string;
+  /** Present only when something was skipped or not carried into a link (e.g. no hotels). */
+  notes?: string[];
+}
