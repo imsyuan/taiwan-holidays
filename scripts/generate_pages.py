@@ -7,7 +7,7 @@
 
 只使用標準函式庫。產出（以 data/years.json 中「今年（含）以後」的年度為準）：
 
-    <year>/index.html           年度總覽：假期表、連假、補班日、請假攻略、FAQ、API 連結
+    <year>/index.html           年度總覽：連假、假期表、補班日、請假攻略、FAQ、API 連結
     <year>/<slug>/index.html    每個 3 天以上的連假一頁：日期、請假方案、逐日表、前後連假、FAQ
     sitemap.xml                 重新產生（保留 / 與 /api.html）
 
@@ -41,7 +41,7 @@ DATA_SOURCE_URL = "https://data.gov.tw/dataset/14718"
 LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/"
 OG_IMAGE = f"{SITE}/img/og-image.png"
 GA_ID = "G-XRPQC1GM0S"
-STATIC_CSS = "/static.css?v=1"
+STATIC_CSS = "/static.css?v=2"
 GENERATED_MARK = "<!-- generated-by: scripts/generate_pages.py -->"
 
 # 年度規則：只產生「今年（含）以後」的年度。
@@ -649,6 +649,26 @@ def render_hub(ym, years, all_loaded, since):
 <div class="stat"><b>{ym['work_days']}</b>天上班日</div>
 </div>""")
 
+    # ---- 連假列表 ----
+    if runs:
+        items = []
+        for r in runs:
+            items.append(f'<li><a class="run-name" href="{run_url(y, r)}">{esc(r["name"])}</a>'
+                         f'<span class="run-days">{r["length"]} 天</span>'
+                         f'<span class="run-dates">{time_tag(r["start"])} 至 {time_tag(r["end"])}・含{esc("、".join(r["holiday_names"]))}</span></li>')
+        trailing = ""
+        if ym["leads_into_next_year"]:
+            last = parse_compact(ym["calendar"][-1]["date"])
+            trailing = f"<p class=\"note\">{time_tag(last)} 的假期會接到 {y + 1} 年初，本頁連假以年度為單位計算，未列入。</p>"
+        out.append(f"""<section class="card" aria-labelledby="runs-h">
+<h2 id="runs-h">{y} 年連假列表（3 天以上）</h2>
+<p>連假指連續放假（含週六、週日）3 天以上的區段；名稱依春節、清明、端午、中秋、國慶、元旦、其他的順序決定，點進去看每個連假的請假方案與逐日表。</p>
+<ul class="run-list">
+{chr(10).join(items)}
+</ul>
+{trailing}
+</section>""")
+
     # ---- 假期表 ----
     rows = []
     for h in ym["holidays"]:
@@ -672,26 +692,6 @@ def render_hub(ym, years, all_loaded, since):
 <tbody>
 {chr(10).join(rows)}
 </tbody></table></div>
-</section>""")
-
-    # ---- 連假列表 ----
-    if runs:
-        items = []
-        for r in runs:
-            items.append(f'<li><a class="run-name" href="{run_url(y, r)}">{esc(r["name"])}</a>'
-                         f'<span class="run-days">{r["length"]} 天</span>'
-                         f'<span class="run-dates">{time_tag(r["start"])} 至 {time_tag(r["end"])}・含{esc("、".join(r["holiday_names"]))}</span></li>')
-        trailing = ""
-        if ym["leads_into_next_year"]:
-            last = parse_compact(ym["calendar"][-1]["date"])
-            trailing = f"<p class=\"note\">{time_tag(last)} 的假期會接到 {y + 1} 年初，本頁連假以年度為單位計算，未列入。</p>"
-        out.append(f"""<section class="card" aria-labelledby="runs-h">
-<h2 id="runs-h">{y} 年連假列表（3 天以上）</h2>
-<p>連假指連續放假（含週六、週日）3 天以上的區段；名稱依春節、清明、端午、中秋、國慶、元旦、其他的順序決定，點進去看每個連假的請假方案與逐日表。</p>
-<ul class="run-list">
-{chr(10).join(items)}
-</ul>
-{trailing}
 </section>""")
 
     # ---- 補班日 ----

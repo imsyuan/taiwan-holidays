@@ -4,21 +4,23 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #F8FAFC;
-  --surface: #FFFFFF;
-  --surface-2: #F1F5F9;
-  --text: #1E293B;
-  --text-2: #475569;
-  --muted: #64748B;
-  --border: #E2E8F0;
-  --primary: #2563EB;
-  --primary-bg: #EFF6FF;
-  --accent: #DC2626;
-  --accent-bg: #FEF2F2;
-  --leave: #B45309;
-  --leave-bg: #FFFBEB;
-  --work: #475569;
-  --work-bg: #F8FAFC;
+  /* 顏色 token 與首頁 style.css 的 :root 同步（只取顏色；左邊是本檔名稱，右邊註明對應的首頁 token）。
+     首頁改色時請一併更新這裡與下方深色區塊。 */
+  --bg: #FFFDF8;            /* --color-page */
+  --surface: #FFFFFF;       /* --color-surface */
+  --surface-2: #F1F5F9;     /* --color-surface-muted */
+  --text: #1E293B;          /* --color-text */
+  --text-2: #475569;        /* --color-text-body */
+  --muted: #64748B;         /* --color-text-muted */
+  --border: #E2E8F0;        /* --color-border */
+  --primary: #2563EB;       /* --color-primary-fg（也當實色底配白字） */
+  --primary-bg: #EFF6FF;    /* --color-primary-soft */
+  --accent: #B91C1C;        /* --color-accent-fg（假日紅） */
+  --accent-bg: rgba(239, 68, 68, 0.1); /* --color-accent-soft */
+  --leave: #6D4C41;         /* --color-strategy-fg（請假：棕色系） */
+  --leave-bg: #FDF3E7;      /* --color-strategy-bg */
+  --work: #1D4ED8;          /* --color-makeup-fg（補班：藍） */
+  --work-bg: #EFF6FF;       /* --color-makeup-soft */
   --radius: 0.75rem;
   --max-w: 60rem;
   --shadow: 0 1px 2px rgb(15 23 42 / 0.05);
@@ -26,22 +28,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0B1220;
-    --surface: #111A2E;
-    --surface-2: #172238;
-    --text: #E2E8F0;
+    --bg: #0F172A;
+    --surface: #1E293B;
+    --surface-2: #334155;
+    --text: #F1F5F9;
     --text-2: #CBD5E1;
     --muted: #94A3B8;
-    --border: #273449;
-    --primary: #7CB2FF;
-    --primary-bg: #172554;
-    --accent: #FB7185;
-    --accent-bg: #3B1120;
-    --leave: #FCD34D;
-    --leave-bg: #3A2A05;
-    --work: #CBD5E1;
-    --work-bg: #172238;
-    --shadow: none;
+    --border: #334155;
+    --primary: #93C5FD;
+    --primary-bg: rgba(96, 165, 250, 0.16);
+    --accent: #FCA5A5;
+    --accent-bg: rgba(248, 113, 113, 0.16);
+    --leave: #DCC3B6;
+    --leave-bg: #241C18;
+    --work: #93C5FD;
+    --work-bg: rgba(96, 165, 250, 0.16);
+    --shadow: 0 1px 2px 0 rgb(0 0 0 / 0.4);
   }
 }
 
@@ -177,7 +179,7 @@ main.container {
   position: absolute;
   left: -999px;
   top: 0;
-  background: var(--primary);
+  background: #2563EB;
   color: #fff;
   padding: 0.5rem 1rem;
   z-index: 100;
