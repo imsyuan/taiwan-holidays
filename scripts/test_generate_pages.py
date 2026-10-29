@@ -207,6 +207,13 @@ class GeneratedPages(unittest.TestCase):
                     ok = target.is_file()
                 self.assertTrue(ok, f"{path}: 連結 {href} 不存在")
 
+    def test_hub_lists_runs_before_holiday_table(self):
+        """年度總覽的順序：連假列表要在國定假日一覽表之前（使用者先看到連假）。"""
+        for y in (2026, 2027):
+            html = self.pages[f"{y}/index.html"]
+            ids = [html.index(f'id="{i}"') for i in ("runs-h", "holidays-h", "makeup-h")]
+            self.assertEqual(ids, sorted(ids), f"{y} 年總覽區塊順序不對")
+
     def test_sitemap_lists_every_page_and_keeps_root_entries(self):
         sm = self.files["sitemap.xml"]
         self.assertIn(f"<loc>{gp.SITE}/</loc>", sm)
