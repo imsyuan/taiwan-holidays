@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         shareBtn: document.getElementById('shareBtn'),
         faqSection: document.getElementById('faq'),
         faqLangNote: document.getElementById('faqLangNote'),
+        faqHolidaysQ: document.getElementById('faqHolidaysQ'),
+        faqHolidaysA: document.getElementById('faqHolidaysA'),
+        faqLongestQ: document.getElementById('faqLongestQ'),
+        faqLongestA: document.getElementById('faqLongestA'),
+        faqMakeupQ: document.getElementById('faqMakeupQ'),
+        faqMakeupA: document.getElementById('faqMakeupA'),
         tooltip: document.getElementById('tooltip'),
         toast: document.getElementById('toast')
     };
@@ -535,6 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calculateStats(data, year);
         } catch (error) {
             console.error('Error fetching data:', error);
+            restoreFaqDefaults();
             elements.calendarGrid.innerHTML = `
                 <div class="error-state glass-panel font-noto">
                     <p class="error-title text-slate-900">${t('errorHolidays', { year })}</p>
@@ -879,6 +886,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 畫面最上方的「下一個連假」
         renderHero(runs, year);
+
+        // FAQ 前三題跟著年份
+        renderFaq(data, runs, year);
+    }
+
+    // FAQ 前三題（國定假日天數／最長連假／補班日）依目前年份的資料重寫；
+    // HTML 內的 2026 預設文字留給不執行 JS 的爬蟲，也是資料載入前的 fallback。
+    // FAQ 只有中文，英文模式（資料沒有中文名稱）不動。
+    const FAQ_NAME_FIX = { '春節': '農曆春節', '光復節': '台灣光復節' };
+    const faqDefaults = new Map();
+
+    function setFaqText(el, text) {
+        if (!el) return;
+        if (!faqDefaults.has(el)) faqDefaults.set(el, el.textContent);
+        el.textContent = text;
+    }
+
+    function restoreFaqDefaults() {
+        faqDefaults.forEach((text, el) => { el.textContent = text; });
+    }
+
+    // 國定假日名稱（依日期先後、去重、跳過補假／調整放假），沿用連假命名的 HOLIDAY_PRIORITY
+    function faqHolidayNames(holidays) {
+        const names = [];
+        holidays.forEach(d => {
+            if (SKIP_NAME_RE.test(d.description)) return;
+            const entry = HOLIDAY_PRIORITY.find(e => e.re.test(d.description));
+            const raw = entry ? entry.zh : d.description;
+            const name = FAQ_NAME_FIX[raw] || raw;
+            if (!names.includes(name)) names.push(name);
+        });
+        return names;
+    }
+
+    function renderFaq(data, runs, year) {
+        if (currentLang() === 'en' || !elements.faqHolidaysA) return;
+
+        // 國定假日：有節日名稱的放假日（不含沒有名稱的一般週六日），與上方統計卡一致
+        const holidays = data.filter(d => d.isHoliday && d.description);
+        const names = faqHolidayNames(holidays);
+        setFaqText(elements.faqHolidaysQ, `${year} 年台灣國定假日總共有幾天？`);
+        setFaqText(elements.faqHolidaysA,
+            `依政府公告資料，${year} 年台灣國定假日（不含週六日）共 ${holidays.length} 天` +
+            (names.length ? `，涵蓋${names.join('、')}等。` : '。'));
+
+        // 最長連假：連續放假（含週末）天數最多的一段，同天數取較早的
+        const longest = runs.reduce((best, r) => (!best || r.days > best.days ? r : best), null);
+        setFaqText(elements.faqLongestQ, `${year} 年最長連假是哪一段？`);
+        if (longest) {
+            const first = longest.items[0];
+            const last = longest.items[longest.items.length - 1];
+            const name = FAQ_NAME_FIX[longest.name] || longest.name;
+            setFaqText(elements.faqLongestA,
+                `${name}，依現有政府公告資料自 ${formatDate(first)}至 ${formatDate(last)}共 ${longest.days} 天，` +
+                `是 ${year} 年最長的連續假期，實際天數以官方最終公告為準。`);
+        }
+
+        // 補班日
+        const makeup = data.filter(d => !d.isHoliday && d.description && MAKEUP_WORKDAY_RE.test(d.description));
+        setFaqText(elements.faqMakeupQ, `${year} 年有補班日嗎？`);
+        setFaqText(elements.faqMakeupA, makeup.length
+            ? `截至目前資料，${year} 年有 ${makeup.length} 個補班日：${makeup.map(d => formatDate(d)).join('、')}；如政府後續調整，本站資料會透過每月自動同步更新。`
+            : `截至目前資料，${year} 年尚未有公告需要補班的日期；如政府後續調整，本站資料會透過每月自動同步更新。`);
     }
 
     // 把一段 holiday run 或攻略裡的節日名稱挑一個最有代表性的出來
