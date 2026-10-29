@@ -1991,6 +1991,56 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
 }
 
 /* Responsive */
+/* 桌機：請假攻略三欄。卡片改為上下堆疊（標籤在上、月曆、連休資訊在下），欄寬夠用 */
+@media (min-width: 1025px) {
+  .strategy-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 1rem;
+    gap: 0.9rem;
+  }
+
+  .strategy-new-card {
+    flex-direction: column;
+  }
+
+  .strategy-left-label {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .strategy-left-label .festival {
+    font-size: 0.95rem;
+  }
+
+  .strategy-flag {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .strategy-middle {
+    padding: 0.75rem 0.75rem 0.5rem;
+  }
+
+  .strategy-calendar-row {
+    max-width: none;
+  }
+
+  .strategy-right-badge {
+    border-left: none;
+    border-top: 2px dashed var(--color-border);
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0 0 14px 14px;
+  }
+}
+
 @media (max-width: 1024px) {
   .stats-section {
     grid-template-columns: 1fr;
