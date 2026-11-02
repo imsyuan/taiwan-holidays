@@ -864,6 +864,18 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   margin-top: 0.6rem;
 }
 
+.hero-trip {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-primary-600);
+  text-decoration: none;
+}
+
+.hero-trip:hover {
+  text-decoration: underline;
+}
+
 .hero-btn {
   min-height: var(--touch);
   padding: 0.45rem 0.95rem;

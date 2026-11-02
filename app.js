@@ -144,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSingleDay: "放假 1 天",
             heroViewMonth: "看當月行事曆",
             heroSwitchYear: "切換到 ${year} 年",
+            heroTrip: "想趁這個連假出國？看機票與住宿 →",
+            footerTrip: "出國規劃：快點趣",
             heroNoMore: "今年的國定假日都放完了，先看明年的吧",
             devTitle: "給開發者與 AI 的入口",
             devSub: "同一份政府公告資料，三種拿法：裸 JSON、MCP 工作日計算引擎、給 LLM 讀的說明文件。免費、免金鑰。",
@@ -236,6 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSingleDay: "1 day off",
             heroViewMonth: "View that month",
             heroSwitchYear: "Switch to ${year}",
+            heroTrip: "Heading abroad this break? See flights & stays →",
+            footerTrip: "Trip planning: Kuaidianqu",
             heroNoMore: "No public holidays left this year — here is next year's first one",
             devTitle: "For developers and AI agents",
             devSub: "The same government-published data, three ways: raw JSON, an MCP workday engine, and LLM-ready docs. Free, no API key.",
@@ -1368,6 +1372,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button type="button" class="hero-btn font-noto" data-jump-year="${meta.fromYear}" data-jump-month="${startParts.month - 1}">${t('heroViewMonth')}</button>
                     ${meta.fromYear !== viewedYear ? `<button type="button" class="hero-btn secondary font-noto" data-switch-year="${meta.fromYear}">${t('heroSwitchYear', { year: meta.fromYear })}</button>` : ''}
                 </div>
+                <a class="hero-trip font-noto" href="https://trip.gooliya.com/?utm_source=tw-holidays&utm_medium=hero" target="_blank" rel="noopener">${escapeHtml(t('heroTrip'))}</a>
             </div>
         `;
 
