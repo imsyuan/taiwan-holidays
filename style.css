@@ -688,7 +688,7 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
 /* 畫面最上方：hero + 數字 + 連假 chips */
 .stats-section {
   display: grid;
-  grid-template-columns: minmax(300px, 400px) 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem;
   align-items: start;
   margin-bottom: 1.75rem;
@@ -701,6 +701,17 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   min-width: 0;
 }
 
+@media (min-width: 1025px) {
+  /* hero 變整寬後，統計與連假清單維持左右配置 */
+  .stats-side {
+    display: grid;
+    grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+}
+
+/* hero：左=名稱／日期／請假連休，右=迷你月曆；手機直向堆疊 */
 .hero-card {
   position: relative;
   background: var(--color-hero-bg);
@@ -708,9 +719,98 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   border-radius: var(--radius-xl);
   padding: 1.25rem 1.4rem;
   box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1025px) {
+  .hero-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.hero-info {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  min-width: 0;
+}
+
+.hero-leave {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.3rem;
+  margin-top: 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-slate-900);
+}
+
+.hero-leave b {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  margin: 0 0.1rem;
+}
+
+.hero-leave-part:first-child b {
+  color: var(--color-makeup-fg);
+}
+
+.hero-leave-part:last-child b {
+  color: var(--color-accent-fg);
+}
+
+.hero-leave-sep {
+  color: var(--color-slate-500);
+}
+
+.hero-cal {
+  min-width: 0;
+}
+
+/* hero 的迷你月曆：節日標籤允許換行，3 天連假要顯示全名 */
+.hero-cal .cal-festival-tag {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-all;
+  line-height: 1.2;
+  font-size: 0.68rem;
+}
+
+.hero-cal .strategy-calendar-row {
+  width: 100%;
+}
+
+.hero-legend {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+}
+
+.hero-legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.3rem;
+  border-radius: 2px;
+  vertical-align: -1px;
+}
+
+.hero-legend-item.off::before {
+  background: var(--color-accent-600);
+}
+
+.hero-legend-item.leave::before {
+  background: var(--color-primary-600);
 }
 
 .hero-eyebrow {
@@ -740,7 +840,6 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   margin-top: 0.25rem;
 }
 
-.hero-days,
 .hero-count {
   display: inline-flex;
   align-items: center;
@@ -748,14 +847,6 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 700;
-}
-
-.hero-days {
-  background: var(--color-accent-600);
-  color: #fff;
-}
-
-.hero-count {
   background: var(--color-surface-raised);
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -774,7 +865,7 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
 }
 
 .hero-btn {
-  min-height: 40px;
+  min-height: var(--touch);
   padding: 0.45rem 0.95rem;
   border-radius: 999px;
   border: 1px solid var(--color-primary-600);
@@ -1159,6 +1250,21 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   font-size: 0.78rem;
   color: var(--color-slate-500);
   line-height: 1.5;
+}
+
+/* 攻略區標題下的「切換到下一年」文字連結 */
+.strategy-next-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  padding: 0 0.25rem;
+  border: none;
+  background: none;
+  color: var(--color-primary-fg);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* Right Badge（連休 N 天 / 請假 X 天） */
