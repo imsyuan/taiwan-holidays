@@ -107,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
             badgeLeave: "請假 ${leave} 天",
             altOption: "也可以：${range} 請 ${leave} 天，連休 ${total} 天",
             strategyAria: "${name}：${range} 請假 ${leave} 天，可連休 ${total} 天",
+            strategyNext1: "今年只剩這一個，${year} 年已公告",
+            strategyNextN: "今年只剩 ${n} 個，${year} 年已公告",
+            strategyNext0: "今年的攻略都過了，${year} 年已公告",
             loading: "載入資料中...",
             footerSource: "資料來源：中華民國行政院人事行政總處。",
             monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
@@ -133,7 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
             heroTomorrow: "明天開始",
             heroToday: "今天開始",
             heroRemaining: "還剩 ${days} 天",
-            heroDays: "連休 ${days} 天",
+            heroLeaveN: "請假 ${n} 天",
+            heroTotalN: "連休 ${n} 天",
+            heroNoLeave: "不用請假",
+            heroLegendOff: "放假",
+            heroLegendLeave: "請假",
             heroSingleDay: "放假 1 天",
             heroViewMonth: "看當月行事曆",
             heroSwitchYear: "切換到 ${year} 年",
@@ -192,6 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
             badgeLeave: "Take ${leave} day(s) leave",
             altOption: "Or: ${range}, take ${leave} day(s) for ${total} off",
             strategyAria: "${name}: take ${leave} day(s) leave on ${range} for ${total} days off",
+            strategyNext1: "Only this one left this year — ${year} is already published",
+            strategyNextN: "Only ${n} left this year — ${year} is already published",
+            strategyNext0: "All of this year's strategies have passed — ${year} is already published",
             loading: "Loading data...",
             footerSource: "Data Source: DGPA, Taiwan.",
             monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -218,7 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
             heroTomorrow: "starts tomorrow",
             heroToday: "starts today",
             heroRemaining: "${days} day(s) left",
-            heroDays: "${days} days off",
+            heroLeaveN: "Take ${n} day(s) leave",
+            heroTotalN: "${n} days off",
+            heroNoLeave: "No leave needed",
+            heroLegendOff: "Day off",
+            heroLegendLeave: "Take leave",
             heroSingleDay: "1 day off",
             heroViewMonth: "View that month",
             heroSwitchYear: "Switch to ${year}",
@@ -885,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderLeaveStrategies(strategies, year);
 
         // 畫面最上方的「下一個連假」
-        renderHero(runs, year);
+        renderHero(runs, year, strategies);
 
         // FAQ 前三題跟著年份
         renderFaq(data, runs, year);
@@ -1124,20 +1138,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return merged;
     }
 
-    function buildStrategyCard(strategy, options = {}) {
-        const card = document.createElement('article');
-        card.className = 'strategy-new-card' + (strategy.isPast ? ' past' : '') + (options.best ? ' best' : '');
-        card.setAttribute('aria-label', t('strategyAria', {
-            name: strategy.name, range: strategy.leaveRange, leave: strategy.leaveDays, total: strategy.totalDays
-        }));
-
-        // 7 欄對齊星期的迷你月曆：第一天之前補空格
-        const firstDate = keyToDate(strategy.timeline[0].date);
+    // 7 欄對齊星期的迷你月曆：第一天之前補空格（攻略卡與 hero 共用）
+    function buildCalendarColumnsHTML(timeline, options = {}) {
+        const firstDate = keyToDate(timeline[0].date);
         let columnsHTML = '';
-        for (let i = 0; i < firstDate.getDay(); i++) {
+        // hero 的連休通常很短，不補空格，從左邊第一格開始排
+        for (let i = 0; !options.compact && i < firstDate.getDay(); i++) {
             columnsHTML += '<div class="cal-day-col empty" aria-hidden="true"></div>';
         }
-        strategy.timeline.forEach(dayInfo => {
+        timeline.forEach(dayInfo => {
             const dateParts = parseDateString(dayInfo.date);
             const isWorkdayBlock = !dayInfo.isHoliday;
             const colModifier = isWorkdayBlock ? 'workday' : 'holiday';
@@ -1153,6 +1162,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         });
+        return columnsHTML;
+    }
+
+    function buildStrategyCard(strategy, options = {}) {
+        const card = document.createElement('article');
+        card.className = 'strategy-new-card' + (strategy.isPast ? ' past' : '') + (options.best ? ' best' : '');
+        card.setAttribute('aria-label', t('strategyAria', {
+            name: strategy.name, range: strategy.leaveRange, leave: strategy.leaveDays, total: strategy.totalDays
+        }));
+
+        const columnsHTML = buildCalendarColumnsHTML(strategy.timeline);
 
         const anchorParts = parseDateString(strategy.anchorDate);
         const displayMonth = t('monthNames')[anchorParts.month - 1];
@@ -1219,6 +1239,22 @@ document.addEventListener('DOMContentLoaded', () => {
             ? t('strategySubUpcoming', { n: upcoming.length })
             : t('strategySubPast', { n: strategies.length });
 
+        // 今年（或之後）未過的攻略少於 3 則、而且下一年已公告：補一句並提供可點的切換文字
+        const nextYear = year + 1;
+        if (year >= todayYear && upcoming.length < 3 && state.availableYears.includes(nextYear)) {
+            const key = upcoming.length === 1 ? 'strategyNext1' : (upcoming.length === 0 ? 'strategyNext0' : 'strategyNextN');
+            const link = document.createElement('button');
+            link.type = 'button';
+            link.className = 'strategy-next-link';
+            link.textContent = t(key, { n: upcoming.length, year: nextYear });
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                event.stopPropagation();
+                changeYear(nextYear);
+            });
+            elements.strategySubtitle.append(' · ', link);
+        }
+
         const btn = elements.strategyMoreBtn;
         btn.hidden = rest.length === 0;
         btn.dataset.total = strategies.length;
@@ -1240,14 +1276,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 畫面最上方：下一個連假（以「今天」為準）。看過去的年份就不顯示；
     // 今年的假都放完了就抓明年的第一個來顯示（年底不會空著）。
-    function renderHero(runs, year) {
+    function renderHero(runs, year, strategies) {
         const card = elements.nextHolidayCard;
         card.classList.add('hidden');
         if (year < todayYear) return;
 
         const next = runs.find(r => r.hasNational && r.endKey >= todayKey);
         if (next) {
-            paintHero(next, year, { fromYear: year });
+            paintHero(next, year, { fromYear: year }, strategies);
             return;
         }
 
@@ -1258,11 +1294,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextRuns = findHolidayRuns(data);
             const nextRun = nextRuns.find(r => r.hasNational && r.endKey >= todayKey);
             if (!nextRun) return;
-            paintHero(nextRun, year, { fromYear: nextYear, noMoreThisYear: true });
+            paintHero(nextRun, year, { fromYear: nextYear, noMoreThisYear: true }, findLeaveStrategies(data));
         }).catch(() => { /* 明年資料抓不到就不顯示 hero */ });
     }
 
-    function paintHero(run, viewedYear, meta) {
+    // 找出與這段連假相連、還沒過期的請假方案（含合併進「也可以」的其他請法），挑最划算的
+    function findHeroStrategy(run, strategies) {
+        const pool = [];
+        (strategies || []).forEach(s => {
+            pool.push(s);
+            (s.alternatives || []).forEach(a => pool.push(a));
+        });
+        const matches = pool.filter(s =>
+            !s.isPast &&
+            s.timeline[0].date <= run.endKey &&
+            s.timeline[s.timeline.length - 1].date >= run.startKey);
+        matches.sort((a, b) =>
+            b.efficiency - a.efficiency || a.leaveDays - b.leaveDays || a.leaveStartKey.localeCompare(b.leaveStartKey));
+        return matches[0] || null;
+    }
+
+    function paintHero(run, viewedYear, meta, strategies) {
         const card = elements.nextHolidayCard;
         const startDate = keyToDate(run.startKey);
         const endDate = keyToDate(run.endKey);
@@ -1285,18 +1337,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const startParts = parseDateString(run.startKey);
         const yearBadge = meta.fromYear !== viewedYear || meta.fromYear !== todayYear ? ` · ${meta.fromYear}` : '';
 
+        // 有對應的請假方案就用整段「放假 + 請假 + 放假」；沒有就只看連假本身
+        const strategy = findHeroStrategy(run, strategies);
+        const span = strategy ? strategy.timeline : run.items;
+        const spanFirst = span[0];
+        const spanLast = span[span.length - 1];
+        const leaveText = strategy ? t('heroLeaveN', { n: `<b>${strategy.leaveDays}</b>` }) : t('heroNoLeave');
+        const totalText = span.length === 1 ? t('heroSingleDay') : t('heroTotalN', { n: `<b>${span.length}</b>` });
+        const legendLeave = strategy ? `<span class="hero-legend-item leave">${escapeHtml(t('heroLegendLeave'))}</span>` : '';
+
         card.innerHTML = `
-            <div class="hero-eyebrow font-noto">${escapeHtml(eyebrow)}${yearBadge}</div>
-            <div class="hero-name font-noto">${escapeHtml(run.name)}</div>
-            <div class="hero-range font-outfit">${formatDate(run.items[0])} – ${formatDate(run.items[run.items.length - 1])}</div>
-            <div class="hero-meta font-noto">
-                <span class="hero-days">${run.days === 1 ? t('heroSingleDay') : t('heroDays', { days: run.days })}</span>
-                <span class="hero-count">${escapeHtml(countdown)}</span>
+            <div class="hero-info">
+                <div class="hero-eyebrow font-noto">${escapeHtml(eyebrow)}${yearBadge}</div>
+                <div class="hero-name font-noto">${escapeHtml(run.name)}</div>
+                <div class="hero-range font-outfit">${formatDate(spanFirst)}–${formatDate(spanLast)}</div>
+                <div class="hero-leave font-noto">
+                    <span class="hero-leave-part">${leaveText}</span><span class="hero-leave-sep" aria-hidden="true">・</span><span class="hero-leave-part">${totalText}</span>
+                </div>
+                <div class="hero-meta font-noto">
+                    <span class="hero-count">${escapeHtml(countdown)}</span>
+                </div>
+                ${meta.noMoreThisYear ? `<div class="hero-note font-noto">${escapeHtml(t('heroNoMore'))}</div>` : ''}
             </div>
-            ${meta.noMoreThisYear ? `<div class="hero-note font-noto">${escapeHtml(t('heroNoMore'))}</div>` : ''}
-            <div class="hero-actions">
-                <button type="button" class="hero-btn font-noto" data-jump-year="${meta.fromYear}" data-jump-month="${startParts.month - 1}">${t('heroViewMonth')}</button>
-                ${meta.fromYear !== viewedYear ? `<button type="button" class="hero-btn secondary font-noto" data-switch-year="${meta.fromYear}">${t('heroSwitchYear', { year: meta.fromYear })}</button>` : ''}
+            <div class="hero-cal">
+                <div class="strategy-calendar-row">${buildCalendarColumnsHTML(span, { compact: true })}</div>
+                <div class="hero-legend font-noto">
+                    <span class="hero-legend-item off">${escapeHtml(t('heroLegendOff'))}</span>${legendLeave}
+                </div>
+                <div class="hero-actions">
+                    <button type="button" class="hero-btn font-noto" data-jump-year="${meta.fromYear}" data-jump-month="${startParts.month - 1}">${t('heroViewMonth')}</button>
+                    ${meta.fromYear !== viewedYear ? `<button type="button" class="hero-btn secondary font-noto" data-switch-year="${meta.fromYear}">${t('heroSwitchYear', { year: meta.fromYear })}</button>` : ''}
+                </div>
             </div>
         `;
 
