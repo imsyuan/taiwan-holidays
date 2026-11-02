@@ -9,7 +9,9 @@
 
     <year>/index.html           年度總覽：連假、假期表、補班日、請假攻略、FAQ、API 連結
     <year>/<slug>/index.html    每個 3 天以上的連假一頁：日期、請假方案、逐日表、前後連假、FAQ
-    sitemap.xml                 重新產生（保留 / 與 /api.html）
+    calendar/index.html         日曆訂閱說明頁（.ics 本身由 scripts/generate_ics.py 產生）
+    sitemap.xml                 重新產生（保留 / 與 /api、加入 /calendar/）
+    index.html                  只重寫 <!-- pages:begin/end --> 內鏈區塊（頁尾與 <noscript>），其餘手寫內容不動
 
 請假方案的演算法移植自 mcp/src/engine/index.ts 的 optimizeLeave（bridgePlans），
 頁面上的方案與 MCP 工具回傳完全一致；parity 測試見 scripts/test_generate_pages.py。
@@ -43,6 +45,16 @@ OG_IMAGE = f"{SITE}/img/og-image-v2.png"
 GA_ID = "G-XRPQC1GM0S"
 STATIC_CSS = "/static.css?v=2"
 GENERATED_MARK = "<!-- generated-by: scripts/generate_pages.py -->"
+
+# 首頁 index.html 內由本腳本維護的區塊（標記之間的內容會被整段重寫，標記本身保留）。
+PAGES_BLOCK = ("<!-- pages:begin -->", "<!-- pages:end -->")
+PAGES_NOSCRIPT_BLOCK = ("<!-- pages-noscript:begin -->", "<!-- pages-noscript:end -->")
+
+# 線上 /api.html 會 307 轉到 /api（Cloudflare 靜態資源預設去掉 .html），所以 canonical／sitemap 用 /api。
+API_PATH = "/api"
+ICS_PATH = "/calendar/tw-holidays.ics"
+ICS_URL = f"{SITE}{ICS_PATH}"
+WEBCAL_URL = "webcal://tw-holidays.gooliya.com" + ICS_PATH
 
 # 年度規則：只產生「今年（含）以後」的年度。
 #   MIN_YEAR_OFFSET = 0  → 今年起；改成 -1 就會連去年一起產生。
@@ -772,7 +784,7 @@ def render_hub(ym, years, all_loaded, since):
 <li><a href="/data/{y}/calendar-en.json">calendar-en.json</a>、<a href="/data/{y}/holidays-en.json">holidays-en.json</a> — 英文版</li>
 </ul>
 <p>想算「N 個工作天後是哪天」「這段期間有幾個工作日」「怎麼請假最划算」？給 AI agent 用的 <a href="{MCP_DOCS}" rel="noopener noreferrer">MCP server</a>（端點 <code>{MCP_ENDPOINT}</code>，Streamable HTTP、免認證）提供 <code>count_workdays</code>、<code>add_workdays</code>、<code>next_makeup_workday</code>、<code>optimize_leave</code>、<code>find_travel_windows</code> 五個工具。</p>
-<p>更多：<a href="/api.html">API 說明文件</a>・<a href="/llms-full.txt">llms-full.txt（給 LLM 的完整說明）</a>・<a href="/">互動式行事曆（含農民曆）</a></p>
+<p>更多：<a href="/calendar/">訂閱行事曆（含補班日）</a>・<a href="/api.html">API 說明文件</a>・<a href="/llms-full.txt">llms-full.txt（給 LLM 的完整說明）</a>・<a href="/">互動式行事曆（含農民曆）</a></p>
 </section>""")
 
     # ---- 前後年度 ----
@@ -977,13 +989,184 @@ def render_run(ym, run, idx, years, all_by_date):
 
 
 # ---------------------------------------------------------------------------
+# calendar/index.html：日曆訂閱說明頁
+# ---------------------------------------------------------------------------
+
+CALENDAR_STYLE = """    <style>
+        .subscribe-btn { display: inline-block; padding: 0.75rem 1.25rem; border-radius: var(--radius); background: var(--primary); color: #fff; font-weight: 700; text-decoration: none; }
+        .subscribe-btn:hover, .subscribe-btn:focus-visible { filter: brightness(1.1); text-decoration: underline; }
+        @media (prefers-color-scheme: dark) { .subscribe-btn { color: #0F172A; } }
+        .url-box { display: block; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); overflow-wrap: anywhere; user-select: all; }
+    </style>
+"""
+
+
+def calendar_faqs(first_year, last_year):
+    return [
+        ("訂閱後行事曆會自動更新嗎？",
+         "會。檔案內建每日更新提示，我們每週檢查一次政府公告；新年度公布或政府臨時調整假期後，訂閱中的行事曆會跟著更新。實際多久重新抓一次，由 Google、Apple、Microsoft 各自決定，可能延遲半天到一天以上。"),
+        ("補班日也會出現在行事曆嗎？",
+         "會。每個補班日是一筆全天事件，標題為「補班：…」，一眼就能分辨。政府該年度沒有公告補班時，就不會有補班事件。"),
+        ("訂閱的假日會讓我的行程顯示忙碌嗎？",
+         "不會。所有事件都標成「有空」，只是提醒，不會擋住別人排會議的時段；實際顯示方式仍取決於你的行事曆 App。"),
+        ("Apple 行事曆跳出不安全提示該怎麼辦？",
+         "訂閱時 iPhone 或 Mac 可能提示來源不安全，原因是 webcal:// 這個網址格式本身沒有標示是否加密。本站檔案實際以 HTTPS 提供、內容只有公開的假日資料。想避開提示，可改用手動加入訂閱行事曆，貼上 https:// 開頭的網址；實際跳出的文字依系統版本而異。"),
+        ("資料從哪裡來、可以拿去用嗎？",
+         f"來源是行政院人事行政總處的「中華民國政府行政機關辦公日曆表」（政府資料開放平台資料集 14718），依政府資料開放授權條款－第 1 版釋出。本站整理後的資料以 CC BY 4.0 提供，引用請標示出處。目前涵蓋 {first_year}–{last_year} 年，以政府最終公告為準。"),
+    ]
+
+
+def render_calendar_page(years, all_years=None):
+    """日曆訂閱說明頁。years 供導覽列使用；all_years 決定「涵蓋年度」文字（預設同 years）。"""
+    all_years = all_years or years
+    first_year, last_year = min(all_years), max(all_years)
+    canonical = f"{SITE}/calendar/"
+    title = f"訂閱台灣假日行事曆（含補班日 .ics）｜{SITE_NAME}"
+    description = ("一鍵把台灣國定假日與補班日加進 Google 日曆、Apple 行事曆、Outlook：訂閱一次，"
+                   f"新年度與政府臨時調整都會自動更新。涵蓋 {first_year}–{last_year} 年，免費、免登入。")
+    crumbs = [("首頁", f"{SITE}/"), ("訂閱行事曆", canonical)]
+    faqs = calendar_faqs(first_year, last_year)
+    webpage = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "訂閱台灣假日行事曆（含補班日）",
+        "description": description,
+        "url": canonical,
+        "inLanguage": "zh-TW",
+        "license": LICENSE_URL,
+        "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": f"{SITE}/"},
+        "isBasedOn": {"@type": "CreativeWork", "name": "中華民國政府行政機關辦公日曆表（行政院人事行政總處）", "url": DATA_SOURCE_URL},
+        "about": "台灣國定假日與補班日的 iCalendar（.ics）訂閱行事曆",
+    }
+    ld = "\n".join([json_ld(breadcrumb_ld(crumbs)), json_ld(faq_ld(faqs)), json_ld(webpage)])
+    extra_head = f'    <link rel="alternate" type="text/calendar" href="{ICS_PATH}" title="台灣國定假日與補班日">\n{CALENDAR_STYLE}'
+
+    out = [page_head(title, description, canonical, "website", ld, extra_head), site_header(years)]
+    out.append(breadcrumb_html([(n, u.replace(SITE, "")) for n, u in crumbs]))
+    out.append("<h1>訂閱台灣假日行事曆（含補班日）</h1>")
+    out.append(f"""<p class="lead">把台灣國定假日與補班日一次加進你的 Google 日曆、Apple 行事曆或 Outlook：訂閱一次，之後新年度公布、政府臨時調整假期，行事曆都會自己更新。免費、免登入，涵蓋 {first_year}–{last_year} 年。</p>""")
+
+    out.append(f"""<section class="card" aria-labelledby="subscribe-h">
+<h2 id="subscribe-h">一鍵訂閱</h2>
+<p><a class="subscribe-btn" href="{WEBCAL_URL}">訂閱台灣假日行事曆</a></p>
+<p>點上方按鈕，iPhone、iPad、Mac 與多數桌面行事曆 App 會自動打開並詢問是否訂閱。Google 日曆與 Outlook 網頁版不接受這種網址，請照下面的步驟手動貼上。</p>
+<p>訂閱網址（HTTPS，手動貼上時用這個）：</p>
+<code class="url-box">{ICS_URL}</code>
+<p class="note">只想匯入一次、不要自動更新？可以<a href="{ICS_PATH}" download>下載 .ics 檔</a>，但匯入的內容之後不會跟著更新，通常不建議。</p>
+</section>""")
+
+    out.append(f"""<section class="card" aria-labelledby="google-h">
+<h2 id="google-h">Google 日曆</h2>
+<ol>
+<li>用電腦打開 Google 日曆（calendar.google.com）。手機 App 不能新增訂閱，但在電腦加好後，登入同一個帳號的手機會一併顯示。</li>
+<li>在左側「其他日曆」旁按「＋」，選「從網址新增」。</li>
+<li>貼上 <code>{ICS_URL}</code>，按「新增日曆」。</li>
+</ol>
+<p class="note">Google 重新抓訂閱日曆的時間由 Google 決定，可能延遲半天到一天以上，無法手動要求立即更新。</p>
+</section>""")
+
+    out.append("""<section class="card" aria-labelledby="apple-h">
+<h2 id="apple-h">Apple 行事曆（iPhone、iPad、Mac）</h2>
+<ol>
+<li>最快的方式：在 iPhone、iPad 或 Mac 上點本頁上方的「訂閱台灣假日行事曆」按鈕，再按系統跳出的「訂閱」。</li>
+<li>手動加入（iPhone、iPad）：打開齒輪圖示的系統 App，進入「行事曆」→「帳號」→「加入帳號」→「其他」→「加入訂閱行事曆」，貼上 https 網址。</li>
+<li>手動加入（Mac）：行事曆 App 的選單列選「檔案」→「新增行事曆訂閱⋯」，貼上 https 網址，更新頻率選「每天」。</li>
+</ol>
+<p class="note"><strong>Apple 可能顯示不安全提示：</strong>訂閱時系統有時會警告來源不安全，原因是 webcal:// 這個網址格式本身沒有標示是否加密，系統無法事先確認。本站檔案實際以 HTTPS 提供，內容只有公開的假日資料，不含任何個人資料。你可以選「訂閱」繼續；想避開提示，就用上面的手動方式貼 https:// 網址。實際跳出的文字依系統版本而異。</p>
+</section>""")
+
+    out.append(f"""<section class="card" aria-labelledby="outlook-h">
+<h2 id="outlook-h">Outlook</h2>
+<ol>
+<li>用瀏覽器打開 Outlook 網頁版（outlook.live.com 或公司的 Microsoft 365 信箱），切到「行事曆」。</li>
+<li>按「新增行事曆」，選「從網際網路訂閱」。</li>
+<li>貼上 <code>{ICS_URL}</code>，取個名稱（例如「台灣國定假日與補班日」），按「匯入」。</li>
+</ol>
+<p class="note">傳統桌面版 Outlook 的操作路徑因版本而異，建議先在網頁版訂閱，桌面版登入同一個帳號後會一併顯示。Outlook 重新抓訂閱的間隔由 Microsoft 決定，可能需要數小時到一天以上。</p>
+</section>""")
+
+    out.append("""<section class="card" aria-labelledby="content-h">
+<h2 id="content-h">訂閱內容</h2>
+<ul>
+<li><strong>國定假日</strong>：每個放假日一筆全天事件，含補假、調整放假與落在週末的假日；一般週末不列入。</li>
+<li><strong>補班日</strong>：每個補班日一筆全天事件，標題為「補班：…」。</li>
+<li>事件備註附上本站對應的連假頁或年度頁，可直接點進去看請假攻略。</li>
+<li>所有事件都標成「有空」，不會讓你的行程顯示忙碌。</li>
+<li>內容由 <code>scripts/generate_ics.py</code> 從 <code>data/</code> 自動產生，與本站 JSON API 是同一份資料。</li>
+</ul>
+</section>""")
+
+    out.append(faq_html(faqs))
+
+    out.append(f"""<section class="card" aria-labelledby="source-h">
+<h2 id="source-h">資料來源與授權</h2>
+<p>資料來源：行政院人事行政總處「中華民國政府行政機關辦公日曆表」（<a href="{DATA_SOURCE_URL}" rel="noopener noreferrer">政府資料開放平台資料集 14718</a>），依<a href="https://data.gov.tw/license" rel="noopener noreferrer">政府資料開放授權條款－第 1 版</a>釋出。本站整理後的資料以 <a href="{LICENSE_URL}" rel="noopener noreferrer">CC BY 4.0</a> 提供，引用請標示出處與本站網址。一切以政府最終公告為準。</p>
+<p>想用 API 讀取？見 <a href="/api.html">JSON API 說明</a>・<a href="/">互動式行事曆</a>・<a href="/{max(years)}/">{max(years)} 年國定假日與連假</a></p>
+</section>""")
+
+    out.append(site_footer())
+    return "\n".join(out)
+
+
+# ---------------------------------------------------------------------------
+# index.html 內鏈區塊（<!-- pages:begin/end -->）
+# ---------------------------------------------------------------------------
+
+def replace_marked_block(text, markers, body):
+    """把 text 中 begin／end 標記之間的內容換成 body（標記保留；沿用 begin 標記行的縮排）。冪等。"""
+    begin, end = markers
+    i, j = text.find(begin), text.find(end)
+    if i < 0 or j < 0 or j < i:
+        raise SystemExit(f"index.html 找不到標記 {begin} … {end}")
+    line_start = text.rfind("\n", 0, i) + 1
+    indent = text[line_start:i]
+    if indent.strip():
+        indent = ""
+    lines = [(indent + ln) if ln else ln for ln in body.split("\n")]
+    return text[:i + len(begin)] + "\n" + "\n".join(lines) + "\n" + indent + text[j:]
+
+
+def render_pages_block(years, runs_by_year):
+    """頁尾的「各年度連假頁」：純靜態 <a href>，爬蟲不需要 JavaScript 就看得到。
+
+    畫面上預設只顯示各年度總覽與訂閱連結；各連假頁收進 <details>（內容仍在原始 HTML 裡）。"""
+    main = [f'<a href="/{y}/">{y} 年連假總覽</a>' for y in years]
+    main.append('<a href="/calendar/">訂閱行事曆（.ics）</a>')
+    rows = []
+    for y in years:
+        links = [f'<a href="{run_url(y, r)}">{esc(r["name"])}</a>' for r in runs_by_year[y]]
+        rows.append(f"<p><strong>{y}</strong>\n" + "\n".join(links) + "</p>")
+    return ('<nav class="footer-pages" aria-label="各年度連假頁">\n'
+            '<p class="footer-pages-main">' + "\n".join(main) + "</p>\n"
+            '<details>\n<summary>各連假頁</summary>\n' + "\n".join(rows) + "\n</details>\n</nav>")
+
+
+def render_pages_noscript(years):
+    links = "｜".join(f'<a href="/{y}/">{y} 年連假頁</a>' for y in years)
+    return f'<p>各年度連假頁：{links}｜<a href="/calendar/">訂閱行事曆</a></p>'
+
+
+def render_index_html(text, all_years, today):
+    years = select_years(all_years, today)
+    runs_by_year = {y: find_runs(load_year(y)[0]) for y in years}
+    text = replace_marked_block(text, PAGES_BLOCK, render_pages_block(years, runs_by_year))
+    return replace_marked_block(text, PAGES_NOSCRIPT_BLOCK, render_pages_noscript(years))
+
+
+# ---------------------------------------------------------------------------
 # sitemap.xml
 # ---------------------------------------------------------------------------
 
 def data_lastmod(years, today):
-    """data/ 最後一次變動的日期（git 提交日）；取不到時用今天。"""
+    """data/ 最後一次變動的日期（git 提交日；有未提交的變動時為今天）；取不到時用今天。"""
     paths = [str(DATA_DIR / "years.json")] + [str(DATA_DIR / f"{y}.json") for y in years] + [str(DATA_DIR / str(y)) for y in years]
     try:
+        dirty = subprocess.run(
+            ["git", "status", "--porcelain", "--", *paths],
+            cwd=ROOT, capture_output=True, text=True, check=True, timeout=30,
+        ).stdout.strip()
+        if dirty:  # 資料剛更新、尚未提交（Action 流程）：以今天為準，否則 lastmod 會落後一輪
+            return today.isoformat()
         out = subprocess.run(
             ["git", "log", "-1", "--format=%cs", "--", *paths],
             cwd=ROOT, capture_output=True, text=True, check=True, timeout=30,
@@ -1024,7 +1207,7 @@ def render_site(all_years, today, lastmod=None):
             all_by_date[parse_compact(e["date"])] = e
 
     files = {}
-    sitemap = [(f"{SITE}/", lastmod, "weekly", "1.0"), (f"{SITE}/api.html", lastmod, "monthly", "0.8")]
+    sitemap = [(f"{SITE}/", lastmod, "weekly", "1.0"), (f"{SITE}{API_PATH}", lastmod, "monthly", "0.8")]
     for y in years:
         ym = build_year(y, loaded)
         files[f"{y}/index.html"] = render_hub(ym, years, loaded, since)
@@ -1032,6 +1215,8 @@ def render_site(all_years, today, lastmod=None):
         for idx, run in enumerate(ym["runs"]):
             files[f"{y}/{run['slug']}/index.html"] = render_run(ym, run, idx, years, all_by_date)
             sitemap.append((f"{SITE}{run_url(y, run)}", lastmod, "monthly", "0.7"))
+    files["calendar/index.html"] = render_calendar_page(years, all_years)
+    sitemap.append((f"{SITE}/calendar/", lastmod, "monthly", "0.6"))
     if lastmod is not None:
         files["sitemap.xml"] = render_sitemap(sitemap)
     return files
@@ -1066,6 +1251,8 @@ def main(argv=None):
     if not years:
         raise SystemExit(f"data/years.json 沒有 >= {today.year + MIN_YEAR_OFFSET} 的年度，無頁面可產生")
     files = render_site(all_years, today, lastmod=data_lastmod(years, today))
+    index_path = ROOT / "index.html"
+    files["index.html"] = render_index_html(index_path.read_text(encoding="utf-8"), all_years, today)
 
     stale = []
     for rel, content in files.items():

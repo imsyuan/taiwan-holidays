@@ -194,10 +194,11 @@
     --color-today-ring-red: rgba(248, 113, 113, 0.75);
     --color-holiday-dot: #F87171;
     --color-makeup-dot: #60A5FA;
-    --color-brown-100: #3D322C;
-    --color-strategy-fg: #DCC3B6;
-    --color-strategy-bg: #241C18;
-    --color-strategy-border: #3A2D26;
+    --color-brown-100: #334155;
+    --color-strategy-fg: #CBD5E1;
+    --color-strategy-bg: #162033;
+    --color-strategy-border: #243049;
+    --color-brown-600: #475569;
     --color-inverse-bg: #334155;
     --color-inverse-fg: #F8FAFC;
     --color-code-bg: #0B1120;
@@ -261,10 +262,11 @@
   --color-today-ring-red: rgba(248, 113, 113, 0.75);
   --color-holiday-dot: #F87171;
   --color-makeup-dot: #60A5FA;
-  --color-brown-100: #3D322C;
-  --color-strategy-fg: #DCC3B6;
-  --color-strategy-bg: #241C18;
-  --color-strategy-border: #3A2D26;
+  --color-brown-100: #334155;
+  --color-strategy-fg: #CBD5E1;
+  --color-strategy-bg: #162033;
+  --color-strategy-border: #243049;
+  --color-brown-600: #475569;
   --color-inverse-bg: #334155;
   --color-inverse-fg: #F8FAFC;
   --color-code-bg: #0B1120;
@@ -1817,6 +1819,53 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
 
 .footer .version-badge {
   margin-left: 0.5rem;
+}
+
+/* 各年度連假頁內鏈（由 scripts/generate_pages.py 維護的 <!-- pages:begin/end --> 區塊） */
+.footer-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 48rem;
+  font-size: 0.8125rem;
+}
+
+.footer-pages details {
+  width: 100%;
+  text-align: center;
+}
+
+.footer-pages summary {
+  display: inline-block;
+  min-height: var(--touch, 44px);
+  line-height: var(--touch, 44px);
+  padding: 0 0.75rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+}
+
+.footer-pages p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.9rem;
+  margin: 0;
+  line-height: 1.9;
+}
+
+.footer-pages .footer-pages-title {
+  font-weight: 600;
+}
+
+.footer-pages a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  white-space: nowrap;
+}
+
+.footer-pages a:hover {
+  color: var(--color-primary-fg);
 }
 
 /* Social buttons（頁尾與桌機浮動列共用） */
