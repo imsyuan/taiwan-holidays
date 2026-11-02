@@ -217,11 +217,85 @@ class GeneratedPages(unittest.TestCase):
     def test_sitemap_lists_every_page_and_keeps_root_entries(self):
         sm = self.files["sitemap.xml"]
         self.assertIn(f"<loc>{gp.SITE}/</loc>", sm)
-        self.assertIn(f"<loc>{gp.SITE}/api.html</loc>", sm)
+        self.assertIn(f"<loc>{gp.SITE}/api</loc>", sm)  # 線上 /api.html 會 307 到 /api
+        self.assertNotIn("/api.html", sm)
+        self.assertIn(f"<loc>{gp.SITE}/calendar/</loc>", sm)
         for p in self.pages:
             self.assertIn(f"<loc>{gp.SITE}/{p[:-len('index.html')]}</loc>", sm)
         self.assertNotIn("llms", sm)
         self.assertNotIn(".json", sm)
+
+
+class IndexPagesBlock(unittest.TestCase):
+    """首頁 <!-- pages:begin/end --> 內鏈區塊：靜態 <a href>、冪等、只動標記之間。"""
+
+    TODAY = date(2026, 10, 28)
+
+    @classmethod
+    def setUpClass(cls):
+        cls.src = (gp.ROOT / "index.html").read_text(encoding="utf-8")
+        cls.years = gp.load_years()
+
+    def render(self, text):
+        return gp.render_index_html(text, self.years, self.TODAY)
+
+    def test_committed_index_is_up_to_date(self):
+        self.assertEqual(self.render(self.src), self.src)
+
+    def test_idempotent(self):
+        once = self.render(self.src)
+        self.assertEqual(self.render(once), once)
+
+    def test_footer_block_has_static_links_to_year_and_run_pages(self):
+        out = self.render(self.src)
+        block = out[out.index(gp.PAGES_BLOCK[0]):out.index(gp.PAGES_BLOCK[1])]
+        self.assertIn('href="/2026/"', block)
+        self.assertIn('href="/2027/"', block)
+        self.assertIn('href="/calendar/"', block)
+        for y in (2026, 2027):
+            for run in gp.find_runs(gp.load_year(y)[0]):
+                self.assertIn(f'href="/{y}/{run["slug"]}/"', block)
+        self.assertNotIn("<script", block)  # 不靠 JavaScript
+
+    def test_noscript_block_links_hubs_and_calendar(self):
+        out = self.render(self.src)
+        block = out[out.index(gp.PAGES_NOSCRIPT_BLOCK[0]):out.index(gp.PAGES_NOSCRIPT_BLOCK[1])]
+        for href in ("/2026/", "/2027/", "/calendar/"):
+            self.assertIn(f'href="{href}"', block)
+
+    def test_only_marked_regions_change(self):
+        stale = self.src
+        for begin, end in (gp.PAGES_BLOCK, gp.PAGES_NOSCRIPT_BLOCK):
+            i, j = stale.index(begin) + len(begin), stale.index(end)
+            stale = stale[:i] + "\nSTALE\n" + stale[j:]
+        self.assertEqual(self.render(stale), self.src)
+
+    def test_past_year_is_dropped_from_block(self):
+        out = gp.render_index_html(self.src, self.years, date(2027, 1, 1))
+        block = out[out.index(gp.PAGES_BLOCK[0]):out.index(gp.PAGES_BLOCK[1])]
+        self.assertNotIn('href="/2026/', block)
+        self.assertIn('href="/2027/"', block)
+
+    def test_missing_marker_fails_loudly(self):
+        with self.assertRaises(SystemExit):
+            gp.replace_marked_block("<p>no markers</p>", gp.PAGES_BLOCK, "x")
+
+
+class CalendarPage(unittest.TestCase):
+    def test_subscription_urls_present(self):
+        html = gp.render_calendar_page([2026, 2027], gp.load_years())
+        self.assertIn('href="webcal://tw-holidays.gooliya.com/calendar/tw-holidays.ics"', html)
+        self.assertIn("https://tw-holidays.gooliya.com/calendar/tw-holidays.ics", html)
+        self.assertIn("政府資料開放授權條款", html)
+        self.assertIn("CC BY 4.0", html)
+
+    def test_no_mainland_terms(self):
+        html = gp.render_calendar_page([2026, 2027], gp.load_years())
+        main = html[html.index("<main"):html.index("</main>")]  # 共用頁尾是既有內容，不在檢查範圍
+        meta = " ".join(re.findall(r'content="([^"]*)"', html))
+        text = re.sub(r"<[^>]+>", "", main) + meta
+        for word in ("螢幕", "資訊", "使用者", "預設", "文件", "設定", "程式", "伺服器", "介面", "呼叫", "支援", "影片", "品質", "軟體", "開啟", "連結"):
+            self.assertNotIn(word, text, word)
 
 
 if __name__ == "__main__":

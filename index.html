@@ -146,7 +146,7 @@
                 "@type": "Dataset",
                 "name": "Taiwan Public Holidays Dataset",
                 "description": "台灣國定假日、補班日與農民曆資料，每月自動同步政府開放資料，涵蓋 2017–2027 年。",
-                "url": "https://tw-holidays.gooliya.com/api.html",
+                "url": "https://tw-holidays.gooliya.com/api",
                 "license": "https://github.com/imsyuan/taiwan-holidays/blob/main/LICENSE",
                 "creator": { "@id": "https://tw-holidays.gooliya.com/#organization" },
                 "isBasedOn": {
@@ -450,6 +450,9 @@
                         <li>2027 年：<a href="data/2027/holidays.json">國定假日</a>｜<a href="data/2027/makeup-workdays.json">補班日</a>｜<a href="data/2027.json">全年每日（含農民曆）</a></li>
                         <li>其他年份：<a href="data/years.json">可用年份清單</a>，路徑規則為 <code>data/&lt;年份&gt;/holidays.json</code></li>
                     </ul>
+                    <!-- pages-noscript:begin -->
+                    <p>各年度連假頁：<a href="/2026/">2026 年連假頁</a>｜<a href="/2027/">2027 年連假頁</a>｜<a href="/calendar/">訂閱行事曆</a></p>
+                    <!-- pages-noscript:end -->
                     <p><a href="api.html">API 說明</a>｜<a href="llms-full.txt">完整說明（llms-full.txt）</a>｜<a href="openapi.json">openapi.json</a></p>
                 </div>
             </noscript>
@@ -578,6 +581,35 @@
                     </a>
                 </div>
                 <p><span data-i18n="footerSource">資料來源：中華民國行政院人事行政總處。</span></p>
+                <!-- pages:begin -->
+                <nav class="footer-pages" aria-label="各年度連假頁">
+                <p class="footer-pages-main"><a href="/2026/">2026 年連假總覽</a>
+                <a href="/2027/">2027 年連假總覽</a>
+                <a href="/calendar/">訂閱行事曆（.ics）</a></p>
+                <details>
+                <summary>各連假頁</summary>
+                <p><strong>2026</strong>
+                <a href="/2026/lunar-new-year/">春節連假</a>
+                <a href="/2026/peace-memorial-day/">二二八和平紀念日連假</a>
+                <a href="/2026/tomb-sweeping/">清明連假</a>
+                <a href="/2026/labor-day/">勞動節連假</a>
+                <a href="/2026/dragon-boat/">端午連假</a>
+                <a href="/2026/mid-autumn/">中秋連假</a>
+                <a href="/2026/national-day/">國慶連假</a>
+                <a href="/2026/taiwan-retrocession-day/">光復節連假</a>
+                <a href="/2026/constitution-day/">行憲紀念日連假</a></p>
+                <p><strong>2027</strong>
+                <a href="/2027/new-year/">元旦連假</a>
+                <a href="/2027/lunar-new-year/">春節連假</a>
+                <a href="/2027/peace-memorial-day/">二二八和平紀念日連假</a>
+                <a href="/2027/tomb-sweeping/">清明連假</a>
+                <a href="/2027/labor-day/">勞動節連假</a>
+                <a href="/2027/national-day/">國慶連假</a>
+                <a href="/2027/taiwan-retrocession-day/">光復節連假</a>
+                <a href="/2027/constitution-day/">行憲紀念日連假</a></p>
+                </details>
+                </nav>
+                <!-- pages:end -->
                 <p>
                     <a href="https://www.gooliya.com/" target="_blank" rel="noopener noreferrer"
                         class="hover:text-slate-900 transition-colors font-medium">Gooliya</a> © 2026. All rights

@@ -1,0 +1,2 @@
+# .ics 必須維持 CRLF（RFC 5545），不讓 git 轉換行尾
+calendar/*.ics -text

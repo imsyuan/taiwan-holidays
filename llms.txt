@@ -12,7 +12,8 @@
 - [MCP Server 端點（Streamable HTTP，無需認證）](https://mcp.tw-holidays.gooliya.com/mcp): 給 AI agent 直接呼叫的工作日計算工具（`count_workdays`、`add_workdays`、`next_makeup_workday`、`optimize_leave`、`find_travel_windows`、`build_travel_links`）
 - [MCP 說明文件](https://github.com/imsyuan/taiwan-holidays/blob/main/mcp/README.md): 工具契約與連線方式
 - [視覺化日曆網站](https://tw-holidays.gooliya.com/): 互動式台灣國定假日月曆，含連假清單與請假攻略，支援中英雙語與農民曆顯示
-- [API 說明文件](https://tw-holidays.gooliya.com/api.html): JSON API 使用方式與欄位說明
+- [API 說明文件](https://tw-holidays.gooliya.com/api): JSON API 使用方式與欄位說明
+- [訂閱行事曆（.ics）](https://tw-holidays.gooliya.com/calendar/): 一鍵把台灣國定假日與補班日加進 Google 日曆、Apple 行事曆、Outlook，自動更新
 - [GitHub Repo](https://github.com/imsyuan/taiwan-holidays): 原始碼、資料生成腳本
 
 ## 目前資料概況
@@ -22,6 +23,7 @@
 - 最新年度 2027：`data/2027/holidays.json` 共 24 筆放假紀錄（含補假，以及落在週六、週日的國定假日，不等於 24 個獨立節日，也不等於額外多放的平日）。
 - 2027 年補班日：無（該年度沒有補班日）。
 - 2027 年最長連假（連續放假含週末，依資料推算）：2/4（四）–2/10（三），共 7 天（含：小年夜、農曆除夕、春節、補假）。
+- 行事曆訂閱（.ics，含國定假日與補班日，涵蓋 2017–2027 年）：https://tw-holidays.gooliya.com/calendar/tw-holidays.ics ；說明頁 https://tw-holidays.gooliya.com/calendar/ 。
 - 以上數字由 `scripts/generate_llms.py` 從 `data/` 產生；要最新、可驗證的數字請直接讀 JSON 或呼叫 MCP，不要沿用本段文字。
 <!-- facts:end -->
 

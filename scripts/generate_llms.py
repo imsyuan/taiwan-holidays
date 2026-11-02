@@ -113,6 +113,7 @@ def render_short(years, facts):
         f"{latest['holiday_entries']} 個獨立節日，也不等於額外多放的平日）。",
         f"- {y} 年補班日：{makeup_text(latest)}。",
         f"- {y} 年最長連假（連續放假含週末，依資料推算）：{run_text(latest)}。",
+        f"- 行事曆訂閱（.ics，含國定假日與補班日，涵蓋 {years[0]}–{years[-1]} 年）：https://tw-holidays.gooliya.com/calendar/tw-holidays.ics ；說明頁 https://tw-holidays.gooliya.com/calendar/ 。",
         "- 以上數字由 `scripts/generate_llms.py` 從 `data/` 產生；要最新、可驗證的數字請直接讀 JSON 或呼叫 MCP，不要沿用本段文字。",
     ]
     return "\n".join(lines)
