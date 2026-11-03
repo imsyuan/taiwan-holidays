@@ -1,159 +1,411 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tw-holidays.gooliya.com/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/api</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/lunar-new-year/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/lunar-new-year/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/peace-memorial-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/peace-memorial-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/tomb-sweeping/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/tomb-sweeping/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/labor-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/labor-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/dragon-boat/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/dragon-boat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/dragon-boat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/dragon-boat/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/mid-autumn/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/mid-autumn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/mid-autumn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/mid-autumn/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/national-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/national-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/taiwan-retrocession-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/taiwan-retrocession-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/constitution-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/constitution-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/new-year/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/new-year/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/new-year/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/new-year/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/lunar-new-year/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/lunar-new-year/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/peace-memorial-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/peace-memorial-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/tomb-sweeping/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/tomb-sweeping/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/labor-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/labor-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/national-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/national-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/taiwan-retrocession-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/taiwan-retrocession-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/constitution-day/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/constitution-day/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2026/calendar/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/calendar/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/en/2026/calendar/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/calendar/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/2027/calendar/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/calendar/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/en/2027/calendar/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/calendar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/calendar/"/>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tw-holidays.gooliya.com/calendar/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/lunar-new-year/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/lunar-new-year/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/peace-memorial-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/peace-memorial-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/tomb-sweeping/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/tomb-sweeping/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/labor-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/labor-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/dragon-boat/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/dragon-boat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/dragon-boat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/dragon-boat/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/mid-autumn/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/mid-autumn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/mid-autumn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/mid-autumn/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/national-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/national-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/taiwan-retrocession-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/taiwan-retrocession-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/constitution-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2026/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2026/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2026/constitution-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/new-year/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/new-year/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/new-year/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/new-year/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/lunar-new-year/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/lunar-new-year/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/lunar-new-year/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/peace-memorial-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/peace-memorial-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/peace-memorial-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/tomb-sweeping/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/tomb-sweeping/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/tomb-sweeping/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/labor-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/labor-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/labor-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/national-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/national-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/national-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/taiwan-retrocession-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/taiwan-retrocession-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/taiwan-retrocession-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/constitution-day/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://tw-holidays.gooliya.com/2027/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tw-holidays.gooliya.com/en/2027/constitution-day/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tw-holidays.gooliya.com/2027/constitution-day/"/>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

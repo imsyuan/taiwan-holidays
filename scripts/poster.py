@@ -485,7 +485,7 @@ def render_poster_page(gp, year, calendar, holidays, years, lang):
     <header class="site-header">
         <div class="container">
             <a class="brand" href="/">{gp.SITE_NAME}<span>Taiwan public holidays</span></a>
-            <nav class="site-nav" aria-label="Site">{nav_link("/", "Interactive calendar")}<span class="nav-label">Calendar:</span>{year_links}{switch}{nav_link("/api.html", "JSON API")}</nav>
+            <nav class="site-nav" aria-label="Site">{nav_link("/en/", "Home")}{nav_link(f"/en/{year}/", f"Holidays {year}")}<span class="nav-label">Calendar:</span>{year_links}{switch}{nav_link("/", "Interactive calendar")}{nav_link("/api.html", "JSON API")}</nav>
         </div>
     </header>
     <main id="main" class="container">

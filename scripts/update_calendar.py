@@ -51,6 +51,7 @@ HOLIDAY_EN_MAP = {
     "兒童節": "Children's Day",
     "清明節": "Tomb Sweeping Day",
     "民族掃墓節": "Tomb Sweeping Day",
+    "勞動節": "Labor Day",
     "端午節": "Dragon Boat Festival",
     "中秋節": "Mid-Autumn Festival",
     "國慶日": "National Day",

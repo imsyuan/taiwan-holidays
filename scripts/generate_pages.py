@@ -30,6 +30,7 @@ import sys
 from datetime import date, timedelta
 from pathlib import Path
 
+import en_pages
 import poster
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -428,12 +429,13 @@ def page_head(title, description, canonical, og_type, extra_ld, extra_head="", l
 """
 
 
-def site_header(years, current_year=None):
+def site_header(years, current_year=None, en_href="/en/"):
     links = ['<a href="/">互動行事曆</a>']
     for y in years:
         cur = ' aria-current="page"' if y == current_year else ""
         links.append(f'<a href="/{y}/"{cur}>{y} 年</a>')
     links.append('<a href="/api.html">JSON API</a>')
+    links.append(f'<a href="{en_href}" hreflang="en">EN</a>')
     return f"""<body>
     <a class="skip-link" href="#main">跳到主要內容</a>
     <header class="site-header">
@@ -645,9 +647,10 @@ def render_hub(ym, years, all_loaded, since):
         ],
     }
     ld = "\n".join([json_ld(breadcrumb_ld(crumbs)), json_ld(faq_ld(faqs)), json_ld(dataset)])
-    extra_head = f'    <link rel="alternate" type="application/json" href="/data/{y}/holidays.json" title="{y} 國定假日 JSON">\n'
+    extra_head = (en_pages.alternates(sys.modules[__name__], y)
+                  + f'    <link rel="alternate" type="application/json" href="/data/{y}/holidays.json" title="{y} 國定假日 JSON">\n')
 
-    out = [page_head(title, description, canonical, "website", ld, extra_head), site_header(years, y)]
+    out = [page_head(title, description, canonical, "website", ld, extra_head), site_header(years, y, en_pages.en_path(y))]
     out.append(breadcrumb_html([(n, u.replace(SITE, "")) for n, u in crumbs]))
     out.append(f"<h1>{y} 台灣國定假日、連假與請假攻略</h1>")
 
@@ -907,7 +910,9 @@ def render_run(ym, run, idx, years, all_by_date):
     faqs = run_faqs(ym, run, idx)
     ld = "\n".join([json_ld(breadcrumb_ld(crumbs)), json_ld(faq_ld(faqs))])
 
-    out = [page_head(title, description, canonical, "article", ld), site_header(years, y)]
+    out = [page_head(title, description, canonical, "article", ld,
+                     extra_head=en_pages.alternates(sys.modules[__name__], y, run["slug"])),
+           site_header(years, y, en_pages.en_path(y, run["slug"]))]
     out.append(breadcrumb_html([(n, u.replace(SITE, "")) for n, u in crumbs]))
     out.append(f"<h1>{y} 年{esc(run['name'])}：{long_date(run['start'])} 至 {long_date(run['end'])}，共 {run['length']} 天</h1>")
 
@@ -1136,6 +1141,7 @@ def render_pages_block(years, runs_by_year):
     main = [f'<a href="/{y}/">{y} 年連假總覽</a>' for y in years]
     main.extend(f'<a href="{poster.poster_path(y, "zh")}" target="_blank" rel="noopener">{y} 年曆一頁圖</a>' for y in years)
     main.append('<a href="/calendar/">訂閱行事曆（.ics）</a>')
+    main.append('<a href="/en/" hreflang="en">English</a>')
     rows = []
     for y in years:
         links = [f'<a href="{run_url(y, r)}">{esc(r["name"])}</a>' for r in runs_by_year[y]]
@@ -1182,12 +1188,37 @@ def data_lastmod(years, today):
     return today.isoformat()
 
 
+def with_alternates(entries):
+    """中英文成對的網址（/ ↔ /en/、/<y>/… ↔ /en/<y>/…）互加 xhtml:link alternate。"""
+    en_prefix = f"{SITE}/en/"
+    zh_of = {}
+    for e in entries:
+        loc = e[0]
+        if loc.startswith(en_prefix):
+            zh_of[loc] = f"{SITE}/" + loc[len(en_prefix):]
+    by_loc = {e[0] for e in entries}
+    out = []
+    for e in entries:
+        loc = e[0]
+        zh = zh_of.get(loc) if loc in zh_of else loc
+        en = loc if loc in zh_of else f"{en_prefix}{loc[len(SITE) + 1:]}"
+        if zh in by_loc and en in by_loc:
+            out.append(tuple(e[:4]) + ([("zh-TW", zh), ("en", en), ("x-default", zh)],))
+        else:
+            out.append(tuple(e[:4]))
+    return out
+
+
 def render_sitemap(entries):
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for loc, lastmod, changefreq, priority in entries:
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for entry in entries:
+        loc, lastmod, changefreq, priority = entry[:4]
+        alts = entry[4] if len(entry) > 4 else ()
         lines.append("  <url>")
         lines.append(f"    <loc>{esc(loc)}</loc>")
+        for hl, href in alts:
+            lines.append(f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{esc(href)}"/>')
         lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines.append(f"    <changefreq>{changefreq}</changefreq>")
         lines.append(f"    <priority>{priority}</priority>")
@@ -1227,8 +1258,11 @@ def render_site(all_years, today, lastmod=None):
             sitemap.append((f"{SITE}{poster.poster_path(y, lang)}", lastmod, "monthly", "0.7"))
     files["calendar/index.html"] = render_calendar_page(years, all_years)
     sitemap.append((f"{SITE}/calendar/", lastmod, "monthly", "0.6"))
+    en_files, en_sitemap = en_pages.render_en_site(sys.modules[__name__], years, loaded, since, all_by_date, lastmod)
+    files.update(en_files)
+    sitemap.extend(en_sitemap)
     if lastmod is not None:
-        files["sitemap.xml"] = render_sitemap(sitemap)
+        files["sitemap.xml"] = render_sitemap(with_alternates(sitemap))
     return files
 
 
@@ -1236,19 +1270,20 @@ def prune_stale(years, keep):
     """移除本腳本先前產生、但這次沒再產生的連假子頁。"""
     removed = []
     for y in years:
-        ydir = ROOT / str(y)
-        if not ydir.is_dir():
-            continue
-        for sub in ydir.iterdir():
-            idx = sub / "index.html"
-            rel = f"{y}/{sub.name}/index.html"
-            if sub.is_dir() and idx.is_file() and rel not in keep:
-                try:
-                    if GENERATED_MARK in idx.read_text(encoding="utf-8"):
-                        shutil.rmtree(sub)
-                        removed.append(rel)
-                except OSError:
-                    pass
+        for prefix in ("", "en/"):
+            ydir = ROOT / (prefix + str(y))
+            if not ydir.is_dir():
+                continue
+            for sub in ydir.iterdir():
+                idx = sub / "index.html"
+                rel = f"{prefix}{y}/{sub.name}/index.html"
+                if sub.is_dir() and idx.is_file() and rel not in keep:
+                    try:
+                        if GENERATED_MARK in idx.read_text(encoding="utf-8"):
+                            shutil.rmtree(sub)
+                            removed.append(rel)
+                    except OSError:
+                        pass
     return removed
 
 
