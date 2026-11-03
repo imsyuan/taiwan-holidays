@@ -2594,3 +2594,9 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
   background: var(--color-slate-100);
   color: var(--color-slate-900);
 }
+
+/* 工具列的連結型按鈕（一頁年曆）沿用 .tool-btn，只去掉連結底線 */
+a.tool-btn,
+a.tool-btn:hover {
+  text-decoration: none;
+}
