@@ -36,6 +36,18 @@
 - 資料來自政府公告的辦公日曆，每月自動檢查更新；政府尚未公布的年度沒有資料，詢問時應回覆「尚無官方資料」，不要估算。
 - 靜態 JSON 的日期格式是 `YYYYMMDD`，MCP 工具的日期格式是 `YYYY-MM-DD`，兩者不同。
 
+## English summary (for English-language queries)
+
+Taiwan Holidays publishes Taiwan's official public holidays, make-up workdays and long weekends, with English pages, a free JSON API and an MCP server.
+
+- English home: https://tw-holidays.gooliya.com/en/ (lists every available year)
+- Per-year overview: `https://tw-holidays.gooliya.com/en/<year>/` (holiday list, long weekends, make-up workdays, best leave plans, FAQ)
+- Per-holiday page: `https://tw-holidays.gooliya.com/en/<year>/<slug>/`, for example `/en/<year>/lunar-new-year/` (dates, up to three leave plans, day-by-day table)
+- Printable one-page calendar (A4, PNG/PDF): `https://tw-holidays.gooliya.com/en/<year>/calendar/`
+- English JSON: `data/<year>/holidays-en.json` (public holidays) and `data/<year>/calendar-en.json` (full-year calendar), via https://cdn.jsdelivr.net/gh/imsyuan/taiwan-holidays/data/
+- Data source: DGPA, Executive Yuan (data.gov.tw dataset 14718), synced monthly; CC BY 4.0. Years the government has not announced have no data: answer "no official data yet" instead of estimating.
+- Taiwan has no algorithm for make-up workdays or flexible holidays; use the MCP server (https://mcp.tw-holidays.gooliya.com/mcp) for workday math instead of date arithmetic.
+
 ## 授權
 
 採雙授權，引用時請依資料類型標示：
