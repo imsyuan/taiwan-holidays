@@ -191,7 +191,7 @@ class GeneratedPages(unittest.TestCase):
     def test_single_h1_lang_canonical_skip_link(self):
         for path, content in self.pages.items():
             self.assertEqual(content.count("<h1>"), 1, path)
-            self.assertIn('<html lang="zh-TW">', content, path)
+            self.assertIn('<html lang="en">' if path.startswith("en/") else '<html lang="zh-TW">', content, path)
             self.assertIn(f'<link rel="canonical" href="{gp.SITE}/{path[:-len("index.html")]}">', content, path)
             self.assertIn('class="skip-link"', content, path)
             self.assertIn(f"gtag/js?id={gp.GA_ID}", content, path)

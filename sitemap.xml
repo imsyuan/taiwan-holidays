@@ -127,6 +127,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tw-holidays.gooliya.com/2026/calendar/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2026/calendar/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/2027/calendar/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tw-holidays.gooliya.com/en/2027/calendar/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tw-holidays.gooliya.com/calendar/</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
