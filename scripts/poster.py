@@ -307,6 +307,7 @@ PAGE_CSS = """<style>
 @media (prefers-color-scheme:dark){.poster-btn.primary{color:#0F172A}}
 .poster-fig{margin:1rem 0;overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
 .poster-fig svg{display:block;width:100%;min-width:720px;height:auto}
+.nav-label{color:var(--muted);font-size:.85rem;align-self:center}
 .poster-hint{color:var(--muted);font-size:.9rem;margin:.25rem 0 1rem}
 .poster-list{columns:2 16rem;padding-left:1.2rem}
 @page{size:A4 portrait;margin:6mm}
@@ -458,8 +459,25 @@ def render_poster_page(gp, year, calendar, holidays, years, lang):
     head = gp.page_head(title, description, canonical, "article", ld, extra_head=alt + PAGE_CSS + "\n",
                         lang="zh-TW" if zh else "en", locale="zh_TW" if zh else "en_US")
 
+    def nav_link(href, text, current=False, hl=None):
+        cur = ' aria-current="page"' if current else ""
+        lang_attr = f' hreflang="{hl}"' if hl else ""
+        return f'<a href="{href}"{lang_attr}{cur}>{esc(text)}</a>'
+
+    year_links = "".join(
+        nav_link(poster_path(y, lang), f"{y} 年曆" if zh else f"{y}", current=(y == year)) for y in years)
+    switch = (nav_link(poster_path(year, "en"), "EN", hl="en") if zh else nav_link(poster_path(year, "zh"), "中文", hl="zh-TW"))
     if zh:
-        chrome_top = gp.site_header(years, year)
+        chrome_top = f"""<body>
+    <a class="skip-link" href="#main">跳到主要內容</a>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/">{gp.SITE_NAME}<span>台灣國定假日行事曆</span></a>
+            <nav class="site-nav" aria-label="網站導覽">{nav_link("/", "互動行事曆")}{nav_link(f"/{year}/", f"{year} 連假")}{year_links}{switch}{nav_link("/api.html", "JSON API")}</nav>
+        </div>
+    </header>
+    <main id="main" class="container">
+"""
         chrome_bottom = gp.site_footer()
     else:
         chrome_top = f"""<body>
@@ -467,7 +485,7 @@ def render_poster_page(gp, year, calendar, holidays, years, lang):
     <header class="site-header">
         <div class="container">
             <a class="brand" href="/">{gp.SITE_NAME}<span>Taiwan public holidays</span></a>
-            <nav class="site-nav" aria-label="Site"><a href="/">Interactive calendar</a><a href="{poster_path(year, 'zh')}" hreflang="zh-TW">中文</a><a href="/api.html">JSON API</a></nav>
+            <nav class="site-nav" aria-label="Site">{nav_link("/", "Interactive calendar")}<span class="nav-label">Calendar:</span>{year_links}{switch}{nav_link("/api.html", "JSON API")}</nav>
         </div>
     </header>
     <main id="main" class="container">
