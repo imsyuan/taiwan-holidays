@@ -30,6 +30,8 @@ import sys
 from datetime import date, timedelta
 from pathlib import Path
 
+import poster
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 
@@ -386,7 +388,7 @@ def no_makeup_since(all_years_loaded):
 # HTML 片段
 # ---------------------------------------------------------------------------
 
-def page_head(title, description, canonical, og_type, extra_ld, extra_head=""):
+def page_head(title, description, canonical, og_type, extra_ld, extra_head="", lang="zh-TW", locale="zh_TW"):
     ga = f"""    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
     <script>
@@ -396,7 +398,7 @@ def page_head(title, description, canonical, og_type, extra_ld, extra_head=""):
         gtag('config', '{GA_ID}');
     </script>"""
     return f"""<!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="{lang}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -408,7 +410,7 @@ def page_head(title, description, canonical, og_type, extra_ld, extra_head=""):
     <link rel="canonical" href="{esc(canonical)}">
     <meta property="og:type" content="{og_type}">
     <meta property="og:site_name" content="{SITE_NAME}">
-    <meta property="og:locale" content="zh_TW">
+    <meta property="og:locale" content="{locale}">
     <meta property="og:url" content="{esc(canonical)}">
     <meta property="og:title" content="{esc(title)}">
     <meta property="og:description" content="{esc(description)}">
@@ -660,6 +662,7 @@ def render_hub(ym, years, all_loaded, since):
 <div class="stat"><b>{len(ym['makeup'])}</b>天補班日</div>
 <div class="stat"><b>{ym['work_days']}</b>天上班日</div>
 </div>""")
+    out.append(f'<p class="note">想要一張可以印出來或存成圖的全年行事曆？<a href="{poster.poster_path(y, "zh")}" target="_blank" rel="noopener">{y} 年曆一頁圖（A4，可下載 PNG／PDF）</a>・<a href="{poster.poster_path(y, "en")}" target="_blank" rel="noopener" hreflang="en">English</a></p>')
 
     # ---- 連假列表 ----
     if runs:
@@ -1131,6 +1134,7 @@ def render_pages_block(years, runs_by_year):
 
     畫面上預設只顯示各年度總覽與訂閱連結；各連假頁收進 <details>（內容仍在原始 HTML 裡）。"""
     main = [f'<a href="/{y}/">{y} 年連假總覽</a>' for y in years]
+    main.extend(f'<a href="{poster.poster_path(y, "zh")}" target="_blank" rel="noopener">{y} 年曆一頁圖</a>' for y in years)
     main.append('<a href="/calendar/">訂閱行事曆（.ics）</a>')
     rows = []
     for y in years:
@@ -1215,6 +1219,12 @@ def render_site(all_years, today, lastmod=None):
         for idx, run in enumerate(ym["runs"]):
             files[f"{y}/{run['slug']}/index.html"] = render_run(ym, run, idx, years, all_by_date)
             sitemap.append((f"{SITE}{run_url(y, run)}", lastmod, "monthly", "0.7"))
+    for y in years:
+        calendar, holidays, _ = loaded[y]
+        for lang in ("zh", "en"):
+            files[poster.poster_path(y, lang).strip("/") + "/index.html"] = poster.render_poster_page(
+                sys.modules[__name__], y, calendar, holidays, years, lang)
+            sitemap.append((f"{SITE}{poster.poster_path(y, lang)}", lastmod, "monthly", "0.7"))
     files["calendar/index.html"] = render_calendar_page(years, all_years)
     sitemap.append((f"{SITE}/calendar/", lastmod, "monthly", "0.6"))
     if lastmod is not None:
