@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         strategySubtitle: document.getElementById('strategySubtitle'),
         languageToggle: document.getElementById('languageToggle'),
         langToggleBtn: document.getElementById('langToggleBtn'),
+        posterBtn: document.getElementById('posterBtn'),
         lunarToggleBtn: document.getElementById('lunarToggleBtn'),
         themeToggleBtn: document.getElementById('themeToggleBtn'),
         jumpTodayBtn: document.getElementById('jumpTodayBtn'),
@@ -80,6 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
             jumpToday: "今天",
             jumpTodayTitle: "跳到今天所在的月份",
             lunarToggleText: "農民曆",
+            posterText: "年曆",
+            posterTitle: "開啟一頁年曆（A4，可下載 PNG／PDF）",
             lunarToggle: "顯示農民曆",
             themeAuto: "自動",
             themeLight: "淺色",
@@ -175,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
             jumpToday: "Today",
             jumpTodayTitle: "Jump to the current month",
             lunarToggleText: "Lunar",
+            posterText: "Poster",
+            posterTitle: "Open the one-page year calendar (A4, PNG/PDF download)",
             lunarToggle: "Show lunar calendar",
             themeAuto: "Auto",
             themeLight: "Light",
@@ -310,6 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-year-slot]').forEach(el => {
             el.textContent = state.currentYear;
         });
+        syncPosterLink();
+    }
+
+    // 一頁年曆只產生「今年起」的年度（generate_pages.MIN_YEAR_OFFSET），過去的年度不顯示按鈕
+    function syncPosterLink() {
+        const btn = elements.posterBtn;
+        if (!btn) return;
+        const year = state.currentYear;
+        btn.hidden = year < todayYear;
+        btn.href = currentLang() === 'en' ? `/en/${year}/calendar/` : `/${year}/calendar/`;
     }
 
     // Initialize App
