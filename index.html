@@ -64,7 +64,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
     <!-- GitHub Star 按鈕與版本徽章（自包含樣式，避免與 style.css 待調整項目衝突；顏色走 style.css 的 token，深色才會跟著換）-->
     <style>
         .gh-star-btn {
@@ -360,10 +360,32 @@
                         <svg width="18" height="18" aria-hidden="true" data-theme-icon="dark"><use href="#i-moon" /></svg>
                         <span class="tool-btn-text" data-theme-label>自動</span>
                     </button>
-                    <button id="shareBtn" class="tool-btn font-noto" type="button" aria-label="分享這個頁面" data-i18n-aria="shareAria">
+                    <div class="share-menu">
+                    <button id="shareBtn" class="tool-btn font-noto" type="button" aria-label="分享這個頁面" data-i18n-aria="shareAria" aria-haspopup="true" aria-expanded="false" aria-controls="sharePopover">
                         <svg width="18" height="18" aria-hidden="true"><use href="#i-share" /></svg>
                         <span class="tool-btn-text" data-i18n="share">分享</span>
                     </button>
+                    <div id="sharePopover" class="share-popover" role="group" aria-label="分享到社群" hidden>
+                        <div class="share-popover-icons">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftw-holidays.gooliya.com%2F" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Share on Facebook" title="Facebook" data-share="facebook">
+                                <svg width="20" height="20" aria-hidden="true"><use href="#i-facebook" /></svg>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftw-holidays.gooliya.com%2F&amp;text=Taiwan%20Holidays%20Calendar" target="_blank" rel="noopener noreferrer" class="social-btn twitter" aria-label="Share on X (Twitter)" title="X (Twitter)" data-share="twitter">
+                                <svg width="20" height="20" aria-hidden="true"><use href="#i-twitter" /></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftw-holidays.gooliya.com%2F" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="Share on LinkedIn" title="LinkedIn" data-share="linkedin">
+                                <svg width="20" height="20" aria-hidden="true"><use href="#i-linkedin" /></svg>
+                            </a>
+                            <a href="https://www.threads.net/intent/post?text=Taiwan%20Holidays%20Calendar%20https%3A%2F%2Ftw-holidays.gooliya.com%2F" target="_blank" rel="noopener noreferrer" class="social-btn threads" aria-label="Share on Threads" title="Threads" data-share="threads">
+                                <svg width="20" height="20" aria-hidden="true"><use href="#i-threads" /></svg>
+                            </a>
+                            <a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Ftw-holidays.gooliya.com%2F" target="_blank" rel="noopener noreferrer" class="social-btn line" aria-label="Share on LINE" title="LINE" data-share="line">
+                                <svg width="20" height="20" aria-hidden="true"><use href="#i-line" /></svg>
+                            </a>
+                        </div>
+                        <button id="shareCopyBtn" class="share-copy font-noto" type="button" data-i18n="shareCopy">複製連結</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

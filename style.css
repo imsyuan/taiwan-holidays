@@ -2547,3 +2547,50 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="dark"] {
     transform: none;
   }
 }
+
+/* 頁首分享：展開社群圖示列 */
+.share-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.share-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-social-hover);
+}
+
+.share-popover[hidden] {
+  display: none;
+}
+
+.share-popover-icons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.share-copy {
+  min-height: 36px;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.share-copy:hover {
+  background: var(--color-slate-100);
+  color: var(--color-slate-900);
+}
